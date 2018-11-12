@@ -1,9 +1,9 @@
  #!/bin/bash
+declare  balance=0
 function greeting()
 {
-balance=0
-savings=0
-entire_balance=0
+local savings=0
+local entire_balance=0
 sleep 1
 clear
 echo "                   HELLO WELCOME IN OUR SMKM-INTERNATIONALBANK"

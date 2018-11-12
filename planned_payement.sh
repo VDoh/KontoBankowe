@@ -29,7 +29,7 @@ fi
   read name_of_payement
     printf "%s" "$date " >> payements.txt
 	printf "%s" "$name_of_payement " >> payements.txt
-	echo  >> payements.txt
+	echo ""  >> payements.txt
 }
 
 function getting()

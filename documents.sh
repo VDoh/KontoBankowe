@@ -12,7 +12,7 @@ function ddeleting ()
 	echo "You have $index number of documents you can choose one of them to deleted"
  
 	numberFormat='^[0-9]+$'
-    read -p "Write down name of payement you want do delete: " numberOfLine
+    read -p "Write down a document you want do delete: " numberOfLine
 	if ! [[ "$numberOfLine" =~ $numberFormat ]]  || [[  "$numberOfLine" -gt $index ]]
 	then
 	until [[ "$numberOfLine" =~ $numberFormat ]]  && [[  "$numberOfLine" -le $index ]]
