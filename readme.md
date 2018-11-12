@@ -4,6 +4,7 @@ hasło. Login oraz hasło powinny byd z walidowane tzn login powinien składad s
 cyfr całkowitych. Po zalogowaniu do konta skrypt pokaże nam saldo konta oraz zebrane oszczędności
 oraz łączną kwotę konta.
 Funkcje jakie powinny byd zawarte oprócz wstępnych po zalogowaniu :
+^^DONE
 
  Finanse
 1. Sprawdzenie wszystkich kont
@@ -37,9 +38,9 @@ WALUT DOWOLNYCH ] )
 klientowi zajmie zgromadzenie odpowiedniej sumy )
 3. Kredyty ( Możliwośd wzięcia kredytu na odpowiednią ilośd lat lub miesięcy, Kwota
 powinna byd dodawana do głównego konta. Informacja jaka powinna zostad zwrócona
-po przyznaniu kredytu powinna byd obliczana z korzyścią dla banku + 6% [RRSO] )
+po przyznaniu kredytu powinna byd obliczana z korzyścią dla banku + 6% [RRSO] ) --WORK IN PROGRESS
 4. Kredyty i pożyczki ( Informacje o kredytach oraz pożyczkach jakie klient posiada [Gdzie,
-kiedy, ile zostało wzięte, z jakiego banku] )
+kiedy, ile zostało wzięte, z jakiego banku] ) --WORK IN PROGRESS
 5. Karty i płatności telefonem ( Informacje o kartach oraz powiązanych telefonach z usługą
 BLIK [Zabezpieczony numer karty tzn sześd wartości oraz dalej ******* lub trzy
 początkowe wartości numeru telefonu z *****, model telefonu powiązany], zamówienie
