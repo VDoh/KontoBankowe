@@ -255,5 +255,3 @@ function cGetStandingOrders
         done
     fi
 }
-
-cGetStandingOrders
