@@ -2,13 +2,12 @@
 
 ##balance
 
-declare balanceAfterCredit=0
-declare -a creditInfo=()
-declare bankName "SMKM INTERNATIONAL BANK"
+declare bankName="SMKM INTERNATIONAL BANK"
 
 ###Uwaga moze byc problem z balance czyli aktualnym stanem konta mozliwa bedzie zmiana zmiennej balance na taka odczytana z pliku
 function Loans()
-{
+{   
+
     local counter=0
 
     echo "Here you can take a credit "
@@ -19,7 +18,7 @@ function Loans()
     local pick 
     read pick
 
-    until  [[ $pick -gt 0 ]] && [[ $pick =~ $re ]] && [[ $pick -gt 3 ]]
+    until  [[ $pick -gt 0 ]] && [[ $pick =~ $re ]] && [[ $pick -lt 3 ]]
     do 
         echo "Smth went wrong Expected 1 or 2 "
         echo "Enter again"
@@ -53,11 +52,18 @@ function Loans()
                     clear
             done 
             
-            local currentDate=date 
+            local currentDate=$(date) 
+
+            printf "%s\n" "Bank name giving loan: $bankName " >> creditInfo.txt
+            printf "%s\n" "Date: $currentDate" >> creditInfo.txt
+            printf "%s\n" "Loan took for $creditTime months" >> creditInfo.txt
+            printf "%s\n" "Loan: $moneyLoan ">> creditInfo.txt
+            printf "%s\n""########################################">> creditInfo.txt
 
             echo "Credit Granted"
 
-            let balanceAfterCredit=balance+moneyLoan
+            #balance declared global 
+            let balance=balance+moneyLoan
             let counter=counter+1
 
             ;;
@@ -69,3 +75,10 @@ function Loans()
     esac
 
 }
+
+#Brakuje RSSO 
+#Stan konta przyjety jako pobrany z deklaracji globalnej 
+#nazwa pliku tekstowego sluzeacego do zapisu:  creditInfo.txt
+
+
+Loans
