@@ -9,9 +9,9 @@
 
 
  Finanse
- - 1. Sprawdzenie wszystkich kont
+- 1. Sprawdzenie wszystkich kont
 - 2. Subkonto
- - 3. Konto oszczędnościowe
+- 3. Konto oszczędnościowe
 4. Karty płatnicze - WORKING ON  SZYMON
 - 5. Pożyczki
  Usługi
