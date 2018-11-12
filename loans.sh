@@ -3,11 +3,14 @@
 ##balance
 
 declare balanceAfterCredit=0
-
+declare -a creditInfo=()
+declare bankName "SMKM INTERNATIONAL BANK"
 
 ###Uwaga moze byc problem z balance czyli aktualnym stanem konta mozliwa bedzie zmiana zmiennej balance na taka odczytana z pliku
 function Loans()
 {
+    local counter=0
+
     echo "Here you can take a credit "
     echo "Do you want take a credit? "
     echo "1) YES"
@@ -50,9 +53,12 @@ function Loans()
                     clear
             done 
             
+            local currentDate=date 
+
             echo "Credit Granted"
 
             let balanceAfterCredit=balance+moneyLoan
+            let counter=counter+1
 
             ;;
 
