@@ -95,11 +95,6 @@ function cGetRecipients
     local -a recipientsPESEL=()
     local -a recipientsBankAccountNumber=()
 
-    local nameFormat='^[a-zA-Z]+.*$'
-    local surnameFormat='^.*[a-zA-Z]+.*$'
-    local peselFormat='^.*[0-9]{11}.*$'
-    local bankAccountNumberFormat='.*[0-9]{26}$'
-
     for (( i=0; i<$index; i++ ))
     do
         local recipient=(${recipients[$i]})
@@ -120,3 +115,5 @@ function cGetRecipients
         echo ""
     done
 }
+
+cGetRecipients
