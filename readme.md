@@ -15,7 +15,7 @@ Funkcje jakie powinny byd zawarte oprócz wstępnych po zalogowaniu :
 
 1. Odbiorcy ( Lista odbiorców których można dodawad lub usuwad. Dodawanie nowego
 odbiorcy polega na dodaniu danych osobowych oraz numeru konta )
-2. Zaplanowane płatności ( Lista zaplanowanych płatności )
+2. Zaplanowane płatności ( Lista zaplanowanych płatności )-- DONE
 3. Stałe zlecenia ( Lista zleceo wykonywanych co miesiąc, można je dodawad i ustawiad
 odpowiednią kwotę, dane osobowe lub firmowe i numer konta )
 4. Cele oszczędnościowe ( Utworzenie wirtualnego dodatkowego konta do którego można
