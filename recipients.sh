@@ -10,7 +10,7 @@ function cAddRecipient
     local nameState=$(cValidateWord $name)
     if [ $nameState == 0 ]; 
     then 
-        echo "Wrong name format. Has to start with upperscase letter, has to have at least 3 letters and only letters" 
+        echo "Wrong name format. Has to start with upperscase letter, has to have at least 3 letters and only letters." 
         sleep 3 
         cAddRecipient 
         return 
@@ -21,7 +21,7 @@ function cAddRecipient
     local surnameState=$(cValidateWord $surname)
     if [ $surnameState == 0 ]; 
     then 
-        echo "Wrong surname format. Has to start with upperscase letter, has to have at least 3 letters and only letters" 
+        echo "Wrong surname format. Has to start with upperscase letter, has to have at least 3 letters and only letters." 
         sleep 3 
         cAddRecipient 
         return 
@@ -69,7 +69,7 @@ function cDeleteRecipient
         sleep 3
         cDeleteRecipient
     else
-        sed -i "/$pesel/d" ./recipients.txt
+        sed -i "/ $pesel /d" ./recipients.txt
     fi
 }
 
