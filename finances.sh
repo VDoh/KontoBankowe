@@ -1,11 +1,17 @@
  #!/bin/bash
 function greeting()
 {
+balance=0
+savings=0
+entire_balance=0
 sleep 1
 clear
 echo "                   HELLO WELCOME IN OUR SMKM-INTERNATIONALBANK"
 echo "    ########################################################################"
 echo "   1) FINANCES  2)LOANS  3) SERVICES  4)OFFER  5)HISTORY  6)MAKE TRANSACTIONS   "
+echo " BALANCE: $balance $"
+echo " SAVINGS: $savings $"
+echo " ENTIRE BALANCE: $entire_balance $"
 
 }
 function changing()
