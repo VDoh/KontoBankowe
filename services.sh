@@ -30,59 +30,36 @@ function cValidateNumber
 
 function cAddRecipient
 {
+    clear
     local name
     read -p "Type in recipients name: " name
     nameState=$(cValidateWord $name)
-
-    if [ $nameState == 0 ]
-    then
-        echo "Wrong name format (has to start with uppercase letter, has to have length of at least 3 letters and can contain only letters."
-        sleep 3
-        clear
-        cAddRecipient
-    fi
 
     local surname
     read -p "Type in recipients surname: " surname
     surnameState=$(cValidateWord $surname)
 
-    if [ $surnameState == 0 ]
-    then
-        echo "Wrong name format (has to start with uppercase letter, has to have length of at least 3 letters and can contain only letters."
-        sleep 3
-        clear
-        cAddRecipient
-    fi
-    
     local pesel
     read -p "Type in recipients pesel: " pesel
     peselState=$(cValidateNumber $pesel 11)
 
-    if [ $peselState == 0 ]
-    then
-        echo "Wrong name format (has to start with uppercase letter, has to have length of at least 3 letters and can contain only letters."
-        sleep 3
-        clear
-        cAddRecipient
-    fi
-    
     local bankAccountNumber
     read -p "Type in recipients bank account number: " bankAccountNumber
     bankAccountNumberState=$(cValidateNumber $bankAccountNumber 26)
 
-    if [ $bankAccountNumber == 0 ]
-    then
-        echo "Wrong name format (has to start with uppercase letter, has to have length of at least 3 letters and can contain only letters."
-        sleep 3
-        clear
-        cAddRecipient
-    fi
 
-    printf "%s" "$name " >> recipients.txt
-    printf "%s" "$surname " >> recipients.txt
-    printf "%s" "$pesel " >> recipients.txt
-    printf "%s" "$bankAccountNumber" >> recipients.txt
-    echo "" >> recipients.txt
+    if [ "$nameState" == 0 ] || [ "$surnameState" == 0 ] || [ "$peselState" == 0 ] || [ "$bankAccountNumberState" == 0 ]
+    then
+        echo "Wrong data format. Please try again..."
+        sleep 3
+        cAddRecipient
+    else
+        printf "%s" "$name " >> recipients.txt
+        printf "%s" "$surname " >> recipients.txt
+        printf "%s" "$pesel " >> recipients.txt
+        printf "%s" "$bankAccountNumber" >> recipients.txt
+        echo "" >> recipients.txt
+    fi
 }
 
 function cGetRecipients
