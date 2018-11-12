@@ -115,5 +115,3 @@ function cGetRecipients
         echo ""
     done
 }
-
-cGetRecipients
