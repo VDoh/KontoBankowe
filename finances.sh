@@ -3,25 +3,25 @@ function greeting()
 {
 sleep 1
 clear
-echo "               HELLO WELCOME IN OUR SMKM-INTERNATIONALBANK"
+echo "                   HELLO WELCOME IN OUR SMKM-INTERNATIONALBANK"
 echo "    ########################################################################"
-echo " 1) CHECKING ALL ACCOUNTS   2) SUBACCOUNTS  3) SAVINGS ACCOUNT  4)CREDIT CARDS  "
-echo "        5)LOANS  6) SERVICES  7)OFFER  8)HISTORY   9)MAKE TRANSACTIONS                                                                              "
+echo "   1) FINANCES  2)LOANS  3) SERVICES  4)OFFER  5)HISTORY  6)MAKE TRANSACTIONS   "
+
 }
 function changing()
 {
-read number
-while [[ $number -gt 9 ||  ! $number =~ ^[1-9]+$ ]] 
+read snumber
+while [[ $snumber -gt 6 ||  ! $snumber =~ ^[1-6]+$ ]] 
 do
-if [[ "$number" -lt 9 && $number =~ ^[1-9]+$ ]] #
+if [[ "$number" -lt 6 && $snumber =~ ^[1-6]+$ ]] #
 then
 echo ""
 else
 echo "Could you pick again"
 fi
-read number
+read snumber
 done
-case "$number" in
+case "$snumber" in
 1) 
 sleep 1
 echo "building"
@@ -43,18 +43,6 @@ sleep 1
 echo "building"
 ;;
 6)
-sleep 1
-echo "building"
-;;
-7)
-sleep 1
-echo "building"
-;;
-8)
-sleep 1
-echo "building"
-;;
-9)
 sleep 1
 echo "building"
 ;;
