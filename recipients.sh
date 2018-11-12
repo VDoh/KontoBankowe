@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source $(dirname $0)/usefulFunctions.sh
+
 function cAddRecipient
 {
     clear
@@ -18,7 +20,6 @@ function cAddRecipient
     local bankAccountNumber
     read -p "Type in recipients bank account number: " bankAccountNumber
     local bankAccountNumberState=$(cValidateNumber $bankAccountNumber 26)
-
 
     if [ "$nameState" == 0 ] || [ "$surnameState" == 0 ] || [ "$peselState" == 0 ] || [ "$bankAccountNumberState" == 0 ]
     then
@@ -88,5 +89,3 @@ function cGetRecipients
         echo ""
     done
 }
-
-cGetRecipients
