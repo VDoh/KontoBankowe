@@ -17,11 +17,11 @@
  Usługi
 
 + 1. Odbiorcy ( Lista odbiorców których można dodawad lub usuwad. Dodawanie nowego
-+ odbiorcy polega na dodaniu danych osobowych oraz numeru konta )-- DONE
++    odbiorcy polega na dodaniu danych osobowych oraz numeru konta )-- DONE Mateusz
 + 2. Zaplanowane płatności ( Lista zaplanowanych płatności )-- DONE Szymon
++ 3. Stałe zlecenia ( Lista zleceo wykonywanych co miesiąc, można je dodawad i ustawiad
+     odpowiednią kwotę, dane osobowe lub firmowe i numer konta )-- DONE Mateusz
 
-3. Stałe zlecenia ( Lista zleceo wykonywanych co miesiąc, można je dodawad i ustawiad
-odpowiednią kwotę, dane osobowe lub firmowe i numer konta )-- WORK IN PROGRESS (Mateusz)
 4. Cele oszczędnościowe ( Utworzenie wirtualnego dodatkowego konta do którego można
 ustawid comiesięczny automatyczny przelew lub można samemu przelewad. Należy to
 ustawid oraz obliczyd ile czasu nam zajmie zgromadzenie odpowiedniej kwoty ) 
