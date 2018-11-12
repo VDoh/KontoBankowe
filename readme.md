@@ -11,7 +11,7 @@
  Finanse
 1. Sprawdzenie wszystkich kont
 2. Subkonto
-3. Konto oszczędnościowe
+3. Konto oszczędnościowe-- WORK IN PROGRESS (Mateusz)
 4. Karty płatnicze
 5. Pożyczki
  Usługi
