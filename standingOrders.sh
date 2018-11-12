@@ -2,7 +2,7 @@
 
 source $(dirname $0)/usefulFunctions.sh
 
-#This iis the function that you probably want to use if you want to add or delete a standing order
+#This is the function that you probably want to use if you want to add or delete a standing order
 #It takes "Add" or "Delete" as an argument
 function cDisplayStandingOrderMenu
 {
