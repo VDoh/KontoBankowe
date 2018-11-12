@@ -1,10 +1,12 @@
 #!/bin/bash
 
+#############################################################
+
 function cValidateWord
 {
-    word=$1
+    local word=$1
 
-    wordFormat='^[A-Z][a-z][a-z]+$'
+    local wordFormat='^[A-Z][a-z][a-z]+$'
 
     if [[ "$word" =~ $wordFormat ]]
     then
@@ -16,9 +18,9 @@ function cValidateWord
 
 function cValidateNumber
 {
-    number=$1
-    numberLength=$2
-    numberFormat="^[0-9]{$numberLength}$"
+    local number=$1
+    local numberLength=$2
+    local numberFormat="^[0-9]{$numberLength}$"
 
     if [[ "$number" =~ $numberFormat ]]
     then
@@ -33,19 +35,19 @@ function cAddRecipient
     clear
     local name
     read -p "Type in recipients name: " name
-    nameState=$(cValidateWord $name)
+    local nameState=$(cValidateWord $name)
 
     local surname
     read -p "Type in recipients surname: " surname
-    surnameState=$(cValidateWord $surname)
+    local surnameState=$(cValidateWord $surname)
 
     local pesel
     read -p "Type in recipients pesel: " pesel
-    peselState=$(cValidateNumber $pesel 11)
+    local peselState=$(cValidateNumber $pesel 11)
 
     local bankAccountNumber
     read -p "Type in recipients bank account number: " bankAccountNumber
-    bankAccountNumberState=$(cValidateNumber $bankAccountNumber 26)
+    local bankAccountNumberState=$(cValidateNumber $bankAccountNumber 26)
 
 
     if [ "$nameState" == 0 ] || [ "$surnameState" == 0 ] || [ "$peselState" == 0 ] || [ "$bankAccountNumberState" == 0 ]
@@ -62,8 +64,26 @@ function cAddRecipient
     fi
 }
 
+function cDeleteRecipient
+{
+    clear
+    local pesel
+    read -p "Type in recipients pesel: " pesel
+    local peselState=$(cValidateNumber $pesel 11)
+
+    if [ "$peselState" == 0 ]
+    then
+        echo "Incorrect pesel. Please try again..."
+        sleep 3
+        cDeleteRecipient
+    else
+        sed -i "/$pesel/d" ./recipients.txt
+    fi
+}
+
 function cGetRecipients
 {
+    clear
     local -a recipients=()
     local index=0
 
@@ -103,3 +123,5 @@ function cGetRecipients
         echo ""
     done
 }
+
+##########################################################################
