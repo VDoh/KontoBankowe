@@ -55,9 +55,9 @@ echo "                   YOU DELETE YOUR DOCUMENT(3)   BACK(4)    "
 
 local snumber
 read snumber
-while [[ $snumber -gt 3 ||  ! $snumber =~ ^[1-3]+$ ]] 
+while [[ $snumber -gt 4 ||  ! $snumber =~ ^[1-4]+$ ]] 
 do
-if [[ "$number" -lt 3 && $snumber =~ ^[1-3]+$ ]] #
+if [[ "$snumber" -lt 4 && $snumber =~ ^[1-4]+$ ]] #
 then
 echo ""
 else
