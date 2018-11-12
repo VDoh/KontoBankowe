@@ -21,16 +21,16 @@ odbiorcy polega na dodaniu danych osobowych oraz numeru konta )-- DONE
 odpowiednią kwotę, dane osobowe lub firmowe i numer konta )-- WORK IN PROGRESS (Mateusz)
 4. Cele oszczędnościowe ( Utworzenie wirtualnego dodatkowego konta do którego można
 ustawid comiesięczny automatyczny przelew lub można samemu przelewad. Należy to
-ustawid oraz obliczyd ile czasu nam zajmie zgromadzenie odpowiedniej kwoty ) -- STARTRTED WORKING (Szymon)
+ustawid oraz obliczyd ile czasu nam zajmie zgromadzenie odpowiedniej kwoty ) 
 5. Raty ( Produkty które zostały wzięte na raty [Nazwa produktu, Gdzie został wzięty, Koszt, raty
-jakie wynoszą w okresie] )
+jakie wynoszą w okresie] )  -- STARTRTED WORKING (Szymon)
 6. Dokumenty ( Dokumenty gromadzone przez użytkownika [ Możliwośd stworzenia pliku z
-danymi txt ] )
+danymi txt ] )  
 7. Zaświadczenia ( zaświadczenia gromadzone przez użytkownika [ Możliwośd stworzenia pliku z
-danymi txt ] )
-8. Doładowanie telefonu
+danymi txt ] )  
+8. Doładowanie telefonu 
 9. Kantor ( Zamiana waluty PLN na dowolną z wybranych z listy [ PROSZĘ UWZGLĘDNIĆ 10
-WALUT DOWOLNYCH ] )
+WALUT DOWOLNYCH ] )  
 
  Oferta
 1. Konto osobiste ( Informacje o koncie, założenie dodatkowego konta, subkonta itd )
