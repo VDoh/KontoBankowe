@@ -23,9 +23,9 @@ odpowiednią kwotę, dane osobowe lub firmowe i numer konta )-- WORK IN PROGRESS
 ustawid comiesięczny automatyczny przelew lub można samemu przelewad. Należy to
 ustawid oraz obliczyd ile czasu nam zajmie zgromadzenie odpowiedniej kwoty ) 
 5. Raty ( Produkty które zostały wzięte na raty [Nazwa produktu, Gdzie został wzięty, Koszt, raty
-jakie wynoszą w okresie] )  -- STARTRTED WORKING (Szymon)
+jakie wynoszą w okresie] )  -- DONE
 6. Dokumenty ( Dokumenty gromadzone przez użytkownika [ Możliwośd stworzenia pliku z
-danymi txt ] )  
+danymi txt ] )  --DONE
 7. Zaświadczenia ( zaświadczenia gromadzone przez użytkownika [ Możliwośd stworzenia pliku z
 danymi txt ] )  
 8. Doładowanie telefonu 
