@@ -20,7 +20,7 @@
 +    odbiorcy polega na dodaniu danych osobowych oraz numeru konta )-- DONE Mateusz
 + 2. Zaplanowane płatności ( Lista zaplanowanych płatności )-- DONE Szymon
 + 3. Stałe zlecenia ( Lista zleceo wykonywanych co miesiąc, można je dodawad i ustawiad
-     odpowiednią kwotę, dane osobowe lub firmowe i numer konta )-- DONE Mateusz
++    odpowiednią kwotę, dane osobowe lub firmowe i numer konta )-- DONE Mateusz
 
 4. Cele oszczędnościowe ( Utworzenie wirtualnego dodatkowego konta do którego można
 ustawid comiesięczny automatyczny przelew lub można samemu przelewad. Należy to
