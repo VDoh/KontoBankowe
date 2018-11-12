@@ -34,7 +34,7 @@ function cCreateSavingsAccount
     cd $(dirname $0)/SavingsAccount
     local savingsAccountState=$(cCheckIfSavingsAccountExists)
 
-    if [ $savingsAccountState == 0]
+    if [ $savingsAccountState == 0 ]
     then
         touch savingsAccount.txt
     fi
@@ -42,6 +42,10 @@ function cCreateSavingsAccount
 
 function cSetMonthlySavings
 {
+    clear
+    echo "Monthly savings"
+    return
+
     clear
     local monthlySavings
     read -p "Set how much money would you like to save per month: " monthlySavings
@@ -69,12 +73,13 @@ function cDisplaySavingsAccountMenu
 function cMakeTransfer
 {
     clear
-
+    echo "Make transfer"
 }
 
 function cDisplaySavingsAccountInformation
 {
     clear
+    echo "Info"
 }
 
 function cSavingsAccount
@@ -101,7 +106,9 @@ function cSavingsAccount
             cMakeTransfer
             ;;
         3)
-            cSavingsAccount
+            cDisplaySavingsAccountInformation
             ;;
     esac
 }
+
+cSavingsAccount
