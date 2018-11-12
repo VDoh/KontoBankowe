@@ -26,11 +26,11 @@ ustawid oraz obliczyd ile czasu nam zajmie zgromadzenie odpowiedniej kwoty )
 
 
  + 5. Raty ( Produkty które zostały wzięte na raty [Nazwa produktu, Gdzie został wzięty, Koszt, raty
- + jakie wynoszą w okresie] )  -- DONE
- + 6. Dokumenty ( Dokumenty gromadzone przez użytkownika [ Możliwośd stworzenia pliku z
- + danymi txt ] )  --DONE
- + 7. Zaświadczenia ( zaświadczenia gromadzone przez użytkownika [ Możliwośd stworzenia pliku z
- + danymi txt ] )  --DONE
+  jakie wynoszą w okresie] )  -- DONE
+  6. Dokumenty ( Dokumenty gromadzone przez użytkownika [ Możliwośd stworzenia pliku z
+  danymi txt ] )  --DONE
+  7. Zaświadczenia ( zaświadczenia gromadzone przez użytkownika [ Możliwośd stworzenia pliku z
+  danymi txt ] )  --DONE
 ```
 8. Doładowanie telefonu 
 9. Kantor ( Zamiana waluty PLN na dowolną z wybranych z listy [ PROSZĘ UWZGLĘDNIĆ 10
