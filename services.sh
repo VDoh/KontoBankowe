@@ -4,8 +4,7 @@
 
 function cValidateWord
 {
-    local word=$1
-
+    local word=$1    
     local wordFormat='^[A-Z][a-z][a-z]+$'
 
     if [[ "$word" =~ $wordFormat ]]
@@ -105,7 +104,7 @@ function cGetRecipients
 
     for (( i=0; i<$index; i++ ))
     do
-        recipient=(${recipients[$i]})
+        local recipient=(${recipients[$i]})
 
         recipientsName[$i]=${recipient[0]}
         recipientsSurname[$i]=${recipient[1]}
