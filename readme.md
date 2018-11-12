@@ -1,10 +1,12 @@
-﻿PROJEKT SYSTEMY OPERACYJNE
-Napisz skrypt realizujący konto bankowe. Na wstępie skrypt odpytuje użytkownika o login i
-hasło. Login oraz hasło powinny byd z walidowane tzn login powinien składad się tylko z liter a hasło z
-cyfr całkowitych. Po zalogowaniu do konta skrypt pokaże nam saldo konta oraz zebrane oszczędności
-oraz łączną kwotę konta.
-Funkcje jakie powinny byd zawarte oprócz wstępnych po zalogowaniu :
-^^DONE
+```diff
++ PROJEKT SYSTEMY OPERACYJNE
++ Napisz skrypt realizujący konto bankowe. Na wstępie skrypt odpytuje użytkownika o login i
++ hasło. Login oraz hasło powinny byd z walidowane tzn login powinien składad się tylko z liter a hasło z
++ cyfr całkowitych. Po zalogowaniu do konta skrypt pokaże nam saldo konta oraz zebrane oszczędności
++ oraz łączną kwotę konta.
++ Funkcje jakie powinny byd zawarte oprócz wstępnych po zalogowaniu :
++ ^^DONE
+```
 
  Finanse
 1. Sprawdzenie wszystkich kont
