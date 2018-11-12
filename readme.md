@@ -42,15 +42,15 @@ WALUT DOWOLNYCH ] )
 1. Konto osobiste ( Informacje o koncie, założenie dodatkowego konta, subkonta itd )
 2. Oszczędności ( Sprawdzenie ile oszczędności klient posiada oraz pokazanie czasu ile
 klientowi zajmie zgromadzenie odpowiedniej sumy )
-3. Kredyty ( Możliwośd wzięcia kredytu na odpowiednią ilośd lat lub miesięcy, Kwota
-powinna byd dodawana do głównego konta. Informacja jaka powinna zostad zwrócona
-po przyznaniu kredytu powinna byd obliczana z korzyścią dla banku + 6% [RRSO] ) --DONE (Maciek)
-4. Kredyty i pożyczki ( Informacje o kredytach oraz pożyczkach jakie klient posiada [Gdzie,
-kiedy, ile zostało wzięte, z jakiego banku] ) --DONE (Maciek)
-5. Karty i płatności telefonem ( Informacje o kartach oraz powiązanych telefonach z usługą
-BLIK [Zabezpieczony numer karty tzn sześd wartości oraz dalej ******* lub trzy
-początkowe wartości numeru telefonu z *****, model telefonu powiązany], zamówienie
-nowej karty lub powiązanie nowego telefonu ) --DONE Maciej 
++ 3. Kredyty ( Możliwośd wzięcia kredytu na odpowiednią ilośd lat lub miesięcy, Kwota
++ powinna byd dodawana do głównego konta. Informacja jaka powinna zostad zwrócona
++ po przyznaniu kredytu powinna byd obliczana z korzyścią dla banku + 6% [RRSO] ) --DONE (Maciek)
++ 4. Kredyty i pożyczki ( Informacje o kredytach oraz pożyczkach jakie klient posiada [Gdzie,
++ kiedy, ile zostało wzięte, z jakiego banku] ) --DONE (Maciek)
++ 5. Karty i płatności telefonem ( Informacje o kartach oraz powiązanych telefonach z usługą
++ BLIK [Zabezpieczony numer karty tzn sześd wartości oraz dalej ******* lub trzy
++ początkowe wartości numeru telefonu z *****, model telefonu powiązany], zamówienie
++ nowej karty lub powiązanie nowego telefonu ) --DONE Maciej 
 6. Emerytura ( Obliczenie kwoty emerytury po składkach ) -- WORK IN PROGRESS (Konrad)
 7. Ubezpieczenie ( Informacje o ubezpieczeniu lub dodanie nowego ubezpieczenie np. na
 telefon lub rodzinę [ Proszę ująd tutaj 10 przykładów jakichkolwiek z ubezpieczeniami ] ) --WORK IN PROGRESS(Maciej)
