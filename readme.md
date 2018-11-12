@@ -24,7 +24,7 @@
 
 4. Cele oszczędnościowe ( Utworzenie wirtualnego dodatkowego konta do którego można
 ustawid comiesięczny automatyczny przelew lub można samemu przelewad. Należy to
-ustawid oraz obliczyd ile czasu nam zajmie zgromadzenie odpowiedniej kwoty ) 
+ustawid oraz obliczyd ile czasu nam zajmie zgromadzenie odpowiedniej kwoty )-- WORK IN PROGRESS (Mateusz)
 
 + 5. Raty ( Produkty które zostały wzięte na raty [Nazwa produktu, Gdzie został wzięty, Koszt, raty
 + jakie wynoszą w okresie] )  -- DONE Szymon
