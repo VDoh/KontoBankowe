@@ -34,7 +34,7 @@ ustawid oraz obliczyd ile czasu nam zajmie zgromadzenie odpowiedniej kwoty )
 + danymi txt ] )  --DONE Szymon
 
 
-8. Doładowanie telefonu 
+8. Doładowanie telefonu -- WORKING ON
 9. Kantor ( Zamiana waluty PLN na dowolną z wybranych z listy [ PROSZĘ UWZGLĘDNIĆ 10
 WALUT DOWOLNYCH ] )  
 
