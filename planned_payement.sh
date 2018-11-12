@@ -1,25 +1,35 @@
 #!/bin/bash
+function deleting ()
+{
+ clear
+    local name
+    read -p "Write down name of payement: " name
+    
+	sed -i "/$name/d" ./payements.txt
+   
+}
+
 function adding ()
 { 
- local sdate 
+ local date 
  echo "date of execute dd-mm-yyyy:"
- read sdate
+ read date
 date_format='^(([0-2][0-9]|(3)[0-1])-(((0)[0-9])|((1)[0-2]))-[0-9]{4})$'
 # file payements is needed 
- if  ! [[ "$sdate" =~ $date_format ]]
+ if  ! [[ "$date" =~ $date_format ]]
 then  
-	until [[  "$sdate" =~ $date_format  ]]
+	until [[  "$date" =~ $date_format  ]]
 	do
 		echo "date of execute dd-mm-yyyy:"
-		read sdate
+		read date
 	done
 fi
-  local name_of _payement
+  local name_of_payement
   echo "name of payement"
-  read name_of _payement
-    printf "%s" "$sdate" >> payements.txt
-	printf "%s" "$sname_of _payement " >> payements.txt
-	echo "" >>  payements.txt
+  read name_of_payement
+    printf "%s" "$date " >> payements.txt
+	printf "%s" "$name_of_payement " >> payements.txt
+	echo  >> payements.txt
 }
 
 function getting()
@@ -61,11 +71,12 @@ local -a payements=()
 function which ()
 {
 echo "  YOU CAN ADD ANOTHER PAYEMENT (1) SHOW EVERY PAYEMENT(2) DELETE PAYEMENT(3) "
+echo "                                  BACK  (4)                                                                    "
 local snumber
 read snumber
-while [[ $snumber -gt 3 ||  ! $snumber =~ ^[1-3]+$ ]] 
+while [[ $snumber -gt 4 ||  ! $snumber =~ ^[1-4]+$ ]] 
 do
-if [[ "$number" -lt 3 && $snumber =~ ^[1-3]+$ ]] #
+if [[ "$number" -lt 4 && $snumber =~ ^[1-4]+$ ]] #
 then
 echo ""
 else
@@ -77,14 +88,25 @@ case "$snumber" in
 1) 
 sleep 1
 adding
+sleep 1
+clear
+ which
 ;;
 2)
 sleep 1
 getting
+sleep 1 
+which
 ;;
 3)
 sleep 1
-echo "building"
+deleting
+sleep 1
+clear
+ which
+;;
+4)
+echo "back"
 ;;
 esac
 }
