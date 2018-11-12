@@ -5,7 +5,7 @@
 + cyfr całkowitych. Po zalogowaniu do konta skrypt pokaże nam saldo konta oraz zebrane oszczędności
 + oraz łączną kwotę konta.
 + Funkcje jakie powinny byd zawarte oprócz wstępnych po zalogowaniu :
-+ ^^DONE
++ ^^DONE Szymon, Konrad 
 ```
 
  Finanse
@@ -18,7 +18,7 @@
 ```diff
 + 1. Odbiorcy ( Lista odbiorców których można dodawad lub usuwad. Dodawanie nowego
 + odbiorcy polega na dodaniu danych osobowych oraz numeru konta )-- DONE
-+ 2. Zaplanowane płatności ( Lista zaplanowanych płatności )-- DONE
++ 2. Zaplanowane płatności ( Lista zaplanowanych płatności )-- DONE Szymon
 ```
 3. Stałe zlecenia ( Lista zleceo wykonywanych co miesiąc, można je dodawad i ustawiad
 odpowiednią kwotę, dane osobowe lub firmowe i numer konta )-- WORK IN PROGRESS (Mateusz)
@@ -27,11 +27,11 @@ ustawid comiesięczny automatyczny przelew lub można samemu przelewad. Należy 
 ustawid oraz obliczyd ile czasu nam zajmie zgromadzenie odpowiedniej kwoty ) 
 ```diff
 + 5. Raty ( Produkty które zostały wzięte na raty [Nazwa produktu, Gdzie został wzięty, Koszt, raty
-+ jakie wynoszą w okresie] )  -- DONE
++ jakie wynoszą w okresie] )  -- DONE Szymon
 + 6. Dokumenty ( Dokumenty gromadzone przez użytkownika [ Możliwośd stworzenia pliku z
-+ danymi txt ] )  --DONE
++ danymi txt ] )  --DONE Szymon
 + 7. Zaświadczenia ( zaświadczenia gromadzone przez użytkownika [ Możliwośd stworzenia pliku z
-+ danymi txt ] )  --DONE
++ danymi txt ] )  --DONE Szymon
 ```
 
 8. Doładowanie telefonu 
