@@ -54,9 +54,9 @@ klientowi zajmie zgromadzenie odpowiedniej sumy )
 +6. Emerytura ( Obliczenie kwoty emerytury po składkach ) -- DONE Konrad
 7. Ubezpieczenie ( Informacje o ubezpieczeniu lub dodanie nowego ubezpieczenie np. na
 telefon lub rodzinę [ Proszę ująd tutaj 10 przykładów jakichkolwiek z ubezpieczeniami ] ) --WORK IN PROGRESS(Maciej)
-8. Rozliczenie z ZUS ( Obliczenie i ustawienie przelewu do ZUS’u [ Należy mied go
+- 8. Rozliczenie z ZUS ( Obliczenie i ustawienie przelewu do ZUS’u [ Należy mied go
 zadeklarowanego w stałych odbiorcach ] )
-9. Leasing ( Informacje o leasingach lub rozpoczęcie nowego po wypełnieniu formularza [
+- 9. Leasing ( Informacje o leasingach lub rozpoczęcie nowego po wypełnieniu formularza [
 Proszę stworzyd formularz wczytywany z klawiatury Imię, Nazwisko, pesel <walidacja>,
 numer telefonu <walidacja>, Kwota leasingu, wybranie czasu miesięcy np. 12,24,36,72 ,
 Kwota + 9%[ RRSO ] do oddania dla banku] )
