@@ -6,7 +6,7 @@
 + oraz łączną kwotę konta.
 + Funkcje jakie powinny byd zawarte oprócz wstępnych po zalogowaniu :
 + ^^DONE Szymon, Konrad 
-```
+
 
  Finanse
 1. Sprawdzenie wszystkich kont
@@ -15,7 +15,7 @@
 4. Karty płatnicze
 5. Pożyczki
  Usługi
-```diff
+
 + 1. Odbiorcy ( Lista odbiorców których można dodawad lub usuwad. Dodawanie nowego
 + odbiorcy polega na dodaniu danych osobowych oraz numeru konta )-- DONE
 + 2. Zaplanowane płatności ( Lista zaplanowanych płatności )-- DONE Szymon
