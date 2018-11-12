@@ -11,7 +11,7 @@ function retirement()
     while read -r line 
     do
         retirementMoney[$index]="$line"
-        let moneycollected=moneycollected+retirementMoney[index]
+        let moneycollected=$(echo $moneycollected+${retirementMoney[$index]})
         echo $moneycollected
         let index++
 
