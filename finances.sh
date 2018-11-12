@@ -10,6 +10,7 @@ echo "   1) FINANCES  2)LOANS  3) SERVICES  4)OFFER  5)HISTORY  6)MAKE TRANSACTI
 }
 function changing()
 {
+local snumber
 read snumber
 while [[ $snumber -gt 6 ||  ! $snumber =~ ^[1-6]+$ ]] 
 do
