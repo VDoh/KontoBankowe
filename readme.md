@@ -44,7 +44,7 @@ kiedy, ile zostało wzięte, z jakiego banku] ) --WORK IN PROGRESS (Maciek)
 5. Karty i płatności telefonem ( Informacje o kartach oraz powiązanych telefonach z usługą
 BLIK [Zabezpieczony numer karty tzn sześd wartości oraz dalej ******* lub trzy
 początkowe wartości numeru telefonu z *****, model telefonu powiązany], zamówienie
-nowej karty lub powiązanie nowego telefonu )
+nowej karty lub powiązanie nowego telefonu ) -- ALMOST DONE Maciej 
 6. Emerytura ( Obliczenie kwoty emerytury po składkach )
 7. Ubezpieczenie ( Informacje o ubezpieczeniu lub dodanie nowego ubezpieczenie np. na
 telefon lub rodzinę [ Proszę ująd tutaj 10 przykładów jakichkolwiek z ubezpieczeniami ] )
