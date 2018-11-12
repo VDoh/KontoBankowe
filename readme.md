@@ -13,10 +13,11 @@ Funkcje jakie powinny byd zawarte oprócz wstępnych po zalogowaniu :
 4. Karty płatnicze
 5. Pożyczki
  Usługi
-
-1. Odbiorcy ( Lista odbiorców których można dodawad lub usuwad. Dodawanie nowego
-odbiorcy polega na dodaniu danych osobowych oraz numeru konta )-- DONE
-2. Zaplanowane płatności ( Lista zaplanowanych płatności )-- DONE
+```diff
++ 1. Odbiorcy ( Lista odbiorców których można dodawad lub usuwad. Dodawanie nowego
++ odbiorcy polega na dodaniu danych osobowych oraz numeru konta )-- DONE
++ 2. Zaplanowane płatności ( Lista zaplanowanych płatności )-- DONE
+```
 3. Stałe zlecenia ( Lista zleceo wykonywanych co miesiąc, można je dodawad i ustawiad
 odpowiednią kwotę, dane osobowe lub firmowe i numer konta )-- WORK IN PROGRESS (Mateusz)
 4. Cele oszczędnościowe ( Utworzenie wirtualnego dodatkowego konta do którego można
@@ -24,16 +25,13 @@ ustawid comiesięczny automatyczny przelew lub można samemu przelewad. Należy 
 ustawid oraz obliczyd ile czasu nam zajmie zgromadzenie odpowiedniej kwoty ) 
 ```diff
 + 5. Raty ( Produkty które zostały wzięte na raty [Nazwa produktu, Gdzie został wzięty, Koszt, raty
-  jakie wynoszą w okresie] )  -- DONE
-  6. Dokumenty ( Dokumenty gromadzone przez użytkownika [ Możliwośd stworzenia pliku z
-  danymi txt ] )  --DONE
-  7. Zaświadczenia ( zaświadczenia gromadzone przez użytkownika [ Możliwośd stworzenia pliku z
-  danymi txt ] )  --DONE
++ jakie wynoszą w okresie] )  -- DONE
++ 6. Dokumenty ( Dokumenty gromadzone przez użytkownika [ Możliwośd stworzenia pliku z
++ danymi txt ] )  --DONE
++ 7. Zaświadczenia ( zaświadczenia gromadzone przez użytkownika [ Możliwośd stworzenia pliku z
++ danymi txt ] )  --DONE
 ```
-```diff
-+ this will be highlighted in green
-- this will be highlighted in red
-```
+
 8. Doładowanie telefonu 
 9. Kantor ( Zamiana waluty PLN na dowolną z wybranych z listy [ PROSZĘ UWZGLĘDNIĆ 10
 WALUT DOWOLNYCH ] )  
