@@ -9,11 +9,11 @@
 
 
  Finanse
-1. Sprawdzenie wszystkich kont
-2. Subkonto
-3. Konto oszczędnościowe
-4. Karty płatnicze
-5. Pożyczki
+ - 1. Sprawdzenie wszystkich kont
+- 2. Subkonto
+ - 3. Konto oszczędnościowe
+4. Karty płatnicze - WORKING ON  SZYMON
+- 5. Pożyczki
  Usługi
 
 + 1. Odbiorcy ( Lista odbiorców których można dodawad lub usuwad. Dodawanie nowego
@@ -60,29 +60,30 @@ zadeklarowanego w stałych odbiorcach ] )
 Proszę stworzyd formularz wczytywany z klawiatury Imię, Nazwisko, pesel <walidacja>,
 numer telefonu <walidacja>, Kwota leasingu, wybranie czasu miesięcy np. 12,24,36,72 ,
 Kwota + 9%[ RRSO ] do oddania dla banku] )
-10. Terminale płatnicze ( Informacje o najbliższych terminalach w okolicy )
+
+- 10. Terminale płatnicze ( Informacje o najbliższych terminalach w okolicy )
 
 
 
  Historia
-1. Sprawdzenie płatności przelewów (Data, numer konta, kwota, do kogo, możliwośd
+- 1. Sprawdzenie płatności przelewów (Data, numer konta, kwota, do kogo, możliwośd
 generowania .txt do katalogu Konto na pulpicie wraz z nazwą pliku
 data_numerTransakcji.txt )
 
 
  Wykonaj transakcje
-1. Przelew zwykły ( Podanie danych osobowych + numeru konta oraz kwoty, następnie
+- 1. Przelew zwykły ( Podanie danych osobowych + numeru konta oraz kwoty, następnie
 powinno pojawid się uwierzytelnienie i zapytanie po wykonaniu przelewu czy się zgadza
 czy też nie. Pojawienie się informacji powinno się pojawid gdy wartośd przelewu jest
 większa niż 50 PLN ). Każda transakcja powinna przelewad na konto oszczędnościowe 3
 PLN po wykonaniu przelewu.
-2. Przelew ekspres (Podanie danych osobowych + numeru konta oraz kwoty, następnie
+- 2. Przelew ekspres (Podanie danych osobowych + numeru konta oraz kwoty, następnie
 powinno pojawid się uwierzytelnienie i zapytanie po wykonaniu przelewu czy się zgadza
 czy też nie. Pojawienie się informacji powinno się pojawid gdy wartośd przelewu jest
 większa niż 50 PLN ) dodatkowo proszę doliczyd 10 zł za wykonanie tego przelewu. Każda
 transakcja ekspres powinna przelewad na konto oszczędnościowe 5 PLN po wykonaniu
 przelewu.
-3. Przelew walutowy (Podanie danych osobowych + numeru konta oraz kwoty wraz z
+- 3. Przelew walutowy (Podanie danych osobowych + numeru konta oraz kwoty wraz z
 ustawieniem waluty, następnie powinno pojawid się uwierzytelnienie i zapytanie po
 wykonaniu przelewu czy się zgadza czy też nie. Pojawienie się informacji powinno się
 pojawid gdy wartośd przelewu jest większa niż 50 PLN ) dodatkowo proszę doliczyd 20 zł
