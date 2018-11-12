@@ -1,4 +1,4 @@
-PROJEKT SYSTEMY OPERACYJNE
+﻿PROJEKT SYSTEMY OPERACYJNE
 Napisz skrypt realizujący konto bankowe. Na wstępie skrypt odpytuje użytkownika o login i
 hasło. Login oraz hasło powinny byd z walidowane tzn login powinien składad się tylko z liter a hasło z
 cyfr całkowitych. Po zalogowaniu do konta skrypt pokaże nam saldo konta oraz zebrane oszczędności
@@ -45,7 +45,7 @@ kiedy, ile zostało wzięte, z jakiego banku] ) --WORK IN PROGRESS (Maciek)
 BLIK [Zabezpieczony numer karty tzn sześd wartości oraz dalej ******* lub trzy
 początkowe wartości numeru telefonu z *****, model telefonu powiązany], zamówienie
 nowej karty lub powiązanie nowego telefonu ) -- ALMOST DONE Maciej 
-6. Emerytura ( Obliczenie kwoty emerytury po składkach )
+6. Emerytura ( Obliczenie kwoty emerytury po składkach ) -- WORK IN PROGRESS (Konrad)
 7. Ubezpieczenie ( Informacje o ubezpieczeniu lub dodanie nowego ubezpieczenie np. na
 telefon lub rodzinę [ Proszę ująd tutaj 10 przykładów jakichkolwiek z ubezpieczeniami ] )
 8. Rozliczenie z ZUS ( Obliczenie i ustawienie przelewu do ZUS’u [ Należy mied go
