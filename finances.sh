@@ -1,5 +1,7 @@
  #!/bin/bash
 declare  balance=0
+declare entire_balance=0
+declare savings=0
 function greeting()
 {
 local savings=0
