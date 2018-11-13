@@ -92,6 +92,7 @@ function cDisplaySavingsAccountMenu
 #Takes amount as an argument
 function cMakeAutomaticTransfer
 {
+    cCreateSavingsAccount
     local transferAmount=$1
     local transferFormat='^[1-9][0-9]+$'
 
