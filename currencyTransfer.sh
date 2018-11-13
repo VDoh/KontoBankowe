@@ -13,14 +13,19 @@ function cCurrencyTransfer
     clear
     local name=$(cGetName)
     if [ "$name" == "-1" ]; then cCurrencyTransfer; return; fi
+    
     local surname=$(cGetSurname)
     if [ "$surname" == "-1" ]; then cCurrencyTransfer; return; fi
+    
     local bankAccountNumber=$(cGetBankAccountNumber)
     if [ "$bankAccountNumber" == "-1" ]; then cCurrencyTransfer; return; fi
+    
     cGetCurrency
     local currency=$?
+    
     local amountInOtherCurrency=$(cGetAmount "Type in amount of money to transfer: ")
     if [ "$amountInOtherCurrency" == "-1" ]; then cCurrencyTransfer; return; fi
+    
     local amount=$(KexchangeCalculation $amount $currency 10)
     
     cGenerateCode

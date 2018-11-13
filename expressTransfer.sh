@@ -12,10 +12,13 @@ function cExpressTransfer
     clear
     local name=$(cGetName)
     if [ "$name" == "-1" ]; then cExpressTransfer; return; fi
+    
     local surname=$(cGetSurname)
     if [ "$surname" == "-1" ]; then cExpressTransfer; return; fi
+    
     local bankAccountNumber=$(cGetBankAccountNumber)
     if [ "$bankAccountNumber" == "-1" ]; then cExpressTransfer; return; fi
+    
     local amount=$(cGetAmount "Type in amount of money to transfer: ")
     if [ "$amount" == "-1" ]; then cExpressTransfer; return; fi
     
