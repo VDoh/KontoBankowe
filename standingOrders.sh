@@ -17,7 +17,7 @@ function cDisplayStandingOrderMenu
     local optionFormat='^(1|2)$'
     if ! [[ "$option" =~ $optionFormat ]]
     then
-        cDisplayStandingOrderMenu
+        cDisplayStandingOrderMenu $1
     else
         if [ $1 == "Delete" ]
         then
