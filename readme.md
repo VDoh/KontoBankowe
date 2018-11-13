@@ -72,9 +72,9 @@ WALUT DOWOLNYCH ] )  --WORK IN PROGRESS (Konrad)
 
 
  Historia
-- 1. Sprawdzenie płatności przelewów (Data, numer konta, kwota, do kogo, możliwośd
-- generowania .txt do katalogu Konto na pulpicie wraz z nazwą pliku
-- data_numerTransakcji.txt )
+1. Sprawdzenie płatności przelewów (Data, numer konta, kwota, do kogo, możliwośd
+generowania .txt do katalogu Konto na pulpicie wraz z nazwą pliku
+data_numerTransakcji.txt ) --WORK IN PROGRSS (Mateusz)
 
 
  Wykonaj transakcje -- WORK IN PROGRESS (Mateusz)
