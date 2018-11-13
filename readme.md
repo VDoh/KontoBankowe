@@ -77,7 +77,7 @@ WALUT DOWOLNYCH ] )  --WORK IN PROGRESS (Konrad)
 - data_numerTransakcji.txt )
 
 
- Wykonaj transakcje
+ Wykonaj transakcje -- WORK IN PROGRESS (Mateusz)
 1. Przelew zwykły ( Podanie danych osobowych + numeru konta oraz kwoty, następnie
 powinno pojawid się uwierzytelnienie i zapytanie po wykonaniu przelewu czy się zgadza
 czy też nie. Pojawienie się informacji powinno się pojawid gdy wartośd przelewu jest
@@ -89,11 +89,11 @@ czy też nie. Pojawienie się informacji powinno się pojawid gdy wartośd przel
 większa niż 50 PLN ) dodatkowo proszę doliczyd 10 zł za wykonanie tego przelewu. Każda
 transakcja ekspres powinna przelewad na konto oszczędnościowe 5 PLN po wykonaniu
 przelewu. -- WORK IN PROGRESS (Mateusz)
-- 3. Przelew walutowy (Podanie danych osobowych + numeru konta oraz kwoty wraz z
-- ustawieniem waluty, następnie powinno pojawid się uwierzytelnienie i zapytanie po
-- wykonaniu przelewu czy się zgadza czy też nie. Pojawienie się informacji powinno się
-- pojawid gdy wartośd przelewu jest większa niż 50 PLN ) dodatkowo proszę doliczyd 20 zł
-- za wykonanie tego przelewu. Każda transakcja walutowa powinna przelewad na konto
-- oszczędnościowe 10 PLN po wykonaniu przelewu. Informacją zwrotna powinna
-- wyświetlad przeliczoną kwotę na PLN ile upłynęło z konta.
+3. Przelew walutowy (Podanie danych osobowych + numeru konta oraz kwoty wraz z
+ustawieniem waluty, następnie powinno pojawid się uwierzytelnienie i zapytanie po
+wykonaniu przelewu czy się zgadza czy też nie. Pojawienie się informacji powinno się
+pojawid gdy wartośd przelewu jest większa niż 50 PLN ) dodatkowo proszę doliczyd 20 zł
+za wykonanie tego przelewu. Każda transakcja walutowa powinna przelewad na konto
+oszczędnościowe 10 PLN po wykonaniu przelewu. Informacją zwrotna powinna
+wyświetlad przeliczoną kwotę na PLN ile upłynęło z konta. -- WORK IN PROGRESS (Mateusz)
 ```
