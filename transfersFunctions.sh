@@ -44,7 +44,9 @@ function cValidateTransfer
 
 function cAddTransferToHistory
 {
-    echo ""
+    local historyFileState=$(cCheckIfFileExists transfersHistory.txt)
+
+    if [ $historyFileState == 0 ]; then touch transfersHistory.txt; fi
 }
 
 function cSaveTransferSeparately

@@ -6,10 +6,7 @@ function cCreateSavingsAccount
 {
     local savingsAccountDirState=$(cCheckIfDirExists SavingsAccount)
 
-    if [ $savingsAccountDirState == 0 ]
-    then
-        mkdir $(dirname $0)/SavingsAccount
-    fi
+    if [ $savingsAccountDirState == 0 ]; then mkdir $(dirname $0)/SavingsAccount; fi
     
     local savingsAccountState=$(cCheckIfFileExists SavingsAccount/savingsAccount.txt)
 
