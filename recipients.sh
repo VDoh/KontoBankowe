@@ -2,9 +2,17 @@
 
 source $(dirname $0)/usefulFunctions.sh
 
+function cCreateRecipientsFile
+{
+    local historyFileState=$(cCheckIfFileExists recipients.txt)
+    if [ $historyFileState == 0 ]; then touch $(dirname $0)/recipients.txt; fi
+}
+
 function cAddRecipient
 {
     clear
+    cCreateRecipientsFile
+
     local name=$(cGetName)
     if [ "$name" == "-1" ]; then cAddRecipient; return; fi
     
@@ -36,6 +44,8 @@ function cDeleteRecipient
 function cGetRecipients
 {
     clear
+    cCreateRecipientsFile
+
     local -a recipients=()
     local index=0
 
