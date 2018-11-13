@@ -1,6 +1,6 @@
 ﻿```diff
- NEEDED FILES ADD YOURS PLS GUYS"
-+ balance.txt your whole account balance
+ NEEDED FILES - ADD YOURS PLS GUYS"
++ balance.txt -  your whole account balance
 + payements.txt - your planned payements
 + installments.txt - info about installments
 + certificates.txt - info about certificates
