@@ -16,7 +16,7 @@ echo "deleted"
 }
 function newdebit()
 {
-new_card=$(( ( RANDOM % 10000000000 )  + 1000000000000000 ))
+new_card=$(shuf -i1000000000000000-9999999999999999 -n1)
 if [[ $debit_card -eq 0 ]]
 then
 echo " Your account blance has been decreased by 10 $"

@@ -25,7 +25,7 @@ done
   function tchoose()
   {
  echo "                   TELEPHONE TOP UP(1)    BACK(2)   "
- echo " BALANCE : $balance $"
+ echo " BALANCE : $balance PLN"
 local snumber
 read snumber
 while [[ $snumber -gt 2 ||  ! $snumber =~ ^[1-2]+$ ]] 
