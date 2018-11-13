@@ -104,3 +104,13 @@ function cValidateTransfer
         cValidateTransfer
     fi
 }
+
+function cAddTransferToHistory
+{
+    echo ""
+}
+
+function cSaveTransferSeparately
+{
+    echo ""
+}

@@ -26,3 +26,23 @@ function cValidateNumber
         echo 0
     fi
 }
+
+function cCheckIfSavingsDirExists
+{
+    if [ -d "$(dirname $0)/$1" ]
+    then
+        echo 1
+    else
+        echo 0
+    fi
+}
+
+function cCheckIfSavingsAccountExists
+{
+    if [ -f "$(dirname $0)/$1" ]
+    then
+        echo 1
+    else
+        echo 0
+    fi
+}

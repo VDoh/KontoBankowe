@@ -2,36 +2,16 @@
 
 source $(dirname $0)/usefulFunctions.sh
 
-function cCheckIfSavingsDirExists
-{
-    if [ -d "$(dirname $0)/SavingsAccount" ]
-    then
-        echo 1
-    else
-        echo 0
-    fi
-}
-
-function cCheckIfSavingsAccountExists
-{
-    if [ -f "$(dirname $0)/SavingsAccount/savingsAccount.txt" ]
-    then
-        echo 1
-    else
-        echo 0
-    fi
-}
-
 function cCreateSavingsAccount
 {
-    local savingsAccountDirState=$(cCheckIfSavingsDirExists)
+    local savingsAccountDirState=$(cCheckIfSavingsDirExists SavingsAccount)
 
     if [ $savingsAccountDirState == 0 ]
     then
         mkdir $(dirname $0)/SavingsAccount
     fi
     
-    local savingsAccountState=$(cCheckIfSavingsAccountExists)
+    local savingsAccountState=$(cCheckIfSavingsAccountExists SavingsAccount/savingsAccount.txt)
 
     if [ $savingsAccountState == 0 ]
     then
@@ -192,3 +172,5 @@ function cSavingsAccount
 
     cSavingsAccount
 }
+
+cSavingsAccount
