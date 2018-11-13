@@ -5,29 +5,33 @@ source $(dirname $0)/usefulFunctions.sh
 #Takes as an arguments in that order: transfer type, date, bank account number, amount, recipients name, recipients surname
 function cAddTransferToHistory
 {
-    local historyFileState=$(cCheckIfFileExists transfersHistory.txt)
-    if [ $historyFileState == 0 ]; then touch $(dirname $0)/transfersHistory.txt; fi
+    local historyDirState=$(cCheckIfDirExists Account)
+    if [ $historyDirState == 0 ]; then mkdir $(dirname $0)/Account; fi
+    local historyFileState=$(cCheckIfFileExists Account/transfersHistory.txt)
+    if [ $historyFileState == 0 ]; then touch $(dirname $0)/Account/transfersHistory.txt; fi
 
     local index=1
     while read -r line 
     do
         let index++
-    done < "$(dirname $0)/transfersHistory.txt"
+    done < "$(dirname $0)/Account/transfersHistory.txt"
 
-    printf "%s" $1 "-transfer-" $index" " >> $(dirname $0)/transfersHistory.txt
-    printf "%s" "$2 " >> $(dirname $0)/transfersHistory.txt
-    printf "%s" "$3 " >> $(dirname $0)/transfersHistory.txt
-    printf "%s" "$4 " >> $(dirname $0)/transfersHistory.txt
-    printf "%s" "$5 " >> $(dirname $0)/transfersHistory.txt
-    printf "%s" "$6 " >> $(dirname $0)/transfersHistory.txt
-    echo "" >> $(dirname $0)/transfersHistory.txt
+    printf "%s" $1 "-transfer-" $index" " >> $(dirname $0)/Account/transfersHistory.txt
+    printf "%s" "$2 " >> $(dirname $0)/Account/transfersHistory.txt
+    printf "%s" "$3 " >> $(dirname $0)/Account/transfersHistory.txt
+    printf "%s" "$4 " >> $(dirname $0)/Account/transfersHistory.txt
+    printf "%s" "$5 " >> $(dirname $0)/Account/transfersHistory.txt
+    printf "%s" "$6 " >> $(dirname $0)/Account/transfersHistory.txt
+    echo "" >> $(dirname $0)/Account/transfersHistory.txt
 }
 
 function cGetTransfersHistory
 {
     clear
-    local historyFileState=$(cCheckIfFileExists transfersHistory.txt)
-    if [ $historyFileState == 0 ]; then touch $(dirname $0)/transfersHistory.txt; fi
+    local historyDirState=$(cCheckIfDirExists Account)
+    if [ $historyDirState == 0 ]; then mkdir $(dirname $0)/Account; fi
+    local historyFileState=$(cCheckIfFileExists Account/transfersHistory.txt)
+    if [ $historyFileState == 0 ]; then touch $(dirname $0)/Account/transfersHistory.txt; fi
 
     local -a transfers=()
     local index=0
@@ -36,7 +40,7 @@ function cGetTransfersHistory
     do
         transfers[$index]="$line"
         let index++
-    done < "$(dirname $0)/transfersHistory.txt"
+    done < "$(dirname $0)/Account/transfersHistory.txt"
 
     if [ $index == 0 ]; then echo "You do not have any transfers in the transfers history yet."; return; fi
 
@@ -112,3 +116,5 @@ function cSaveTransferSeparately
 {
     echo ""
 }
+
+cGetTransfersHistory
