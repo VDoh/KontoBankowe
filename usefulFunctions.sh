@@ -2,11 +2,9 @@
 
 function cGetNumberWithGivenLength
 {
-    local number=$1
-    local numberLength=$2
-    local numberFormat="^[0-9]{$numberLength}$"
+    local numberFormat="^[0-9]{$2}$"
 
-    if [[ "$number" =~ $numberFormat ]]
+    if [[ "$1" =~ $numberFormat ]]
     then
         echo 1
     else
