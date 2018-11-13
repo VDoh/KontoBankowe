@@ -13,7 +13,7 @@
 - 1. Sprawdzenie wszystkich kont
 - 2. Subkonto
 + 3. Konto oszczędnościowe-- DONE (Mateusz)
-- 4. Karty płatnicze
++ 4. Karty płatnicze -- DONE (Szymon)
 - 5. Pożyczki
 =======
 - 1. Sprawdzenie wszystkich kont
