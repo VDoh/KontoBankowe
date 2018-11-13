@@ -49,11 +49,11 @@ function cAddRecipient
         return 
     fi
 
-    printf "%s" "$name " >> recipients.txt
-    printf "%s" "$surname " >> recipients.txt
-    printf "%s" "$pesel " >> recipients.txt
-    printf "%s" "$bankAccountNumber" >> recipients.txt
-    echo "" >> recipients.txt
+    printf "%s" "$name " >> $(dirname $0)/recipients.txt
+    printf "%s" "$surname " >> $(dirname $0)/recipients.txt
+    printf "%s" "$pesel " >> $(dirname $0)/recipients.txt
+    printf "%s" "$bankAccountNumber" >> $(dirname $0)/recipients.txt
+    echo "" >> $(dirname $0)/recipients.txt
 }
 
 function cDeleteRecipient
@@ -69,7 +69,7 @@ function cDeleteRecipient
         sleep 3
         cDeleteRecipient
     else
-        sed -i "/ $pesel /d" ./recipients.txt
+        sed -i "/ $pesel /d" $(dirname $0)/recipients.txt
     fi
 }
 
@@ -83,7 +83,7 @@ function cGetRecipients
     do
         recipients[$index]="$line"
         let index++
-    done < "recipients.txt"
+    done < $(dirname $0)/recipients.txt
 
     local -a recipientsName=()
     local -a recipientsSurname=()

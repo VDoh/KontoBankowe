@@ -14,7 +14,7 @@ function cCheckIfSavingsDirExists
 
 function cCheckIfSavingsAccountExists
 {
-    if [ -f "savingsAccount.txt" ]
+    if [ -f "$(dirname $0)/SavingsAccount/savingsAccount.txt" ]
     then
         echo 1
     else
@@ -31,15 +31,14 @@ function cCreateSavingsAccount
         mkdir $(dirname $0)/SavingsAccount
     fi
     
-    cd $(dirname $0)/SavingsAccount
     local savingsAccountState=$(cCheckIfSavingsAccountExists)
 
     if [ $savingsAccountState == 0 ]
     then
-        touch savingsAccount.txt
-        printf "%s\n" "Balance: 0" >> savingsAccount.txt 
-        printf "%s\n" "Monthly: 0" >> savingsAccount.txt
-        printf "%s\n" "Goal: 0" >> savingsAccount.txt
+        touch $(dirname $0)/SavingsAccount/savingsAccount.txt
+        printf "%s\n" "Balance: 0" >> $(dirname $0)/SavingsAccount/savingsAccount.txt
+        printf "%s\n" "Monthly: 0" >> $(dirname $0)/SavingsAccount/savingsAccount.txt
+        printf "%s\n" "Goal: 0" >> $(dirname $0)/SavingsAccount/savingsAccount.txt
     fi
 }
 
@@ -58,7 +57,7 @@ function cSetMonthlySavings
         return
     fi
 
-    sed -i "s/Monthly: \(.*\)/Monthly: $monthlySavings/" ./savingsAccount.txt
+    sed -i "s/Monthly: \(.*\)/Monthly: $monthlySavings/" $(dirname $0)/SavingsAccount/savingsAccount.txt
 }
 
 function cSetGoal
@@ -76,7 +75,7 @@ function cSetGoal
         return
     fi
 
-    sed -i "s/Goal: \(.*\)/Goal: $goal/" ./savingsAccount.txt
+    sed -i "s/Goal: \(.*\)/Goal: $goal/" $(dirname $0)/SavingsAccount/savingsAccount.txt
 }
 
 function cDisplaySavingsAccountMenu
@@ -105,9 +104,9 @@ function cMakeTransfer
         return
     fi
 
-    local savingsAccountBalance=$(awk '/Balance: /{print $2}' savingsAccount.txt)
+    local savingsAccountBalance=$(awk '/Balance: /{print $2}' $(dirname $0)/SavingsAccount/savingsAccount.txt)
     savingsAccountBalance=$(echo $(($savingsAccountBalance+$transferAmount)))
-    sed -i "s/Balance: \(.*\)/Balance: $savingsAccountBalance/" savingsAccount.txt
+    sed -i "s/Balance: \(.*\)/Balance: $savingsAccountBalance/" $(dirname $0)/SavingsAccount/savingsAccount.txt
 }
 
 function cDisplaySavingsAccountInformation
@@ -116,13 +115,13 @@ function cDisplaySavingsAccountInformation
     while read -r line 
     do
         echo $line
-    done < "savingsAccount.txt"
+    done < "$(dirname $0)/SavingsAccount/savingsAccount.txt"
 
-    local monthly=$(awk '/Monthly: /{print $2}' savingsAccount.txt)
-    local goal=$(awk '/Goal: /{print $2}' savingsAccount.txt)
-    local gatheredMoney=$(awk '/Balance: /{print $2}' savingsAccount.txt)
+    local monthly=$(awk '/Monthly: /{print $2}' $(dirname $0)/SavingsAccount/savingsAccount.txt)
+    local goal=$(awk '/Goal: /{print $2}' $(dirname $0)/SavingsAccount/savingsAccount.txt)
+    local gatheredMoney=$(awk '/Balance: /{print $2}' $(dirname $0)/SavingsAccount/savingsAccount.txt)
     local timeToGoal
-    let goal-=gatheredMoney
+    let leftToGoal=goal-gatheredMoney
 
     if [ "$monthly" == 0 ]
     then
@@ -135,8 +134,9 @@ function cDisplaySavingsAccountInformation
         sleep 3
         cSavingsAccount
     else
-        let timeToGoal=goal/monthly
+        let timeToGoal=leftToGoal/monthly
         echo "It will take you" $timeToGoal "more months to achieve your goal of saving" $goal"."
+        sleep 3
     fi
 }
 
@@ -144,6 +144,8 @@ function cSavingsAccount
 {
     clear
     cCreateSavingsAccount
+
+    echo dirname $0
 
     local option
     cDisplaySavingsAccountMenu
@@ -170,6 +172,8 @@ function cSavingsAccount
             cDisplaySavingsAccountInformation
             ;;
     esac
+
+    cSavingsAccount
 }
 
 cSavingsAccount

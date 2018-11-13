@@ -53,7 +53,7 @@ function cDeleteStandingOrder
             return
         fi
 
-        sed -i "/ $pesel /d" ./standingOrders.txt
+        sed -i "/ $pesel /d" $(dirname $0)/standingOrders.txt
     else
         local nip
         read -p "Type in firms NIP in order to delete it from standing orders: " nip
@@ -67,7 +67,7 @@ function cDeleteStandingOrder
             return
         fi
 
-        sed -i "/ $nip /d" ./standingOrders.txt
+        sed -i "/ $nip /d" $(dirname $0)/standingOrders.txt
     fi
 }
 
@@ -174,22 +174,22 @@ function cAddStandingOrder
         return
     fi
 
-    printf "%s" "$orderType " >> standingOrders.txt
+    printf "%s" "$orderType " >> $(dirname $0)/standingOrders.txt
 
     if [ $orderType == "Person" ]
     then
-        printf "%s" "$personsName " >> standingOrders.txt
-        printf "%s" "$surname " >> standingOrders.txt
-        printf "%s" "$pesel " >> standingOrders.txt
+        printf "%s" "$personsName " >> $(dirname $0)/standingOrders.txt
+        printf "%s" "$surname " >> $(dirname $0)/standingOrders.txt
+        printf "%s" "$pesel " >> $(dirname $0)/standingOrders.txt
     else
-        printf "%s" "$firmName " >> standingOrders.txt
-        printf "%s" "$nip " >> standingOrders.txt
+        printf "%s" "$firmName " >> $(dirname $0)/standingOrders.txt
+        printf "%s" "$nip " >> $(dirname $0)/standingOrders.txt
     fi
 
-    printf "%s" "$bankAccountNumber " >> standingOrders.txt
-    printf "%s" "$amount " >> standingOrders.txt
-    printf "%s" "$day " >> standingOrders.txt
-    echo "" >> standingOrders.txt
+    printf "%s" "$bankAccountNumber " >> $(dirname $0)/standingOrders.txt
+    printf "%s" "$amount " >> $(dirname $0)/standingOrders.txt
+    printf "%s" "$day " >> $(dirname $0)/standingOrders.txt
+    echo "" >> $(dirname $0)/standingOrders.txt
 }
 
 function cGetStandingOrders
@@ -202,7 +202,7 @@ function cGetStandingOrders
     do
         standingOrders[$index]="$line"
         let index++
-    done < "standingOrders.txt"
+    done < "$(dirname $0)/standingOrders.txt"
 
     for (( i=0; i<$index; i++ ))
     do
