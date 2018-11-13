@@ -120,7 +120,9 @@ function cDisplaySavingsAccountInformation
 
     local monthly=$(awk '/Monthly: /{print $2}' savingsAccount.txt)
     local goal=$(awk '/Goal: /{print $2}' savingsAccount.txt)
+    local gatheredMoney=$(awk '/Balance: /{print $2}' savingsAccount.txt)
     local timeToGoal
+    let goal-=gatheredMoney
 
     if [ "$monthly" == 0 ]
     then
@@ -134,7 +136,7 @@ function cDisplaySavingsAccountInformation
         cSavingsAccount
     else
         let timeToGoal=goal/monthly
-        echo "It will take you" $timeToGoal "months to achieve your goal of saving" $goal"."
+        echo "It will take you" $timeToGoal "more months to achieve your goal of saving" $goal"."
     fi
 }
 
@@ -169,3 +171,5 @@ function cSavingsAccount
             ;;
     esac
 }
+
+cSavingsAccount
