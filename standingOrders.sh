@@ -2,11 +2,19 @@
 
 source $(dirname $0)/usefulFunctions.sh
 
+function cCreateStandingOrdersFile
+{
+    local standingOrdersFileState=$(cCheckIfFileExists standingOrders.txt)
+    if [ $standingOrdersFileState == 0 ]; then touch $(dirname $0)/standingOrders.txt; fi
+}
+
 #This is the function that you probably want to use if you want to add or delete a standing order
 #It takes "Add" or "Delete" as an argument
 function cDisplayStandingOrderMenu
 {
     clear
+    cCreateStandingOrdersFile
+
     local option
     echo "Standing order types:"
     echo "1. Personal"
@@ -112,6 +120,7 @@ function cAddStandingOrderManually
 #There is no validation in that function so make sure you are sending right data
 function cAddStandingOrder
 {
+    cCreateStandingOrdersFile
     printf "%s" "$1 " >> $(dirname $0)/standingOrders.txt
 
     if [ $1 == "Person" ]
@@ -172,6 +181,8 @@ function cDeleteStandingOrder
 function cGetStandingOrders
 {
     clear
+    cCreateStandingOrdersFile
+
     local -a standingOrders=()
     local index=0
 

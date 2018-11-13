@@ -4,8 +4,8 @@ source $(dirname $0)/usefulFunctions.sh
 
 function cCreateRecipientsFile
 {
-    local historyFileState=$(cCheckIfFileExists recipients.txt)
-    if [ $historyFileState == 0 ]; then touch $(dirname $0)/recipients.txt; fi
+    local recipientsFileState=$(cCheckIfFileExists recipients.txt)
+    if [ $recipientsFileState == 0 ]; then touch $(dirname $0)/recipients.txt; fi
 }
 
 function cAddRecipient
