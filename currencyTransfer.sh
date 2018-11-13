@@ -10,32 +10,49 @@ source $(dirname $0)/currency_exchange.sh
 
 function cCurrencyManualTransfer
 {
-    local name=$(cGetName)
-    if [ "$name" == "-1" ]; then cCurrencyManualTransfer; return; fi
+    clear
+
+    if [ "$1" == "Person" ]
+    then
+        local name=$(cGetName)
+        if [ "$name" == "-1" ]; then cCurrencyManualTransfer "Person"; return; fi
     
-    local surname=$(cGetSurname)
-    if [ "$surname" == "-1" ]; then cCurrencyManualTransfer; return; fi
+        local surnameOrNip=$(cGetSurname)
+        if [ "$surnameOrNip" == "-1" ]; then cCurrencyManualTransfer "Person"; return; fi
+    elif [ "$1" == "Firm" ]
+    then
+        local name=$(cGetName)
+        if [ "$name" == "-1" ]; then cCurrencyManualTransfer "Firm"; return; fi
+    
+        local surnameOrNip=$(cGetNip)
+        if [ "$surnameOrNip" == "-1" ]; then cCurrencyManualTransfer "Firm"; return; fi
+    else
+        echo "ERROR. Wrong argument for function cCurrencyManualTransfer (either Person or Firm)."
+        sleep 3
+        exit 1
+    fi
     
     local bankAccountNumber=$(cGetBankAccountNumber)
     if [ "$bankAccountNumber" == "-1" ]; then cCurrencyManualTransfer; return; fi
     
     cGetCurrency
     local currency=$?
-    
+
     local amountInOtherCurrency=$(cGetAmount "Type in amount of money to transfer: ")
     if [ "$amountInOtherCurrency" == "-1" ]; then cCurrencyManualTransfer; return; fi
 
-    cCurrencyTransfer $name $surname $bankAccountNumber $currency $amountInOtherCurrency
+    cCurrencyTransfer $1 $name $surnameOrNip $bankAccountNumber $currency $amountInOtherCurrency
 }
 
 function cCurrencyTransfer
 {
     clear
-    local name=$1    
-    local surname=$2
-    local bankAccountNumber=$3  
-    local currency=$4 
-    local amountInOtherCurrency=$5 
+    local type=$1
+    local name=$2
+    local surnameOrNip=$3
+    local bankAccountNumber=$4  
+    local currency=$5
+    local amountInOtherCurrency=$6 
     local amount=$(KexchangeCalculation $amount $currency 10)
     
     cGenerateCode
@@ -46,7 +63,7 @@ function cCurrencyTransfer
 
     if [ $amount -gt 49 ]
     then
-        cValidateTransfer $amount $name $surname
+        cValidateTransfer $amount ${type,,} $name $surnameOrNip
         if [ $? == 0 ]
         then
             clear
@@ -60,10 +77,10 @@ function cCurrencyTransfer
     cChooseOneOfTwoOptions "Press S if you want to save transfer separately or press C if you want to continue with defualt history storage." "S" "C"
     if [ $? == 1 ] 
     then 
-        cSaveTransferSeparately "Currency" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surname
+        cSaveTransferSeparately $type "Currency" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surnameOrNip
     fi
 
-    cAddTransferToHistory "Currency" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surname
+    cAddTransferToHistory $type "Currency" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surnameOrNip
 
     clear
     echo "Your account balance is now:" $balance

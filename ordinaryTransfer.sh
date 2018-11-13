@@ -43,8 +43,9 @@ function cOrdinaryManualTransfer
 function cOrdinaryTransfer
 {
     clear
+    local type=$1
     local name=$2   
-    local surname=$3
+    local surnameOrNip=$3
     local bankAccountNumber=$4
     local amount=$5
     
@@ -56,7 +57,7 @@ function cOrdinaryTransfer
 
     if [ $amount -gt 49 ]
     then
-        cValidateTransfer $amount $name $surname
+        cValidateTransfer $amount ${type,,} $name $surnameOrNip
         if [ $? == 0 ]
         then
             clear
@@ -70,10 +71,10 @@ function cOrdinaryTransfer
     cChooseOneOfTwoOptions "Press S if you want to save transfer separately or press C if you want to continue with defualt history storage." "S" "C"
     if [ $? == 1 ] 
     then 
-        cSaveTransferSeparately "Ordinary" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surname
+        cSaveTransferSeparately $type "Ordinary" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surnameOrNip
     fi
 
-    cAddTransferToHistory "Ordinary" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surname
+    cAddTransferToHistory $type "Ordinary" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surnameOrNip
 
     clear
     echo "Your account balance is now:" $balance

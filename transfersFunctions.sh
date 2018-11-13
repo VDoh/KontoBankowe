@@ -25,7 +25,7 @@ function cAuthentication
 function cValidateTransfer
 {
     clear
-    echo "You sent" $1 "to" $2 $3"." >&2
+    echo "You sent" $1 "to" $2":" $3"," $4"." >&2
     echo "Press U if you want to undo it or press C if you want to continue. " >&2
     
     local option

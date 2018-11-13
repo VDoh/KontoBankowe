@@ -9,28 +9,45 @@ source $(dirname $0)/transfersHistory.sh
 
 function cExpressManualTransfer
 {
-    local name=$(cGetName)
-    if [ "$name" == "-1" ]; then cExpressTransfer; return; fi
+    clear
+
+    if [ "$1" == "Person" ]
+    then
+        local name=$(cGetName)
+        if [ "$name" == "-1" ]; then cExpressManualTransfer "Person"; return; fi
     
-    local surname=$(cGetSurname)
-    if [ "$surname" == "-1" ]; then cExpressTransfer; return; fi
+        local surnameOrNip=$(cGetSurname)
+        if [ "$surnameOrNip" == "-1" ]; then cExpressManualTransfer "Person"; return; fi
+    elif [ "$1" == "Firm" ]
+    then
+        local name=$(cGetName)
+        if [ "$name" == "-1" ]; then cExpressManualTransfer "Firm"; return; fi
+    
+        local surnameOrNip=$(cGetNip)
+        if [ "$surnameOrNip" == "-1" ]; then cExpressManualTransfer "Firm"; return; fi
+    else
+        echo "ERROR. Wrong argument for function cExpressManualTransfer (either Person or Firm)."
+        sleep 3
+        exit 1
+    fi
     
     local bankAccountNumber=$(cGetBankAccountNumber)
-    if [ "$bankAccountNumber" == "-1" ]; then cExpressTransfer; return; fi
+    if [ "$bankAccountNumber" == "-1" ]; then cExpressManualTransfer; return; fi
     
     local amount=$(cGetAmount "Type in amount of money to transfer: ")
-    if [ "$amount" == "-1" ]; then cExpressTransfer; return; fi
+    if [ "$amount" == "-1" ]; then cExpressManualTransfer; return; fi
 
-    cExpressTransfer $name $surname $bankAccountNumber $amount
+    cExpressTransfer $1 $name $surnameOrNip $bankAccountNumber $amount
 }
 
 function cExpressTransfer
 {
     clear
-    local name=$1
-    local surname=$2 
-    local bankAccountNumber=$3 
-    local amount=$4
+    local type=$1
+    local name=$2
+    local surnameOrNip=$3 
+    local bankAccountNumber=$4 
+    local amount=$5
     
     cGenerateCode
     cAuthentication
@@ -40,7 +57,7 @@ function cExpressTransfer
 
     if [ $amount -gt 49 ]
     then
-        cValidateTransfer $amount $name $surname
+        cValidateTransfer $amount ${type,,} $name $surnameOrNip
         if [ $? == 0 ]
         then
             clear
@@ -54,10 +71,10 @@ function cExpressTransfer
     cChooseOneOfTwoOptions "Press S if you want to save transfer separately or press C if you want to continue with defualt history storage." "S" "C"
     if [ $? == 1 ] 
     then 
-        cSaveTransferSeparately "Express" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surname
+        cSaveTransferSeparately $type "Express" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surnameOrNip
     fi
 
-    cAddTransferToHistory "Express" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surname
+    cAddTransferToHistory $type "Express" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surnameOrNip
 
     clear
     echo "Your account balance is now:" $balance

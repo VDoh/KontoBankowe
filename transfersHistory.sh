@@ -33,7 +33,7 @@ function cAddTransferToHistory
     printf "%s" "$4 " >> $(dirname $0)/Account/transfersHistory.txt
     printf "%s" "$5 " >> $(dirname $0)/Account/transfersHistory.txt
     printf "%s" "$6 " >> $(dirname $0)/Account/transfersHistory.txt
-    printf "%s" "$7 " >> $(dirname $0)/Account/transfersHistory.txt
+    printf "%s" "$7" >> $(dirname $0)/Account/transfersHistory.txt
     echo "" >> $(dirname $0)/Account/transfersHistory.txt
 }
 
@@ -114,46 +114,52 @@ function cPrintTransfersData
 
         if [ ${transfer[0]} == "Person" ] 
         then
-            personalTransfers+=(${transfers[$i]})
-        elif [ ${transfer[0]} == "Firm"]
+            personalTransfers+=("${transfers[$i]}")
+        elif [ ${transfer[0]} == "Firm" ]
         then
-            firmTransfers+=(${transfers[$i]})
+            firmTransfers+=("${transfers[$i]}")
         else
             echo "ERROR. Currupted data in transferHistory.txt file."
             sleep 3
             exit 1
         fi
     done
-
-    echo "Personal transfers: "
-    echo ""
+    
+    if [ ${#personalTransfers[@]} -gt 0 ]
+    then
+        echo "  Personal transfers: "
+        echo ""
+    fi
 
     for (( i=0; i<${#personalTransfers[@]}; i++ ))
     do
         local transfer=(${personalTransfers[$i]})
         
-        echo "  Transfer" $(($i+1))":"
-        echo "  Date:" ${transfer[2]}
-        echo "  Bank account number:" ${transfer[3]}
-        echo "  Amount:" ${transfer[4]}
-        echo "  Name:" ${transfer[5]}
-        echo "  Surname:" ${transfer[6]}
+        echo "    Transfer" $(($i+1))":"
+        echo "    Date:" ${transfer[2]}
+        echo "    Bank account number:" ${transfer[3]}
+        echo "    Amount:" ${transfer[4]}
+        echo "    Name:" ${transfer[5]}
+        echo "    Surname:" ${transfer[6]}
         echo ""
     done
 
-    echo "Firm transfers: "
-    echo ""
+    if [ ${#firmTransfers[@]} -gt 0 ]
+    then
+        echo "  Firm transfers: "
+        echo ""
+    fi
 
     for (( i=0; i<${#firmTransfers[@]}; i++ ))
     do
         local transfer=(${firmTransfers[$i]})
         
-        echo "  Transfer" $(($i+1))":"
-        echo "  Date:" ${transfer[2]}
-        echo "  Bank account number:" ${transfer[3]}
-        echo "  Amount:" ${transfer[4]}
-        echo "  Firm:" ${transfer[5]}
-        echo "  NIP:" ${transfer[6]}
+        echo "    Transfer" $(($i+1))":"
+        echo "    Date:" ${transfer[2]}
+        echo "    Bank account number:" ${transfer[3]}
+        echo "    Amount:" ${transfer[4]}
+        echo "    Firm:" ${transfer[5]}
+        echo "    NIP:" ${transfer[6]}
         echo ""
     done
 }
@@ -181,7 +187,7 @@ function cSaveTransferSeparately
 
     touch $(dirname $0)/Account/SeparateTransfers/$3_$index.txt
 
-    printf '%s\n' "$transferType" >> $(dirname $0)/Account/SeparateTransfers/$3_$index.txt
+    printf '%s\n' "$transferType" > $(dirname $0)/Account/SeparateTransfers/$3_$index.txt
 
     if [ "$1" == "Person" ]
     then
@@ -201,3 +207,5 @@ function cSaveTransferSeparately
     printf '%s\n' "Bank account number: $4" >> $(dirname $0)/Account/SeparateTransfers/$3_$index.txt
     printf '%s\n' "Amount: $5" >> $(dirname $0)/Account/SeparateTransfers/$3_$index.txt
 }
+
+cGetTransfersHistory
