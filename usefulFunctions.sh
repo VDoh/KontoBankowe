@@ -1,17 +1,5 @@
 #!/bin/bash
 
-function cGetNumberWithGivenLength
-{
-    local numberFormat="^[0-9]{$2}$"
-
-    if [[ "$1" =~ $numberFormat ]]
-    then
-        echo 1
-    else
-        echo 0
-    fi
-}
-
 function cCheckIfSavingsDirExists
 {
     if [ -d "$(dirname $0)/$1" ]
@@ -25,6 +13,18 @@ function cCheckIfSavingsDirExists
 function cCheckIfSavingsAccountExists
 {
     if [ -f "$(dirname $0)/$1" ]
+    then
+        echo 1
+    else
+        echo 0
+    fi
+}
+
+function cGetNumberWithGivenLength
+{
+    local numberFormat="^[0-9]{$2}$"
+
+    if [[ "$1" =~ $numberFormat ]]
     then
         echo 1
     else
