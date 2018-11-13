@@ -79,6 +79,7 @@ function cAuthentication
     if [ $userInput != $code ]
     then
         echo "Please try again."
+        sleep 3
         cAuthentication
     fi
 }
