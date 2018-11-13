@@ -1,12 +1,12 @@
 #!/bin/bash
 # Funkcja exchange pobiera informacje z pliku tekstowego ''currency_exchange.txt" na temat ceny walut.
-# Funkcja przyjmuje jako argument aktualny stan konta uzytkownika. - $1
-# Uzytkownik daje informacje na jaka walute chcialby przeliczyc swoje pieniadze i dostaje informacje ile wybranej waluty moglby dostac. Wszystko jest zalezne od stanu konta
+# Funkcja przyjmuje jako argument aktualny stan konta uzytkownika. - $1 (ogolnie $balance)
+# Uzytkownik daje informacje na jaka walute chcialby przeliczyc swoje pieniadze i dostaje informacje ile pieniedzy posiada w wybranej walucie. Wszystko jest zalezne od stanu konta
 
 function Kexchange()
 {
     local currencyNameFormat='^([1-9]|10)$'
-    local wantedCurrencyName=""
+    local currencyName=""
     local wantedCurrency=0
     local actualCurrency=10
     local balanceAfter=0
@@ -26,24 +26,26 @@ function Kexchange()
             echo -e "Choose currency you want your money to be exchanged to: \n""1) ZAR South African Rand\n""2) TRY Turkish Lira\n""3) RON Romanian leu\n""4) NZD New Zealand dollar\n""5) MXN Mexican Peso\n""6) HRK Croatian kuna\n""7) BGN Bulgarian Lev\n""8) AED Dirham of the United Arab Emirates\n""9) ILS Israeli New Sheqel\n""10) PLN Polish zloty"
             read wantedCurrency
         done
-    fi
+    fi  
 
-    IFS=$'\n'
-    for line in $(<currency_exchange.txt)
-    do
-        let counterExchange++
-        if [ $counterExchange == $wantedCurrency ]
-        then
-            wantedCurrencyName=${line% *}
-        fi
-    done
+    if ! [[ "$1" -gt "0" ]]
+    then
+       echo "You have no founds!"
+    else
+        IFS=$'\n'
+        for line in $(<currency_exchange.txt)
+        do
+            let counterExchange++
+            if [ $counterExchange == $wantedCurrency ]
+            then
+                currencyName=${line% *}
+            fi
+        done
 
-    balanceAfter=$(KexchangeCalculation $1 $actualCurrency $wantedCurrency) 
-
-    echo "You have now $balanceAfter"" $wantedCurrencyName"
-    
-    actualCurrency=$wantedCurrency
-    $1=$balanceAfter 
+        balanceAfter=$(KexchangeCalculation $1 $actualCurrency $wantedCurrency) 
+        echo "$balanceAfter"" $currencyName"
+        actualCurrency=$wantedCurrency
+    fi  
 }
 
 function KexchangeCalculation()
@@ -51,13 +53,13 @@ function KexchangeCalculation()
     local counterExchange=0
     local exchange2=""
     local exchange3=""
-    local semiresult=""
+    local result=0
 
     IFS=$'\n'
     for line in $(<currency_exchange.txt)
     do
         let counterExchange++
-        if [ $counterExchange == $2 ]
+        if [ "$counterExchange" == "$2" ]
         then
             exchange2=${line#* }
         fi
@@ -69,16 +71,13 @@ function KexchangeCalculation()
     for line in $(<currency_exchange.txt)
     do
         let counterExchange++
-        if [ $counterExchange == $3 ]
+        if [ "$counterExchange" == "$3" ]
         then
             exchange3=${line#* }
         fi
     done
 
     result=$(awk -v a="$1" -v b="$exchange2" -v c="$exchange3" 'BEGIN {print a*b/c}')
-    
     echo "$result"
-
 }
-
-Kexchange
+Kexchange $balance
