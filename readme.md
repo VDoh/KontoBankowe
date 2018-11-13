@@ -83,12 +83,12 @@ WALUT DOWOLNYCH ] )  --WORK IN PROGRESS (Konrad)
 + czy też nie. Pojawienie się informacji powinno się pojawid gdy wartośd przelewu jest
 + większa niż 50 PLN ). Każda transakcja powinna przelewad na konto oszczędnościowe 3
 + PLN po wykonaniu przelewu. -- DONE (Mateusz)
-2. Przelew ekspres (Podanie danych osobowych + numeru konta oraz kwoty, następnie
-powinno pojawid się uwierzytelnienie i zapytanie po wykonaniu przelewu czy się zgadza
-czy też nie. Pojawienie się informacji powinno się pojawid gdy wartośd przelewu jest
-większa niż 50 PLN ) dodatkowo proszę doliczyd 10 zł za wykonanie tego przelewu. Każda
-transakcja ekspres powinna przelewad na konto oszczędnościowe 5 PLN po wykonaniu
-przelewu. -- WORK IN PROGRESS (Mateusz)
++ 2. Przelew ekspres (Podanie danych osobowych + numeru konta oraz kwoty, następnie
++ powinno pojawid się uwierzytelnienie i zapytanie po wykonaniu przelewu czy się zgadza
++ czy też nie. Pojawienie się informacji powinno się pojawid gdy wartośd przelewu jest
++ większa niż 50 PLN ) dodatkowo proszę doliczyd 10 zł za wykonanie tego przelewu. Każda
++ transakcja ekspres powinna przelewad na konto oszczędnościowe 5 PLN po wykonaniu
++ przelewu. -- DONE (Mateusz)
 3. Przelew walutowy (Podanie danych osobowych + numeru konta oraz kwoty wraz z
 ustawieniem waluty, następnie powinno pojawid się uwierzytelnienie i zapytanie po
 wykonaniu przelewu czy się zgadza czy też nie. Pojawienie się informacji powinno się
