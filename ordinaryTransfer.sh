@@ -37,6 +37,8 @@ function cOrdinaryTransfer
         fi
     fi
 
+    cAddTransferToHistory "Ordinary" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surname
+
     clear
     echo "Your account balance is now:" $balance
     sleep 3

@@ -37,6 +37,8 @@ function cExpressTransfer
         fi
     fi
 
+    cAddTransferToHistory "Express" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surname
+
     clear
     echo "Your account balance is now:" $balance
     sleep 3
