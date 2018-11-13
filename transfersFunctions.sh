@@ -41,3 +41,33 @@ function cValidateTransfer
         cValidateTransfer
     fi
 }
+
+function cGetCurrency
+{
+    clear
+    local index=0
+    local -a currencies=()
+
+    while read -r line
+    do
+        currencies[$index]="$line"
+        let index++
+    done < $(dirname $0)/currency_exchange.txt
+
+    for (( i=0; i<$index-1; i++ ))
+    do
+        echo $(($i+1))"." ${currencies[$i]}
+    done
+
+    local option
+    echo -n "Type in desired currency number in order to continue: "
+    read -rsn1 option
+    local optionFormat='^[1-9]$'
+
+    if [[ "$option" =~ $optionFormat ]]; 
+    then 
+        return $option 
+    else
+        cGetCurrency
+    fi
+}
