@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Assumes that "balance" is the global variable for the account balance
-
+ 
 source $(dirname $0)/transfersFunctions.sh
 source $(dirname $0)/savingsAccount.sh
 
