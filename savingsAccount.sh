@@ -92,7 +92,7 @@ function cDisplaySavingsAccountInformation
     local goal=$(awk '/Goal: /{print $2}' $(dirname $0)/SavingsAccount/savingsAccount.txt)
     local gatheredMoney=$(awk '/Balance: /{print $2}' $(dirname $0)/SavingsAccount/savingsAccount.txt)
     local timeToGoal
-    let leftToGoal=goal-gatheredMoney
+    local leftToGoal=$(($goal-$gatheredMoney))
 
     if [ "$gatheredMoney" -gt "$goal" ]
     then
