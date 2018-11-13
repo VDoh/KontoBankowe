@@ -8,7 +8,8 @@
 + documents.txt - info about your documents
 + recipients.txt - info about recipients
 + standingOrders.txt - info about standing orders
-+ SavingsAccount/savingsAccount.txt - info about you savings account (it will create automatically when you will try to access savings account)
++ SavingsAccount/savingsAccount.txt - info about you savings account (it will create automatically 
++ when you will try to access savings account)
  
 + PROJEKT SYSTEMY OPERACYJNE
 + Napisz skrypt realizujący konto bankowe. Na wstępie skrypt odpytuje użytkownika o login i
