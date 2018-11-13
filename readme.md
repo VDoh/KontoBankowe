@@ -81,10 +81,10 @@ WALUT DOWOLNYCH ] )  --Done (Konrad)
 
 
 
- Historia
-1. Sprawdzenie płatności przelewów (Data, numer konta, kwota, do kogo, możliwośd
-generowania .txt do katalogu Konto na pulpicie wraz z nazwą pliku
-data_numerTransakcji.txt ) --WORK IN PROGRSS (Mateusz)
++  Historia
++ 1. Sprawdzenie płatności przelewów (Data, numer konta, kwota, do kogo, możliwośd
++ generowania .txt do katalogu Konto na pulpicie wraz z nazwą pliku
++ data_numerTransakcji.txt ) --DONE (Mateusz)
 
 
  Wykonaj transakcje -- WORK IN PROGRESS (Mateusz)
