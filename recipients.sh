@@ -5,49 +5,14 @@ source $(dirname $0)/usefulFunctions.sh
 function cAddRecipient
 {
     clear
-    local name
-    read -p "Type in recipients name: " name
-    local nameState=$(cValidateWord $name)
-    if [ $nameState == 0 ]; 
-    then 
-        echo "Wrong name format. Has to start with upperscase letter, has to have at least 3 letters and only letters." 
-        sleep 3 
-        cAddRecipient 
-        return 
-    fi
-
-    local surname
-    read -p "Type in recipients surname: " surname
-    local surnameState=$(cValidateWord $surname)
-    if [ $surnameState == 0 ]; 
-    then 
-        echo "Wrong surname format. Has to start with upperscase letter, has to have at least 3 letters and only letters." 
-        sleep 3 
-        cAddRecipient 
-        return 
-    fi
-
-    local pesel
-    read -p "Type in recipients pesel: " pesel
-    local peselState=$(cValidateNumber $pesel 11)
-    if [ $peselState == 0 ]; 
-    then 
-        echo "Wrong pesel format. Has to have 11 digits and only digits." 
-        sleep 3 
-        cAddRecipient 
-        return 
-    fi
-
-    local bankAccountNumber
-    read -p "Type in recipients bank account number: " bankAccountNumber
-    local bankAccountNumberState=$(cValidateNumber $bankAccountNumber 26)
-    if [ $bankAccountNumberState == 0 ]; 
-    then 
-        echo "Wrong bank account number format. Has to have 26 digits and only digits." 
-        sleep 3 
-        cAddRecipient 
-        return 
-    fi
+    local name=$(cGetName)
+    if [ "$name" == "-1" ]; then cAddRecipient; return; fi
+    local surname=$(cGetSurname)
+    if [ "$surname" == "-1" ]; then cAddRecipient; return; fi
+    local pesel=$(cGetPesel)
+    if [ "$pesel" == "-1" ]; then cAddRecipient; return; fi
+    local bankAccountNumber=$(cGetBankAccountNumber)
+    if [ "$bankAccountNumber" == "-1" ]; then cAddRecipient; return; fi
 
     printf "%s" "$name " >> $(dirname $0)/recipients.txt
     printf "%s" "$surname " >> $(dirname $0)/recipients.txt
@@ -59,18 +24,10 @@ function cAddRecipient
 function cDeleteRecipient
 {
     clear
-    local pesel
-    read -p "Type in recipients pesel: " pesel
-    local peselState=$(cValidateNumber $pesel 11)
+    local pesel=$(cGetPesel)
+    if [ "$pesel" == "-1" ]; then cDeleteRecipient; return; fi
 
-    if [ $peselState == 0 ]
-    then
-        echo "Incorrect pesel. Please try again..."
-        sleep 3
-        cDeleteRecipient
-    else
-        sed -i "/ $pesel /d" $(dirname $0)/recipients.txt
-    fi
+    sed -i "/ $pesel /d" $(dirname $0)/recipients.txt
 }
 
 function cGetRecipients
