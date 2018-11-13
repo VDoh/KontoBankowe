@@ -1,19 +1,6 @@
 #!/bin/bash
 
-function cValidateWord
-{
-    local word=$1    
-    local wordFormat='^[A-Z][a-z][a-z]+$'
-
-    if [[ "$word" =~ $wordFormat ]]
-    then
-        echo 1
-    else
-        echo 0
-    fi
-}
-
-function cValidateNumber
+function cGetNumberWithGivenLength
 {
     local number=$1
     local numberLength=$2
@@ -44,5 +31,126 @@ function cCheckIfSavingsAccountExists
         echo 1
     else
         echo 0
+    fi
+}
+
+function cGetName
+{
+    local name
+    read -p "Type in recipients name: " name
+    local nameFormat='^[A-Z][a-z][a-z]+$'
+    if ! [[ "$name" =~ $nameFormat ]]; 
+    then 
+        echo -1
+        echo "Wrong format. Has to start with upperscase letter, has to have at least 3 letters and only letters" >&2
+        sleep 3
+    else
+        echo $name
+    fi
+}
+
+function cGetSurname
+{
+    local surname
+    read -p "Type in recipients surname: " surname
+    local surnameFormat='^[A-Z][a-z][a-z]+$'
+    if ! [[ "$surname" =~ $surnameFormat ]]; 
+    then 
+        echo -1
+        echo "Wrong format. Has to start with upperscase letter, has to have at least 3 letters and only letters" >&2
+        sleep 3
+    else
+        echo $surname
+    fi
+}
+
+function cGetFirmsName
+{
+    local name
+    read -p "Type in firms name: " name
+    local nameFormat='^[a-zA-Z0-9-]+$'
+    if ! [[ "$name" =~ $nameFormat ]]; 
+    then 
+        echo -1
+        echo "Wrong firm name format. Can contain only letters, digits and hyphens."  >&2
+        sleep 3
+    else
+        echo $name
+    fi
+}
+
+function cGetBankAccountNumber
+{
+    local bankAccountNumber
+    read -p "Type in recipients bank account number: " bankAccountNumber
+    local bankAccountNumberState=$(cGetNumberWithGivenLength $bankAccountNumber 26)
+    if [ $bankAccountNumberState == 0 ]; 
+    then 
+        echo -1
+        echo "Wrong format. Has to have 26 digits and only digits." >&2
+        sleep 3 
+    else
+        echo $bankAccountNumber
+    fi
+}
+
+function cGetPesel
+{
+    local pesel
+    read -p "Type in recipients PESEL: " pesel
+    local peselState=$(cGetNumberWithGivenLength $pesel 11)
+    if [ $peselState == 0 ]; 
+    then 
+        echo -1
+        echo "Wrong format. Has to have 11 digits and only digits." >&2
+        sleep 3 
+    else
+        echo $pesel
+    fi
+}
+
+function cGetNip
+{
+    local nip
+    read -p "Type in firms NIP number: " nip
+    local nipState=$(cGetNumberWithGivenLength $nip 10)
+    if [ $nipState == 0 ]; 
+    then 
+        echo -1
+        echo "Wrong format. Has to have 10 digits and only digits." >&2
+        sleep 3 
+    else
+        echo $nip
+    fi
+}
+
+#Takes message as an argument
+function cGetAmount
+{
+    local amount
+    read -p "$1" amount
+    local amountFormat='^([1-9][0-9]*)$'
+    if ! [[ "$amount" =~ $amountFormat ]]; 
+    then 
+        echo -1
+        echo "Wrong format. Has to be greater than 0 and can contain digits only." >&2
+        sleep 3
+    else
+        echo $amount
+    fi
+}
+
+function cGetDayOfTheMonth
+{
+    local day
+    read -p "$1" day
+    local dayFormat='^([1-9]|([1-2][0-9])|30)$'
+    if ! [[ "$day" =~ $dayFormat ]]; 
+    then 
+        echo -1
+        echo "Wrong format. Has to be greater than 0 and can contain digits only." >&2
+        sleep 3
+    else
+        echo $day
     fi
 }

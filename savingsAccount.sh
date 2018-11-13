@@ -25,17 +25,8 @@ function cCreateSavingsAccount
 function cSetMonthlySavings
 {
     clear
-    local monthlySavings
-    read -p "Set how much money would you like to save per month: " monthlySavings
-    local monthlySavingsFormat='^[1-9][0-9]*$'
-
-    if ! [[ "$monthlySavings" =~ $monthlySavingsFormat ]]
-    then
-        echo "Wrong savings format. Has to be greater than 0 and can contain only digits."
-        sleep 2
-        cSetMonthlySavings
-        return
-    fi
+    local monthlySavings=$(cGetAmount "Set how much money would you like to save per month: ")
+    if [ "$monthlySavings" == "-1" ]; then cSetMonthlySavings; return; fi
 
     sed -i "s/Monthly: \(.*\)/Monthly: $monthlySavings/" $(dirname $0)/SavingsAccount/savingsAccount.txt
 }
@@ -43,17 +34,8 @@ function cSetMonthlySavings
 function cSetGoal
 {
     clear
-    local goal
-    read -p "Set your saving goal: " goal
-    local goalFormat='^[1-9][0-9]*$'
-
-    if ! [[ "$goal" =~ $goalFormat ]]
-    then
-        echo "Wrong goal format. Has to be greater than 0 and can contain only digits."
-        sleep 2
-        cSetGoal
-        return
-    fi
+    local goal=$(cGetAmount "Set your saving goal: ")
+    if [ "$goal" == "-1" ]; then cSetGoal; return; fi
 
     sed -i "s/Goal: \(.*\)/Goal: $goal/" $(dirname $0)/SavingsAccount/savingsAccount.txt
 }
@@ -91,17 +73,8 @@ function cMakeAutomaticTransfer
 function cMakeManualTransfer
 {
     clear
-    local transferAmount
-    read -p "Type in how much would like to transfer to your savings account: " transferAmount
-    local transferAmountFormat='^[1-9][0-9]*$'
-
-    if ! [[ "$transferAmount" =~ $transferAmountFormat ]]
-    then
-        echo "Wrong transfer amount format. Transfer has to be greater than 0 (only digits are allowed)."
-        sleep 2
-        cMakeManualTransfer
-        return
-    fi
+    local transferAmount=$(cGetAmount "Type in amount of money you would like to transfer: ")
+    if [ "$transferAmount" == "-1" ]; then cMakeManualTransfer; return; fi
 
     local savingsAccountBalance=$(awk '/Balance: /{print $2}' $(dirname $0)/SavingsAccount/savingsAccount.txt)
     savingsAccountBalance=$(echo $(($savingsAccountBalance+$transferAmount)))
@@ -122,18 +95,22 @@ function cDisplaySavingsAccountInformation
     local timeToGoal
     let leftToGoal=goal-gatheredMoney
 
-    if [ "$monthly" == 0 ]
+    if [ "$gatheredMoney" -gt "$goal" ]
+    then
+        echo "You have already achieved your goal."
+        sleep 3
+    elif [ "$monthly" == 0 ]
     then
         echo "You haven't setup your monthly payment yet."
         sleep 3
-        cSavingsAccount
     elif [ "$goal" == 0 ]
     then
         echo "You haven't setup your goal yet."
         sleep 3
-        cSavingsAccount
     else
-        let timeToGoal=leftToGoal/monthly
+        let timeToGoal=leftToGoal/monthly      
+        if [ $(( $leftToGoal % $monthly)) != 0 ]; then let timeToGoal++; fi
+
         echo "It will take you" $timeToGoal "more months to achieve your goal of saving" $goal"."
         sleep 3
     fi
@@ -148,12 +125,7 @@ function cSavingsAccount
     cDisplaySavingsAccountMenu
     read -rsn1 option
     local optionFormat='^[1-4]$'
-
-    if ! [[ "$option" =~ $optionFormat ]]
-    then
-        cSavingsAccount
-        return
-    fi
+    if ! [[ "$option" =~ $optionFormat ]]; then cSavingsAccount; return; fi
 
     case $option in
         1)

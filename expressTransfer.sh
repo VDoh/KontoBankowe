@@ -2,6 +2,7 @@
 
 #Assumes that "balance" is the global variable for the account balance
  
+source $(dirname $0)/usefulFunctions.sh
 source $(dirname $0)/transfersFunctions.sh
 source $(dirname $0)/savingsAccount.sh
 
@@ -14,7 +15,7 @@ function cExpressTransfer
     if [ "$surname" == "-1" ]; then cExpressTransfer; return; fi
     local bankAccountNumber=$(cGetBankAccountNumber)
     if [ "$bankAccountNumber" == "-1" ]; then cExpressTransfer; return; fi
-    local amount=$(cGetAmount)
+    local amount=$(cGetAmount "Type in amount of money to transfer: ")
     if [ "$amount" == "-1" ]; then cExpressTransfer; return; fi
     
     cGenerateCode

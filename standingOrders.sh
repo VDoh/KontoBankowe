@@ -41,31 +41,13 @@ function cDeleteStandingOrder
 
     if [ $1 == "1" ]
     then
-        local pesel
-        read -p "Type in persons PESEL in order to delete them from standing orders: " pesel
-        local peselState=$(cValidateNumber $pesel 11)
-
-        if [ $peselState == "0" ]
-        then
-            echo "Wrong pesel format. Has to have 11 digits and only digits." 
-            sleep 3 
-            cDeleteStandingOrder 1
-            return
-        fi
+        local pesel=$(cGetPesel)
+        if [ "$pesel" == "-1" ]; then cDeleteStandingOrder 1; return; fi
 
         sed -i "/ $pesel /d" $(dirname $0)/standingOrders.txt
     else
-        local nip
-        read -p "Type in firms NIP in order to delete it from standing orders: " nip
-        local nipState=$(cValidateNumber $nip 10)
-
-        if [ $nipState == "0" ]
-        then
-            echo "Wrong NIP format. Has to have 10 digits and only digits." 
-            sleep 3 
-            cDeleteStandingOrder 2
-            return
-        fi
+        local nip=$(cGetNip)
+        if [ "$nip" == "-1" ]; then cDeleteStandingOrder 2; return; fi
 
         sed -i "/ $nip /d" $(dirname $0)/standingOrders.txt
     fi
@@ -82,103 +64,38 @@ function cAddStandingOrder
     then
         orderType="Person"
 
-        local personsName
-        read -p "Type in recipients name: " personsName
-        local nameState=$(cValidateWord $personsName)
-        if [ $nameState == 0 ]; 
-        then 
-            echo "Wrong name format. Has to start with upperscase letter, has to have at least 3 letters and only letters" 
-            sleep 3 
-            cAddStandingOrder  1
-            return 
-        fi
-
-        local surname
-        read -p "Type in recipients surname: " surname
-        local surnameState=$(cValidateWord $surname)
-        if [ $surnameState == 0 ]; 
-        then 
-            echo "Wrong surname format. Has to start with upperscase letter, has to have at least 3 letters and only letters" 
-            sleep 3 
-            cAddStandingOrder 1
-            return 
-        fi
-
-        local pesel
-        read -p "Type in recipients pesel: " pesel
-        local peselState=$(cValidateNumber $pesel 11)
-        if [ $peselState == 0 ]; 
-        then 
-            echo "Wrong pesel format. Has to have 11 digits and only digits." 
-            sleep 3 
-            cAddStandingOrder 1
-            return 
-        fi
+        local name=$(cGetName)
+        if [ "$name" == "-1" ]; then cAddStandingOrder 1; return; fi
+        local surname=$(cGetSurname)
+        if [ "$surname" == "-1" ]; then cAddStandingOrder 1; return; fi
+        local pesel=$(cGetPesel)
+        if [ "$pesel" == "-1" ]; then cAddStandingOrder 1; return; fi
     elif [ $1 == "2" ]
     then
         orderType="Firm"
 
-        local firmName
-        read -p "Type in firms name: " firmName
-        local firmNameFormat='^[a-zA-Z0-9-]+$'
-        if ! [[ "$firmName" =~ $firmNameFormat ]] 
-        then 
-            echo "Wrong firm name format. Can contain only letters, digits and hyphens." 
-            sleep 3 
-            cAddStandingOrder 2
-            return 
-        fi
-
-        local nip
-        read -p "Type in firms NIP: " nip
-        local nipState=$(cValidateNumber $nip 10)
-        if [ $nipState == 0 ]
-        then
-            echo "Wrong NIP format. Has to have 10 digits and only digits."
-            sleep 3 
-            cAddStandingOrder 2
-            return 
-        fi
-    fi
-
-    local bankAccountNumber
-    read -p "Type in recipients bank account number: " bankAccountNumber
-    local bankAccountNumberState=$(cValidateNumber $bankAccountNumber 26)
-    if [ $bankAccountNumberState == 0 ]; 
-    then 
-        echo "Wrong bank account number format. Has to have 26 digits and only digits." 
-        sleep 3 
-        cAddStandingOrder $1
-        return 
-    fi
-
-    local amount
-    read -p "Type in the amount of money you will be sending: " amount
-    local amountFormat='^[1-9][0-9]*$'
-    if ! [[ "$amount" =~ $amountFormat ]]
-    then
-        echo "Wrong amount format. Has to be greater than 0 and can contain only digits."
+        local firmName=$(cGetFirmsName)
+        if [ "$firmName" == "-1" ]; then cAddStandingOrder 2; return; fi
+        local nip=$(cGetNip)
+        if [ "$nip" == "-1" ]; then cAddStandingOrder 2; return; fi
+    else
+        echo "ERROR. Wrong argument for function cAddStandingOrder (either 1 or 2 are admissible)"
         sleep 3
-        cAddStandingOrder $1
-        return
+        exit 1
     fi
 
-    local day
-    read -p "Type in the day of the mount you will be sending the money: " day
-    local dayFormat='^([1-9]|([1-2][0-9])|30)$'
-    if ! [[ "$day" =~ $dayFormat ]]
-    then
-        echo "Wrong day format. Has to be a number between 1 and 30 and cannot start with 0."
-        sleep 3
-        cAddStandingOrder $1
-        return
-    fi
+    local bankAccountNumber=$(cGetBankAccountNumber)
+    if [ "$bankAccountNumber" == "-1" ]; then cAddStandingOrder $1; return; fi
+    local amount=$(cGetAmount "Type in the amount of money you will be sending: ")
+    if [ "$amount" == "-1" ]; then cAddStandingOrder $1; return; fi
+    local day=$(cGetDayOfTheMonth "Type in the day of the month you will be sending the money: ")
+    if [ "$amount" == "-1" ]; then cAddStandingOrder $1; return; fi
 
     printf "%s" "$orderType " >> $(dirname $0)/standingOrders.txt
 
     if [ $orderType == "Person" ]
     then
-        printf "%s" "$personsName " >> $(dirname $0)/standingOrders.txt
+        printf "%s" "$name " >> $(dirname $0)/standingOrders.txt
         printf "%s" "$surname " >> $(dirname $0)/standingOrders.txt
         printf "%s" "$pesel " >> $(dirname $0)/standingOrders.txt
     else
