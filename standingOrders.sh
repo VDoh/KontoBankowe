@@ -21,10 +21,10 @@ function cDisplayStandingOrderMenu
     else
         if [ $1 == "Delete" ]
         then
-            cDeleteStandingOrder $option
+            cDeleteStandingOrderManually $option
         elif [ $1 == "Add" ]
         then
-             cAddStandingOrder $option
+             cAddStandingOrderManually $option
         else
             echo "ERROR: Either Add or Delete as an argument for cDisplayStandingOrderMenu function."
             sleep 2
@@ -35,27 +35,27 @@ function cDisplayStandingOrderMenu
 
 #Do not use that function unless you know what you are doing.
 #You probably want to use cDisplayStandingOrderMenu function instead.
-function cDeleteStandingOrder
+function cDeleteStandingOrderManually
 {
     clear
 
     if [ $1 == "1" ]
     then
         local pesel=$(cGetPesel)
-        if [ "$pesel" == "-1" ]; then cDeleteStandingOrder 1; return; fi
+        if [ "$pesel" == "-1" ]; then cDeleteStandingOrderManually 1; return; fi
 
-        sed -i "/ $pesel /d" $(dirname $0)/standingOrders.txt
+        cDeleteStandingOrder "Person" $pesel
     else
         local nip=$(cGetNip)
-        if [ "$nip" == "-1" ]; then cDeleteStandingOrder 2; return; fi
+        if [ "$nip" == "-1" ]; then cDeleteStandingOrderManually 2; return; fi
 
-        sed -i "/ $nip /d" $(dirname $0)/standingOrders.txt
+        cDeleteStandingOrder "Firm" $nip
     fi
 }
 
 #Do not use that function unless you know what you are doing.
 #You probably want to use cDisplayStandingOrderMenu function instead.
-function cAddStandingOrder
+function cAddStandingOrderManually
 {
     clear
     local orderType
@@ -65,48 +65,103 @@ function cAddStandingOrder
         orderType="Person"
 
         local name=$(cGetName)
-        if [ "$name" == "-1" ]; then cAddStandingOrder 1; return; fi
+        if [ "$name" == "-1" ]; then cAddStandingOrderManually 1; return; fi
         local surname=$(cGetSurname)
-        if [ "$surname" == "-1" ]; then cAddStandingOrder 1; return; fi
+        if [ "$surname" == "-1" ]; then cAddStandingOrderManually 1; return; fi
         local pesel=$(cGetPesel)
-        if [ "$pesel" == "-1" ]; then cAddStandingOrder 1; return; fi
+        if [ "$pesel" == "-1" ]; then cAddStandingOrderManually 1; return; fi
     elif [ $1 == "2" ]
     then
         orderType="Firm"
 
         local firmName=$(cGetFirmsName)
-        if [ "$firmName" == "-1" ]; then cAddStandingOrder 2; return; fi
+        if [ "$firmName" == "-1" ]; then cAddStandingOrderManually 2; return; fi
         local nip=$(cGetNip)
-        if [ "$nip" == "-1" ]; then cAddStandingOrder 2; return; fi
+        if [ "$nip" == "-1" ]; then cAddStandingOrderManually 2; return; fi
     else
-        echo "ERROR. Wrong argument for function cAddStandingOrder (either 1 or 2 are admissible)"
+        echo "ERROR. Wrong argument for function cAddStandingOrderManually (either 1 or 2 are admissible)"
         sleep 3
         exit 1
     fi
 
     local bankAccountNumber=$(cGetBankAccountNumber)
-    if [ "$bankAccountNumber" == "-1" ]; then cAddStandingOrder $1; return; fi
+    if [ "$bankAccountNumber" == "-1" ]; then cAddStandingOrderManually $1; return; fi
     local amount=$(cGetAmount "Type in the amount of money you will be sending: ")
-    if [ "$amount" == "-1" ]; then cAddStandingOrder $1; return; fi
+    if [ "$amount" == "-1" ]; then cAddStandingOrderManually $1; return; fi
     local day=$(cGetDayOfTheMonth "Type in the day of the month you will be sending the money: ")
-    if [ "$amount" == "-1" ]; then cAddStandingOrder $1; return; fi
-
-    printf "%s" "$orderType " >> $(dirname $0)/standingOrders.txt
+    if [ "$day" == "-1" ]; then cAddStandingOrderManually $1; return; fi
 
     if [ $orderType == "Person" ]
     then
-        printf "%s" "$name " >> $(dirname $0)/standingOrders.txt
-        printf "%s" "$surname " >> $(dirname $0)/standingOrders.txt
-        printf "%s" "$pesel " >> $(dirname $0)/standingOrders.txt
+        cAddStandingOrder "Person" $bankAccountNumber $amount $day $name $surname $pesel
     else
-        printf "%s" "$firmName " >> $(dirname $0)/standingOrders.txt
-        printf "%s" "$nip " >> $(dirname $0)/standingOrders.txt
+         cAddStandingOrder "Firm" $bankAccountNumber $amount $day $firmName $nip
+    fi
+}
+
+#Takes 6 or 7 arguments
+#If the first one is "Person" it takes 6 more arguments in that order:
+#Bank account number, amount, day of the month, recipients name, surname and their PESEL
+#If the first one is "Firm" it takes 5 more arguments in that order:
+#Bank account number, amount, day of the mount, firms name and its NIP
+#There is no validation in that function so make sure you are sending right data
+function cAddStandingOrder
+{
+    printf "%s" "$1 " >> $(dirname $0)/standingOrders.txt
+
+    if [ $1 == "Person" ]
+    then
+        printf "%s" "$5 " >> $(dirname $0)/standingOrders.txt
+        printf "%s" "$6 " >> $(dirname $0)/standingOrders.txt
+        printf "%s" "$7 " >> $(dirname $0)/standingOrders.txt
+    elif [ $1== "Firm" ]
+    then
+        printf "%s" "$5 " >> $(dirname $0)/standingOrders.txt
+        printf "%s" "$6 " >> $(dirname $0)/standingOrders.txt
+    else
+        echo "ERROR. Wrong order type argument for cAddStandingOrder in standingOrders.sh - read comments."
+        sleep 3
+        exit 1
     fi
 
-    printf "%s" "$bankAccountNumber " >> $(dirname $0)/standingOrders.txt
-    printf "%s" "$amount " >> $(dirname $0)/standingOrders.txt
-    printf "%s" "$day " >> $(dirname $0)/standingOrders.txt
+    printf "%s" "$2 " >> $(dirname $0)/standingOrders.txt
+    printf "%s" "$3 " >> $(dirname $0)/standingOrders.txt
+    printf "%s" "$4 " >> $(dirname $0)/standingOrders.txt
     echo "" >> $(dirname $0)/standingOrders.txt
+}
+
+#It takes 2 arguments: order type ("Person" or "Firm") and depending on the type: PESEL (11 digits) or NIP (10 digits)
+function cDeleteStandingOrder
+{
+    if [ "$1" == "Person" ]
+    then
+        local peselFormat='^[0-9]{11}$'
+
+        if ! [[ "$2" =~ $peselFormat ]];
+        then
+            echo "ERROR. Wrong PESEL argument for cDeleteStandingOrder in standingOrders.sh (11 digits and only digits)"
+            sleep 3
+            exit 1
+        fi
+
+        sed -i "/ $2 /d" $(dirname $0)/standingOrders.txt
+    elif [ "$1" == "Firm" ]
+    then
+        local nipFormat='^[0-9]{10}$'
+
+        if ! [[ "$2" =~ $nipFormat ]];
+        then
+            echo "ERROR. Wrong NIP argument for cDeleteStandingOrder in standingOrders.sh (10 digits and only digits)"
+            sleep 3
+            exit 1
+        fi
+
+        sed -i "/ $2 /d" $(dirname $0)/standingOrders.txt
+    else
+        echo "ERROR. Wrong order type argument for cDeleteStandingOrder in standingOrders.sh (either Person or Firm are admissible)"
+        sleep 3
+        exit 1
+    fi
 }
 
 function cGetStandingOrders
