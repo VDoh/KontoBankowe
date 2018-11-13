@@ -163,8 +163,6 @@ function cSavingsAccount
     clear
     cCreateSavingsAccount
 
-    echo dirname $0
-
     local option
     cDisplaySavingsAccountMenu
     read -rsn1 option
