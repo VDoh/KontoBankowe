@@ -95,5 +95,5 @@ wykonaniu przelewu czy się zgadza czy też nie. Pojawienie się informacji powi
 pojawid gdy wartośd przelewu jest większa niż 50 PLN ) dodatkowo proszę doliczyd 20 zł
 za wykonanie tego przelewu. Każda transakcja walutowa powinna przelewad na konto
 oszczędnościowe 10 PLN po wykonaniu przelewu. Informacją zwrotna powinna
-wyświetlad przeliczoną kwotę na PLN ile upłynęło z konta. -- WORK IN PROGRESS (Mateusz)
+wyświetlad przeliczoną kwotę na PLN ile upłynęło z konta. -- WORK IN PROGRESS (Mateusz) (czekam na kantor Konrada)
 ```
