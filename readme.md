@@ -46,8 +46,8 @@ WALUT DOWOLNYCH ] )  --WORK IN PROGRESS (Konrad)
 
  Oferta
 1. Konto osobiste ( Informacje o koncie, założenie dodatkowego konta, subkonta itd )
-2. Oszczędności ( Sprawdzenie ile oszczędności klient posiada oraz pokazanie czasu ile
-klientowi zajmie zgromadzenie odpowiedniej sumy )
++ 2. Oszczędności ( Sprawdzenie ile oszczędności klient posiada oraz pokazanie czasu ile
++ klientowi zajmie zgromadzenie odpowiedniej sumy )-- DONE (w koncie oszczędnościowym) & Konrad ma swoje
 + 3. Kredyty ( Możliwośd wzięcia kredytu na odpowiednią ilośd lat lub miesięcy, Kwota
 + powinna byd dodawana do głównego konta. Informacja jaka powinna zostad zwrócona
 + po przyznaniu kredytu powinna byd obliczana z korzyścią dla banku + 6% [RRSO] ) --DONE (Maciek)
