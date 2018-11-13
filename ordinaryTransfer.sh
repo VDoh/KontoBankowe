@@ -10,11 +10,26 @@ source $(dirname $0)/transfersHistory.sh
 function cOrdinaryManualTransfer
 {
     clear
-    local name=$(cGetName)
-    if [ "$name" == "-1" ]; then cOrdinaryManualTransfer; return; fi
+
+    if [ "$1" == "Person" ]
+    then
+        local name=$(cGetName)
+        if [ "$name" == "-1" ]; then cOrdinaryManualTransfer "Person"; return; fi
     
-    local surname=$(cGetSurname)
-    if [ "$surname" == "-1" ]; then cOrdinaryManualTransfer; return; fi
+        local surnameOrNip=$(cGetSurname)
+        if [ "$surnameOrNip" == "-1" ]; then cOrdinaryManualTransfer "Person"; return; fi
+    elif [ "$1" == "Firm" ]
+    then
+        local name=$(cGetName)
+        if [ "$name" == "-1" ]; then cOrdinaryManualTransfer "Firm"; return; fi
+    
+        local surnameOrNip=$(cGetNip)
+        if [ "$surnameOrNip" == "-1" ]; then cOrdinaryManualTransfer "Firm"; return; fi
+    else
+        echo "ERROR. Wrong argument for function cOrdinaryManualTransfer (either Person or Firm)."
+        sleep 3
+        exit 1
+    fi
     
     local bankAccountNumber=$(cGetBankAccountNumber)
     if [ "$bankAccountNumber" == "-1" ]; then cOrdinaryManualTransfer; return; fi
@@ -22,16 +37,16 @@ function cOrdinaryManualTransfer
     local amount=$(cGetAmount "Type in amount of money to transfer: ")
     if [ "$amount" == "-1" ]; then cOrdinaryManualTransfer; return; fi
 
-    cOrdinaryTransfer $name $surname $bankAccountNumber $amount
+    cOrdinaryTransfer $1 $name $surnameOrNip $bankAccountNumber $amount
 }
 
 function cOrdinaryTransfer
 {
     clear
-    local name=$1   
-    local surname=$2
-    local bankAccountNumber=$3
-    local amount=$4
+    local name=$2   
+    local surname=$3
+    local bankAccountNumber=$4
+    local amount=$5
     
     cGenerateCode
     cAuthentication
