@@ -89,7 +89,25 @@ function cDisplaySavingsAccountMenu
     echo "Press desired option number in order to continue "
 }
 
-function cMakeTransfer
+#Takes amount as an argument
+function cMakeAutomaticTransfer
+{
+    local transferAmount=$1
+    local transferFormat='^[1-9][0-9]+$'
+
+    if [[ "$transferAmount" =~ $transferFormat ]]
+    then
+        echo "ERROR. cMakeAutomaticTransfer in savingsGoals.sh takes number bigger than 0 as an argument."
+        sleep 3
+        exit 1
+    fi
+
+    local savingsAccountBalance=$(awk '/Balance: /{print $2}' $(dirname $0)/SavingsAccount/savingsAccount.txt)
+    savingsAccountBalance=$(echo $(($savingsAccountBalance+$transferAmount)))
+    sed -i "s/Balance: \(.*\)/Balance: $savingsAccountBalance/" $(dirname $0)/SavingsAccount/savingsAccount.txt
+}
+
+function cMakeManualTransfer
 {
     clear
     local transferAmount
@@ -100,7 +118,7 @@ function cMakeTransfer
     then
         echo "Wrong transfer amount format. Transfer has to be greater than 0 (only digits are allowed)."
         sleep 2
-        cMakeTransfer
+        cMakeManualTransfer
         return
     fi
 
@@ -163,7 +181,7 @@ function cSavingsAccount
             cSetMonthlySavings
             ;;
         2)
-            cMakeTransfer
+            cMakeManualTransfer
             ;;
         3)
             cSetGoal
