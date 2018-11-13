@@ -27,7 +27,7 @@ function cCurrencyTransfer
     cAuthentication
 
     let balance-=$((amount+20))
-    cMakeAutomaticTransfer 5
+    cMakeAutomaticTransfer 10
 
     if [ $amount -gt 49 ]
     then
