@@ -10,11 +10,11 @@
 
  Finanse
 <<<<<<< HEAD
-1. Sprawdzenie wszystkich kont
-2. Subkonto
+- 1. Sprawdzenie wszystkich kont
+- 2. Subkonto
 + 3. Konto oszczędnościowe-- DONE (Mateusz)
-4. Karty płatnicze
-5. Pożyczki
+- 4. Karty płatnicze
+- 5. Pożyczki
 =======
 - 1. Sprawdzenie wszystkich kont
 - 2. Subkonto
@@ -45,7 +45,7 @@
 WALUT DOWOLNYCH ] )  --WORK IN PROGRESS (Konrad)
 
  Oferta
-1. Konto osobiste ( Informacje o koncie, założenie dodatkowego konta, subkonta itd )
+- 1. Konto osobiste ( Informacje o koncie, założenie dodatkowego konta, subkonta itd )
 + 2. Oszczędności ( Sprawdzenie ile oszczędności klient posiada oraz pokazanie czasu ile
 + klientowi zajmie zgromadzenie odpowiedniej sumy )-- DONE (Mateusz) [w koncie oszczędnościowym] & Konrad ma swoje
 + 3. Kredyty ( Możliwośd wzięcia kredytu na odpowiednią ilośd lat lub miesięcy, Kwota
@@ -61,7 +61,7 @@ WALUT DOWOLNYCH ] )  --WORK IN PROGRESS (Konrad)
 + 7. Ubezpieczenie ( Informacje o ubezpieczeniu lub dodanie nowego ubezpieczenie np. na
 + telefon lub rodzinę [ Proszę ująd tutaj 10 przykładów jakichkolwiek z ubezpieczeniami ] ) --DONE(Maciej)
 - 8. Rozliczenie z ZUS ( Obliczenie i ustawienie przelewu do ZUS’u [ Należy mied go
-zadeklarowanego w stałych odbiorcach ] )
+- zadeklarowanego w stałych odbiorcach ] )
 - 9. Leasing ( Informacje o leasingach lub rozpoczęcie nowego po wypełnieniu formularza [
 -Proszę stworzyd formularz wczytywany z klawiatury Imię, Nazwisko, pesel <walidacja>,
 -numer telefonu <walidacja>, Kwota leasingu, wybranie czasu miesięcy np. 12,24,36,72 ,
@@ -73,27 +73,27 @@ zadeklarowanego w stałych odbiorcach ] )
 
  Historia
 - 1. Sprawdzenie płatności przelewów (Data, numer konta, kwota, do kogo, możliwośd
-generowania .txt do katalogu Konto na pulpicie wraz z nazwą pliku
-data_numerTransakcji.txt )
+- generowania .txt do katalogu Konto na pulpicie wraz z nazwą pliku
+- data_numerTransakcji.txt )
 
 
  Wykonaj transakcje
-- 1. Przelew zwykły ( Podanie danych osobowych + numeru konta oraz kwoty, następnie
+1. Przelew zwykły ( Podanie danych osobowych + numeru konta oraz kwoty, następnie
 powinno pojawid się uwierzytelnienie i zapytanie po wykonaniu przelewu czy się zgadza
 czy też nie. Pojawienie się informacji powinno się pojawid gdy wartośd przelewu jest
 większa niż 50 PLN ). Każda transakcja powinna przelewad na konto oszczędnościowe 3
-PLN po wykonaniu przelewu.
-- 2. Przelew ekspres (Podanie danych osobowych + numeru konta oraz kwoty, następnie
+PLN po wykonaniu przelewu. -- WORK IN PROGRESS (Mateusz)
+2. Przelew ekspres (Podanie danych osobowych + numeru konta oraz kwoty, następnie
 powinno pojawid się uwierzytelnienie i zapytanie po wykonaniu przelewu czy się zgadza
 czy też nie. Pojawienie się informacji powinno się pojawid gdy wartośd przelewu jest
 większa niż 50 PLN ) dodatkowo proszę doliczyd 10 zł za wykonanie tego przelewu. Każda
 transakcja ekspres powinna przelewad na konto oszczędnościowe 5 PLN po wykonaniu
-przelewu.
+przelewu. -- WORK IN PROGRESS (Mateusz)
 - 3. Przelew walutowy (Podanie danych osobowych + numeru konta oraz kwoty wraz z
-ustawieniem waluty, następnie powinno pojawid się uwierzytelnienie i zapytanie po
-wykonaniu przelewu czy się zgadza czy też nie. Pojawienie się informacji powinno się
-pojawid gdy wartośd przelewu jest większa niż 50 PLN ) dodatkowo proszę doliczyd 20 zł
-za wykonanie tego przelewu. Każda transakcja walutowa powinna przelewad na konto
-oszczędnościowe 10 PLN po wykonaniu przelewu. Informacją zwrotna powinna
-wyświetlad przeliczoną kwotę na PLN ile upłynęło z konta.
+- ustawieniem waluty, następnie powinno pojawid się uwierzytelnienie i zapytanie po
+- wykonaniu przelewu czy się zgadza czy też nie. Pojawienie się informacji powinno się
+- pojawid gdy wartośd przelewu jest większa niż 50 PLN ) dodatkowo proszę doliczyd 20 zł
+- za wykonanie tego przelewu. Każda transakcja walutowa powinna przelewad na konto
+- oszczędnościowe 10 PLN po wykonaniu przelewu. Informacją zwrotna powinna
+- wyświetlad przeliczoną kwotę na PLN ile upłynęło z konta.
 ```
