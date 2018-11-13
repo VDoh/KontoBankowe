@@ -52,7 +52,7 @@
 
 + 8. Doładowanie telefonu -- DONE Szymon
 + 9. Kantor ( Zamiana waluty PLN na dowolną z wybranych z listy [ PROSZĘ UWZGLĘDNIĆ 10
-WALUT DOWOLNYCH ] )  --Done (Konrad)
++ WALUT DOWOLNYCH ] )  --Done (Konrad)
 
  Oferta
 - 1. Konto osobiste ( Informacje o koncie, założenie dodatkowego konta, subkonta itd )
