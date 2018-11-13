@@ -9,19 +9,13 @@
 
 
  Finanse
-<<<<<<< HEAD
+
 - 1. Sprawdzenie wszystkich kont
 - 2. Subkonto
 + 3. Konto oszczędnościowe-- DONE (Mateusz)
 + 4. Karty płatnicze -- DONE (Szymon)
 - 5. Pożyczki
-=======
-- 1. Sprawdzenie wszystkich kont
-- 2. Subkonto
-+ 3. Konto oszczędnościowe-- DONE (Mateusz)
-4. Karty płatnicze - WORKING ON  SZYMON
-- 5. Pożyczki
->>>>>>> 72b79b4d8c206f07673ac0efe08fccdac0cf33e6
+
  Usługi
 
 + 1. Odbiorcy ( Lista odbiorców których można dodawad lub usuwad. Dodawanie nowego
