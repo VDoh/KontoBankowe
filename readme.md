@@ -6,7 +6,9 @@
 + certificates.txt - info about certificates
 + d_card.txt - info about your debit card and numer of it
 + documents.txt - info about your documents
- 
++ recipients.txt - info about recipients
++ standingOrders.txt - info about standing orders
++ SavingsAccount/savingsAccount.txt - info about you savings account (it will create automatically when you will try to access savings account)
  
 + PROJEKT SYSTEMY OPERACYJNE
 + Napisz skrypt realizujący konto bankowe. Na wstępie skrypt odpytuje użytkownika o login i
