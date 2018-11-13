@@ -6,8 +6,10 @@ function cCreateHistory
 {
     local historyDirState=$(cCheckIfDirExists Account)
     if [ $historyDirState == 0 ]; then mkdir $(dirname $0)/Account; fi
+    
     local historyFileState=$(cCheckIfFileExists Account/transfersHistory.txt)
     if [ $historyFileState == 0 ]; then touch $(dirname $0)/Account/transfersHistory.txt; fi
+    
     local separateTransfersDirState=$(cCheckIfDirExists Account/SeparateTransfers)
     if [ $separateTransfersDirState == 0 ]; then mkdir $(dirname $0)/Account/SeparateTransfers; fi
 }

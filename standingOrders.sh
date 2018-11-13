@@ -66,8 +66,10 @@ function cAddStandingOrderManually
 
         local name=$(cGetName)
         if [ "$name" == "-1" ]; then cAddStandingOrderManually 1; return; fi
+        
         local surname=$(cGetSurname)
         if [ "$surname" == "-1" ]; then cAddStandingOrderManually 1; return; fi
+        
         local pesel=$(cGetPesel)
         if [ "$pesel" == "-1" ]; then cAddStandingOrderManually 1; return; fi
     elif [ $1 == "2" ]
@@ -76,6 +78,7 @@ function cAddStandingOrderManually
 
         local firmName=$(cGetFirmsName)
         if [ "$firmName" == "-1" ]; then cAddStandingOrderManually 2; return; fi
+        
         local nip=$(cGetNip)
         if [ "$nip" == "-1" ]; then cAddStandingOrderManually 2; return; fi
     else
@@ -86,8 +89,10 @@ function cAddStandingOrderManually
 
     local bankAccountNumber=$(cGetBankAccountNumber)
     if [ "$bankAccountNumber" == "-1" ]; then cAddStandingOrderManually $1; return; fi
+    
     local amount=$(cGetAmount "Type in the amount of money you will be sending: ")
     if [ "$amount" == "-1" ]; then cAddStandingOrderManually $1; return; fi
+    
     local day=$(cGetDayOfTheMonth "Type in the day of the month you will be sending the money: ")
     if [ "$day" == "-1" ]; then cAddStandingOrderManually $1; return; fi
 

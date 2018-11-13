@@ -7,10 +7,13 @@ function cAddRecipient
     clear
     local name=$(cGetName)
     if [ "$name" == "-1" ]; then cAddRecipient; return; fi
+    
     local surname=$(cGetSurname)
     if [ "$surname" == "-1" ]; then cAddRecipient; return; fi
+    
     local pesel=$(cGetPesel)
     if [ "$pesel" == "-1" ]; then cAddRecipient; return; fi
+    
     local bankAccountNumber=$(cGetBankAccountNumber)
     if [ "$bankAccountNumber" == "-1" ]; then cAddRecipient; return; fi
 
