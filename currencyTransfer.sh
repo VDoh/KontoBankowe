@@ -8,24 +8,34 @@ source $(dirname $0)/savingsAccount.sh
 source $(dirname $0)/transfersHistory.sh
 source $(dirname $0)/currency_exchange.sh
 
-function cCurrencyTransfer
+function cCurrencyManualTransfer
 {
-    clear
     local name=$(cGetName)
-    if [ "$name" == "-1" ]; then cCurrencyTransfer; return; fi
+    if [ "$name" == "-1" ]; then cCurrencyManualTransfer; return; fi
     
     local surname=$(cGetSurname)
-    if [ "$surname" == "-1" ]; then cCurrencyTransfer; return; fi
+    if [ "$surname" == "-1" ]; then cCurrencyManualTransfer; return; fi
     
     local bankAccountNumber=$(cGetBankAccountNumber)
-    if [ "$bankAccountNumber" == "-1" ]; then cCurrencyTransfer; return; fi
+    if [ "$bankAccountNumber" == "-1" ]; then cCurrencyManualTransfer; return; fi
     
     cGetCurrency
     local currency=$?
     
     local amountInOtherCurrency=$(cGetAmount "Type in amount of money to transfer: ")
-    if [ "$amountInOtherCurrency" == "-1" ]; then cCurrencyTransfer; return; fi
-    
+    if [ "$amountInOtherCurrency" == "-1" ]; then cCurrencyManualTransfer; return; fi
+
+    cCurrencyTransfer $name $surname $bankAccountNumber $currency $amountInOtherCurrency
+}
+
+function cCurrencyTransfer
+{
+    clear
+    local name=$1    
+    local surname=$2
+    local bankAccountNumber=$3  
+    local currency=$4 
+    local amountInOtherCurrency=$5 
     local amount=$(KexchangeCalculation $amount $currency 10)
     
     cGenerateCode

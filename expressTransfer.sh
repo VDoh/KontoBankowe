@@ -7,9 +7,8 @@ source $(dirname $0)/transfersFunctions.sh
 source $(dirname $0)/savingsAccount.sh
 source $(dirname $0)/transfersHistory.sh
 
-function cExpressTransfer
+function cExpressManualTransfer
 {
-    clear
     local name=$(cGetName)
     if [ "$name" == "-1" ]; then cExpressTransfer; return; fi
     
@@ -21,6 +20,17 @@ function cExpressTransfer
     
     local amount=$(cGetAmount "Type in amount of money to transfer: ")
     if [ "$amount" == "-1" ]; then cExpressTransfer; return; fi
+
+    cExpressTransfer $name $surname $bankAccountNumber $amount
+}
+
+function cExpressTransfer
+{
+    clear
+    local name=$1
+    local surname=$2 
+    local bankAccountNumber=$3 
+    local amount=$4
     
     cGenerateCode
     cAuthentication

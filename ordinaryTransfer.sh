@@ -7,20 +7,31 @@ source $(dirname $0)/transfersFunctions.sh
 source $(dirname $0)/savingsAccount.sh
 source $(dirname $0)/transfersHistory.sh
 
-function cOrdinaryTransfer
+function cOrdinaryManualTransfer
 {
     clear
     local name=$(cGetName)
-    if [ "$name" == "-1" ]; then cOrdinaryTransfer; return; fi
+    if [ "$name" == "-1" ]; then cOrdinaryManualTransfer; return; fi
     
     local surname=$(cGetSurname)
-    if [ "$surname" == "-1" ]; then cOrdinaryTransfer; return; fi
+    if [ "$surname" == "-1" ]; then cOrdinaryManualTransfer; return; fi
     
     local bankAccountNumber=$(cGetBankAccountNumber)
-    if [ "$bankAccountNumber" == "-1" ]; then cOrdinaryTransfer; return; fi
+    if [ "$bankAccountNumber" == "-1" ]; then cOrdinaryManualTransfer; return; fi
     
     local amount=$(cGetAmount "Type in amount of money to transfer: ")
-    if [ "$amount" == "-1" ]; then cOrdinaryTransfer; return; fi
+    if [ "$amount" == "-1" ]; then cOrdinaryManualTransfer; return; fi
+
+    cOrdinaryTransfer $name $surname $bankAccountNumber $amount
+}
+
+function cOrdinaryTransfer
+{
+    clear
+    local name=$1   
+    local surname=$2
+    local bankAccountNumber=$3
+    local amount=$4
     
     cGenerateCode
     cAuthentication
