@@ -2,13 +2,20 @@
 
 source $(dirname $0)/usefulFunctions.sh
 
-#Takes as an arguments in that order: transfer type, date, bank account number, amount, recipients name, recipients surname
-function cAddTransferToHistory
+function cCreateHistory
 {
     local historyDirState=$(cCheckIfDirExists Account)
     if [ $historyDirState == 0 ]; then mkdir $(dirname $0)/Account; fi
     local historyFileState=$(cCheckIfFileExists Account/transfersHistory.txt)
     if [ $historyFileState == 0 ]; then touch $(dirname $0)/Account/transfersHistory.txt; fi
+    local separateTransfersDirState=$(cCheckIfDirExists Account/SeparateTransfers)
+    if [ $separateTransfersDirState == 0 ]; then mkdir $(dirname $0)/Account/SeparateTransfers; fi
+}
+
+#Takes as an arguments in that order: transfer type, date, bank account number, amount, recipients name, recipients surname
+function cAddTransferToHistory
+{
+    cCreateHistory
 
     local index=1
     while read -r line 
@@ -28,10 +35,7 @@ function cAddTransferToHistory
 function cGetTransfersHistory
 {
     clear
-    local historyDirState=$(cCheckIfDirExists Account)
-    if [ $historyDirState == 0 ]; then mkdir $(dirname $0)/Account; fi
-    local historyFileState=$(cCheckIfFileExists Account/transfersHistory.txt)
-    if [ $historyFileState == 0 ]; then touch $(dirname $0)/Account/transfersHistory.txt; fi
+    cCreateHistory
 
     local -a transfers=()
     local index=0
@@ -114,7 +118,28 @@ function cPrintTransfersData
 #Takes as an arguments in that order: transfer type, date, bank account number, amount, recipients name, recipients surname
 function cSaveTransferSeparately
 {
-    echo ""
-}
+    local index=1
 
-cGetTransfersHistory
+    while read -r line 
+    do
+        let index++
+    done < "$(dirname $0)/Account/transfersHistory.txt"
+
+    local transferType
+    local ordinaryTransferFormat='^Ordinary-transfer-([0-9]+)$'
+    local expressTransferFormat='^Express-transfer-([0-9]+)$'
+    local currencyTransferFormat='^Currency-transfer-([0-9]+)$'
+    
+    if [[ $1 =~ $ordinaryTransferFormat ]]; then transferType="Ordinary transfer"; fi
+    if [[ $1 =~ $expressTransferFormat ]]; then transferType="Express transfer"; fi
+    if [[ $1 =~ $currencyTransferFormat ]]; then transferType="Currency transfer"; fi
+
+    touch $(dirname $0)/Account/SeparateTransfers/$2_$index.txt
+
+    printf '%s\n' "$transferType" >> $(dirname $0)/Account/SeparateTransfers/$2_$index.txt
+    printf '%s\n' "Date: $2" >> $(dirname $0)/Account/SeparateTransfers/$2_$index.txt
+    printf '%s\n' "Bank account number: $3" >> $(dirname $0)/Account/SeparateTransfers/$2_$index.txt
+    printf '%s\n' "Amount: $4" >> $(dirname $0)/Account/SeparateTransfers/$2_$index.txt
+    printf '%s\n' "Name: $5" >> $(dirname $0)/Account/SeparateTransfers/$2_$index.txt
+    printf '%s\n' "Surname: $6" >> $(dirname $0)/Account/SeparateTransfers/$2_$index.txt
+}

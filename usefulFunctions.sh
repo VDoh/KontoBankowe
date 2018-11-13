@@ -20,6 +20,23 @@ function cCheckIfFileExists
     fi
 }
 
+function cChooseOneOfTwoOptions
+{
+    local option
+    echo $1
+    read -rsn1 option
+
+    if [ "$option" == "${2^^}" ] || [ "$option" == "${2,,}" ]
+    then
+        return 1
+    elif [ "$option" == "${3^^}" ] || [ "$option" == "${3,,}" ]
+    then
+        return 0
+    else
+        cChooseOneOfTwoOptions $1 $2 $3
+    fi
+}
+
 function cGetNumberWithGivenLength
 {
     local numberFormat="^[0-9]{$2}$"

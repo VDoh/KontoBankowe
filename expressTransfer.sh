@@ -5,6 +5,7 @@
 source $(dirname $0)/usefulFunctions.sh
 source $(dirname $0)/transfersFunctions.sh
 source $(dirname $0)/savingsAccount.sh
+source $(dirname $0)/transfersHistory.sh
 
 function cExpressTransfer
 {
@@ -35,6 +36,12 @@ function cExpressTransfer
             sleep 3
             return
         fi
+    fi
+
+    cChooseOneOfTwoOptions "Press S if you want to save transfer separately or press C if you want to continue with defualt history storage." "S" "C"
+    if [ $? == 1 ] 
+    then 
+        cSaveTransferSeparately "Express" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surname
     fi
 
     cAddTransferToHistory "Express" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surname
