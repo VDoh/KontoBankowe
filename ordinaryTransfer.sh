@@ -9,13 +9,13 @@ function cOrdinaryTransfer
 {
     clear
     local name=$(cGetName)
-    if [ "$name" == "-1" ]; then cOrdinaryTransfer return; fi
+    if [ "$name" == "-1" ]; then cOrdinaryTransfer; return; fi
     local surname=$(cGetSurname)
-    if [ "$surname" == "-1" ]; then cOrdinaryTransfer return; fi
+    if [ "$surname" == "-1" ]; then cOrdinaryTransfer; return; fi
     local bankAccountNumber=$(cGetBankAccountNumber)
-    if [ "$bankAccountNumber" == "-1" ]; then cOrdinaryTransfer return; fi
+    if [ "$bankAccountNumber" == "-1" ]; then cOrdinaryTransfer; return; fi
     local amount=$(cGetAmount)
-    if [ "$amount" == "-1" ]; then cOrdinaryTransfer return; fi
+    if [ "$amount" == "-1" ]; then cOrdinaryTransfer; return; fi
     
     cGenerateCode
     cAuthentication
@@ -23,14 +23,17 @@ function cOrdinaryTransfer
     let balance-=amount
     cMakeAutomaticTransfer 3
 
-    cValidateTransfer $amount $name $surname
-    if [ $? == 0 ]
+    if [ $amount -gt 49 ]
     then
-        clear
-        let balance+=amount
-        echo "Transfer has been reverted."
-        sleep 3
-        return
+        cValidateTransfer $amount $name $surname
+        if [ $? == 0 ]
+        then
+            clear
+            let balance+=amount
+            echo "Transfer has been reverted."
+            sleep 3
+            return
+        fi
     fi
 
     clear
