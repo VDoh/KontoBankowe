@@ -8,7 +8,6 @@ function ShowInfoCreditAndLoans()
     then 
         if [ `whoami`=$USER ]
         then
-            clear
             cat creditInfo.txt
         else 
             echo "You must be root to do that"

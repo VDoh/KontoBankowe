@@ -58,7 +58,7 @@ function Loans()
             printf "%s\n" "Date: $currentDate" >> creditInfo.txt
             printf "%s\n" "Loan took for $creditTime months" >> creditInfo.txt
             printf "%s\n" "Loan: $moneyLoan ">> creditInfo.txt
-            printf "%s\n""########################################">> creditInfo.txt
+            echo "########################################">> creditInfo.txt
 
             echo "Credit Granted"
 
