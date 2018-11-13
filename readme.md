@@ -72,10 +72,10 @@ WALUT DOWOLNYCH ] )  --Done (Konrad)
 + telefon lub rodzinę [ Proszę ująd tutaj 10 przykładów jakichkolwiek z ubezpieczeniami ] ) --DONE(Maciej)
 - 8. Rozliczenie z ZUS ( Obliczenie i ustawienie przelewu do ZUS’u [ Należy mied go
 - zadeklarowanego w stałych odbiorcach ] )
-- 9. Leasing ( Informacje o leasingach lub rozpoczęcie nowego po wypełnieniu formularza [
--Proszę stworzyd formularz wczytywany z klawiatury Imię, Nazwisko, pesel <walidacja>,
--numer telefonu <walidacja>, Kwota leasingu, wybranie czasu miesięcy np. 12,24,36,72 ,
-- Kwota + 9%[ RRSO ] do oddania dla banku] ) --WORK IN PROGRESS MACIEJ
++  9. Leasing ( Informacje o leasingach lub rozpoczęcie nowego po wypełnieniu formularza [
++ Proszę stworzyd formularz wczytywany z klawiatury Imię, Nazwisko, pesel <walidacja>,
++ numer telefonu <walidacja>, Kwota leasingu, wybranie czasu miesięcy np. 12,24,36,72 ,
++ Kwota + 9%[ RRSO ] do oddania dla banku] ) --DONE Maciej
 
 + 10. Terminale płatnicze ( Informacje o najbliższych terminalach w okolicy ) --DONE MACIEJ 
 
