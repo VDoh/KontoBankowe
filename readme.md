@@ -78,11 +78,11 @@ WALUT DOWOLNYCH ] )  --WORK IN PROGRESS (Konrad)
 
 
  Wykonaj transakcje -- WORK IN PROGRESS (Mateusz)
-1. Przelew zwykły ( Podanie danych osobowych + numeru konta oraz kwoty, następnie
-powinno pojawid się uwierzytelnienie i zapytanie po wykonaniu przelewu czy się zgadza
-czy też nie. Pojawienie się informacji powinno się pojawid gdy wartośd przelewu jest
-większa niż 50 PLN ). Każda transakcja powinna przelewad na konto oszczędnościowe 3
-PLN po wykonaniu przelewu. -- WORK IN PROGRESS (Mateusz)
++ 1. Przelew zwykły ( Podanie danych osobowych + numeru konta oraz kwoty, następnie
++ powinno pojawid się uwierzytelnienie i zapytanie po wykonaniu przelewu czy się zgadza
++ czy też nie. Pojawienie się informacji powinno się pojawid gdy wartośd przelewu jest
++ większa niż 50 PLN ). Każda transakcja powinna przelewad na konto oszczędnościowe 3
++ PLN po wykonaniu przelewu. -- DONE (Mateusz)
 2. Przelew ekspres (Podanie danych osobowych + numeru konta oraz kwoty, następnie
 powinno pojawid się uwierzytelnienie i zapytanie po wykonaniu przelewu czy się zgadza
 czy też nie. Pojawienie się informacji powinno się pojawid gdy wartośd przelewu jest
