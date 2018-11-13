@@ -30,7 +30,7 @@
 - 2. Subkonto
 + 3. Konto oszczędnościowe-- DONE (Mateusz)
 + 4. Karty płatnicze -- DONE (Szymon)
-5. Pożyczki -- WORK IN PROGRESS MACIEJ 
++ 5. Pożyczki --DONE (MACIEJ)
 
 
 +  Usługi
