@@ -33,7 +33,7 @@
 5. Pożyczki -- WORK IN PROGRESS MACIEJ 
 
 
- Usługi
++  Usługi
 
 + 1. Odbiorcy ( Lista odbiorców których można dodawad lub usuwad. Dodawanie nowego
 +    odbiorcy polega na dodaniu danych osobowych oraz numeru konta )-- DONE Mateusz
