@@ -26,7 +26,7 @@
 - 2. Subkonto
 + 3. Konto oszczędnościowe-- DONE (Mateusz)
 + 4. Karty płatnicze -- DONE (Szymon)
-- 5. Pożyczki -- I can work on it but if sb want to help me you will be welcoem (SZYMON)
+5. Pożyczki -- WORK IN PROGRESS MACIEJ 
 
  Usługi
 
