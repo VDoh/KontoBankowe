@@ -26,7 +26,7 @@
 - 2. Subkonto
 + 3. Konto oszczędnościowe-- DONE (Mateusz)
 + 4. Karty płatnicze -- DONE (Szymon)
-- 5. Pożyczki -- I can work on it but if sb want to help me you will be welcoem (SZYMON)
++ 5. Pożyczki -- DONE (Maciej)
 
  Usługi
 
@@ -68,10 +68,10 @@ WALUT DOWOLNYCH ] )  --WORK IN PROGRESS (Konrad)
 + telefon lub rodzinę [ Proszę ująd tutaj 10 przykładów jakichkolwiek z ubezpieczeniami ] ) --DONE(Maciej)
 - 8. Rozliczenie z ZUS ( Obliczenie i ustawienie przelewu do ZUS’u [ Należy mied go
 - zadeklarowanego w stałych odbiorcach ] )
-- 9. Leasing ( Informacje o leasingach lub rozpoczęcie nowego po wypełnieniu formularza [
--Proszę stworzyd formularz wczytywany z klawiatury Imię, Nazwisko, pesel <walidacja>,
--numer telefonu <walidacja>, Kwota leasingu, wybranie czasu miesięcy np. 12,24,36,72 ,
-- Kwota + 9%[ RRSO ] do oddania dla banku] ) --WORK IN PROGRESS MACIEJ
++ 9. Leasing ( Informacje o leasingach lub rozpoczęcie nowego po wypełnieniu formularza [
++ Proszę stworzyd formularz wczytywany z klawiatury Imię, Nazwisko, pesel <walidacja>,
++ numer telefonu <walidacja>, Kwota leasingu, wybranie czasu miesięcy np. 12,24,36,72 ,
++ Kwota + 9%[ RRSO ] do oddania dla banku] ) --DONE Maciej
 
 + 10. Terminale płatnicze ( Informacje o najbliższych terminalach w okolicy ) --DONE MACIEJ 
 
@@ -83,7 +83,7 @@ WALUT DOWOLNYCH ] )  --WORK IN PROGRESS (Konrad)
 + data_numerTransakcji.txt ) --DONE (Mateusz)
 
 
- Wykonaj transakcje -- WORK IN PROGRESS (Mateusz)
++ Wykonaj transakcje -- DONE (Mateusz)
 + 1. Przelew zwykły ( Podanie danych osobowych + numeru konta oraz kwoty, następnie
 + powinno pojawid się uwierzytelnienie i zapytanie po wykonaniu przelewu czy się zgadza
 + czy też nie. Pojawienie się informacji powinno się pojawid gdy wartośd przelewu jest
@@ -95,11 +95,11 @@ WALUT DOWOLNYCH ] )  --WORK IN PROGRESS (Konrad)
 + większa niż 50 PLN ) dodatkowo proszę doliczyd 10 zł za wykonanie tego przelewu. Każda
 + transakcja ekspres powinna przelewad na konto oszczędnościowe 5 PLN po wykonaniu
 + przelewu. -- DONE (Mateusz)
-3. Przelew walutowy (Podanie danych osobowych + numeru konta oraz kwoty wraz z
-ustawieniem waluty, następnie powinno pojawid się uwierzytelnienie i zapytanie po
-wykonaniu przelewu czy się zgadza czy też nie. Pojawienie się informacji powinno się
-pojawid gdy wartośd przelewu jest większa niż 50 PLN ) dodatkowo proszę doliczyd 20 zł
-za wykonanie tego przelewu. Każda transakcja walutowa powinna przelewad na konto
-oszczędnościowe 10 PLN po wykonaniu przelewu. Informacją zwrotna powinna
-wyświetlad przeliczoną kwotę na PLN ile upłynęło z konta. -- WORK IN PROGRESS (Mateusz) (czekam na kantor Konrada)
++ 3. Przelew walutowy (Podanie danych osobowych + numeru konta oraz kwoty wraz z
++ ustawieniem waluty, następnie powinno pojawid się uwierzytelnienie i zapytanie po
++ wykonaniu przelewu czy się zgadza czy też nie. Pojawienie się informacji powinno się
++ pojawid gdy wartośd przelewu jest większa niż 50 PLN ) dodatkowo proszę doliczyd 20 zł
++ za wykonanie tego przelewu. Każda transakcja walutowa powinna przelewad na konto
++ oszczędnościowe 10 PLN po wykonaniu przelewu. Informacją zwrotna powinna
++ wyświetlad przeliczoną kwotę na PLN ile upłynęło z konta. -- DONE (Mateusz)
 ```
