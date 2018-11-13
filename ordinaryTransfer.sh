@@ -32,10 +32,10 @@ function cOrdinaryManualTransfer
     fi
     
     local bankAccountNumber=$(cGetBankAccountNumber)
-    if [ "$bankAccountNumber" == "-1" ]; then cOrdinaryManualTransfer; return; fi
+    if [ "$bankAccountNumber" == "-1" ]; then cOrdinaryManualTransfer $1; return; fi
     
     local amount=$(cGetAmount "Type in amount of money to transfer: ")
-    if [ "$amount" == "-1" ]; then cOrdinaryManualTransfer; return; fi
+    if [ "$amount" == "-1" ]; then cOrdinaryManualTransfer $1; return; fi
 
     cOrdinaryTransfer $1 $name $surnameOrNip $bankAccountNumber $amount
 }

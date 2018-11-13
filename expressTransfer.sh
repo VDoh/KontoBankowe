@@ -32,10 +32,10 @@ function cExpressManualTransfer
     fi
     
     local bankAccountNumber=$(cGetBankAccountNumber)
-    if [ "$bankAccountNumber" == "-1" ]; then cExpressManualTransfer; return; fi
+    if [ "$bankAccountNumber" == "-1" ]; then cExpressManualTransfer $1; return; fi
     
     local amount=$(cGetAmount "Type in amount of money to transfer: ")
-    if [ "$amount" == "-1" ]; then cExpressManualTransfer; return; fi
+    if [ "$amount" == "-1" ]; then cExpressManualTransfer $1; return; fi
 
     cExpressTransfer $1 $name $surnameOrNip $bankAccountNumber $amount
 }

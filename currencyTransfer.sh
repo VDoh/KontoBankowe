@@ -33,13 +33,13 @@ function cCurrencyManualTransfer
     fi
     
     local bankAccountNumber=$(cGetBankAccountNumber)
-    if [ "$bankAccountNumber" == "-1" ]; then cCurrencyManualTransfer; return; fi
+    if [ "$bankAccountNumber" == "-1" ]; then cCurrencyManualTransfer $1; return; fi
     
     cGetCurrency
     local currency=$?
 
     local amountInOtherCurrency=$(cGetAmount "Type in amount of money to transfer: ")
-    if [ "$amountInOtherCurrency" == "-1" ]; then cCurrencyManualTransfer; return; fi
+    if [ "$amountInOtherCurrency" == "-1" ]; then cCurrencyManualTransfer $1; return; fi
 
     cCurrencyTransfer $1 $name $surnameOrNip $bankAccountNumber $currency $amountInOtherCurrency
 }
