@@ -19,7 +19,6 @@ function cCurrencyTransfer
     if [ "$bankAccountNumber" == "-1" ]; then cCurrencyTransfer; return; fi
     cGetCurrency
     local currency=$?
-    echo $currency
     local amountInOtherCurrency=$(cGetAmount "Type in amount of money to transfer: ")
     if [ "$amountInOtherCurrency" == "-1" ]; then cCurrencyTransfer; return; fi
     local amount=$(Kexchangecalculation $amount $currency 10)
