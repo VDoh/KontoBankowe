@@ -84,6 +84,8 @@ function cMakeManualTransfer
 function cDisplaySavingsAccountInformation
 {
     clear
+    echo "Information | Savings account"
+
     while read -r line 
     do
         echo $line
