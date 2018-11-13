@@ -1,4 +1,13 @@
 ﻿```diff
+ NEEDED FILES ADD YOURS PLS GUYS"
++ balance.txt your whole account balance
++ payements.txt - your planned payements
++ installments.txt - info about installments
++ certificates.txt - info about certificates
++ d_card.txt - info about your debit card and numer of it
++ documents.txt - info about your documents
+ 
+ 
 + PROJEKT SYSTEMY OPERACYJNE
 + Napisz skrypt realizujący konto bankowe. Na wstępie skrypt odpytuje użytkownika o login i
 + hasło. Login oraz hasło powinny byd z walidowane tzn login powinien składad się tylko z liter a hasło z
