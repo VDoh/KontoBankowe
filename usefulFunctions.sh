@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function cCheckIfSavingsDirExists
+function cCheckIfDirExists
 {
     if [ -d "$(dirname $0)/$1" ]
     then
@@ -10,7 +10,7 @@ function cCheckIfSavingsDirExists
     fi
 }
 
-function cCheckIfSavingsAccountExists
+function cCheckIfFileExists
 {
     if [ -f "$(dirname $0)/$1" ]
     then

@@ -4,14 +4,14 @@ source $(dirname $0)/usefulFunctions.sh
 
 function cCreateSavingsAccount
 {
-    local savingsAccountDirState=$(cCheckIfSavingsDirExists SavingsAccount)
+    local savingsAccountDirState=$(cCheckIfDirExists SavingsAccount)
 
     if [ $savingsAccountDirState == 0 ]
     then
         mkdir $(dirname $0)/SavingsAccount
     fi
     
-    local savingsAccountState=$(cCheckIfSavingsAccountExists SavingsAccount/savingsAccount.txt)
+    local savingsAccountState=$(cCheckIfFileExists SavingsAccount/savingsAccount.txt)
 
     if [ $savingsAccountState == 0 ]
     then
