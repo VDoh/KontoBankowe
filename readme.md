@@ -10,6 +10,10 @@
 + standingOrders.txt - info about standing orders
 + SavingsAccount/savingsAccount.txt - info about you savings account (it will create automatically 
 + when you will try to access savings account)
++ currency_exchange.txt - info about currences |currency_exchange.sh
++ savings.txt - monthly savings |savings.sh
++ bank_acc_info.txt - info about the date of registration |savings.sh
++ retirement.txt - info about monthly retirement fee |retirement.sh
  
 + PROJEKT SYSTEMY OPERACYJNE
 + Napisz skrypt realizujący konto bankowe. Na wstępie skrypt odpytuje użytkownika o login i
@@ -27,6 +31,7 @@
 + 3. Konto oszczędnościowe-- DONE (Mateusz)
 + 4. Karty płatnicze -- DONE (Szymon)
 5. Pożyczki -- WORK IN PROGRESS MACIEJ 
+
 
  Usługi
 
@@ -47,8 +52,8 @@
 
 
 + 8. Doładowanie telefonu -- DONE Szymon
-9. Kantor ( Zamiana waluty PLN na dowolną z wybranych z listy [ PROSZĘ UWZGLĘDNIĆ 10
-WALUT DOWOLNYCH ] )  --WORK IN PROGRESS (Konrad)
++ 9. Kantor ( Zamiana waluty PLN na dowolną z wybranych z listy [ PROSZĘ UWZGLĘDNIĆ 10
++ WALUT DOWOLNYCH ] )  --Done (Konrad)
 
  Oferta
 - 1. Konto osobiste ( Informacje o koncie, założenie dodatkowego konta, subkonta itd )
