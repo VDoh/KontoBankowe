@@ -80,4 +80,3 @@ function KexchangeCalculation()
     result=$(awk -v a="$1" -v b="$exchange2" -v c="$exchange3" 'BEGIN {print a*b/c}')
     echo "$result"
 }
-Kexchange $balance
