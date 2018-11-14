@@ -41,10 +41,10 @@
 +  Usługi
 
 + 1. Odbiorcy ( Lista odbiorców których można dodawad lub usuwad. Dodawanie nowego
-+    odbiorcy polega na dodaniu danych osobowych oraz numeru konta )-- DONE Mateusz
++ odbiorcy polega na dodaniu danych osobowych oraz numeru konta )-- DONE Mateusz
 + 2. Zaplanowane płatności ( Lista zaplanowanych płatności )-- DONE Szymon
 + 3. Stałe zlecenia ( Lista zleceo wykonywanych co miesiąc, można je dodawad i ustawiad
-+    odpowiednią kwotę, dane osobowe lub firmowe i numer konta )-- DONE Mateusz
++ odpowiednią kwotę, dane osobowe lub firmowe i numer konta )-- DONE Mateusz
 + 4. Cele oszczędnościowe ( Utworzenie wirtualnego dodatkowego konta do którego można
 + ustawid comiesięczny automatyczny przelew lub można samemu przelewad. Należy to
 + ustawid oraz obliczyd ile czasu nam zajmie zgromadzenie odpowiedniej kwoty )-- DONE (Mateusz)
@@ -54,8 +54,6 @@
 + danymi txt ] )  --DONE Szymon
 + 7. Zaświadczenia ( zaświadczenia gromadzone przez użytkownika [ Możliwośd stworzenia pliku z
 + danymi txt ] )  --DONE Szymon
-
-
 + 8. Doładowanie telefonu -- DONE Szymon
 + 9. Kantor ( Zamiana waluty PLN na dowolną z wybranych z listy [ PROSZĘ UWZGLĘDNIĆ 10
 + WALUT DOWOLNYCH ] )  --Done (Konrad)
@@ -76,13 +74,12 @@
 + 6. Emerytura ( Obliczenie kwoty emerytury po składkach ) -- DONE Konrad
 + 7. Ubezpieczenie ( Informacje o ubezpieczeniu lub dodanie nowego ubezpieczenie np. na
 + telefon lub rodzinę [ Proszę ująd tutaj 10 przykładów jakichkolwiek z ubezpieczeniami ] ) --DONE(Maciej)
-8. Rozliczenie z ZUS ( Obliczenie i ustawienie przelewu do ZUS’u [ Należy mied go
-zadeklarowanego w stałych odbiorcach ] ) --WORK IN PROGRESS (Mateusz)
++ 8. Rozliczenie z ZUS ( Obliczenie i ustawienie przelewu do ZUS’u [ Należy mied go
++ zadeklarowanego w stałych odbiorcach ] ) --DONE (Mateusz)
 +  9. Leasing ( Informacje o leasingach lub rozpoczęcie nowego po wypełnieniu formularza [
 + Proszę stworzyd formularz wczytywany z klawiatury Imię, Nazwisko, pesel <walidacja>,
 + numer telefonu <walidacja>, Kwota leasingu, wybranie czasu miesięcy np. 12,24,36,72 ,
 + Kwota + 9%[ RRSO ] do oddania dla banku] ) --DONE Maciej
-
 + 10. Terminale płatnicze ( Informacje o najbliższych terminalach w okolicy ) --DONE MACIEJ 
 
 
