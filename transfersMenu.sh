@@ -53,7 +53,8 @@ function cTransfersSpecificMenu
     elif [ "$option" == "r" ] || [ "$option" == "R" ]
     then
         cTransfersGeneralMenu
-    else
-        cTransfersSpecificMenu $1
+        return
     fi
+    
+    cTransfersSpecificMenu $1
 }

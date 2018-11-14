@@ -73,3 +73,15 @@ function cGetCurrency
         cGetCurrency
     fi
 }
+
+function cCanYouTransfer
+{
+    local balanceAfterTransfer=$(($balance-$1))
+
+    if [ $balanceAfterTransfer -lt 0 ]
+    then
+        echo 0
+    else
+        echo 1
+    fi
+}

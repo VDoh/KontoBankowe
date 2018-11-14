@@ -62,6 +62,14 @@ function cCurrencyTransfer
     local currency=$5
     local amountInOtherCurrency=$6 
     local amount=$(KexchangeCalculation $amount $currency 10)
+
+    local transferPossibilityState=$(cCanYouTransfer $amount)
+    if [ $transferPossibilityState == 0 ] 
+    then 
+        echo "You don't have enough money to do this transfer."
+        sleep 3
+        return
+    fi
     
     cGenerateCode
     cAuthentication
