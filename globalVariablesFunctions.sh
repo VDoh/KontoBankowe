@@ -30,20 +30,17 @@ function cGetBalance
 {
     local fileBalance=$(awk '/Balance: /{print $2}' $(dirname $0)/globalVariables.txt)
     balance=$fileBalance
-    cUpdateEntireBalance
 }
 
 function cGetSavings
 {
-    if [ -d "$(dirname $0)/SavingsAccount/savingsAccount.txt" ]
+    if [ -f "$(dirname $0)/SavingsAccount/savingsAccount.txt" ]
     then
         local fileSavings=$(awk '/Balance: /{print $2}' $(dirname $0)/SavingsAccount/savingsAccount.txt)
         savings=$fileSavings
     else
         savings=0
     fi
-
-    cUpdateEntireBalance
 }
 
 function cUpdateEntireBalance
