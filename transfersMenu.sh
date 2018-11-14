@@ -57,5 +57,3 @@ function cTransfersSpecificMenu
         cTransfersSpecificMenu $1
     fi
 }
-
-cTransfersGeneralMenu
