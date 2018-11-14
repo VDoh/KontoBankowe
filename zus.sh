@@ -3,7 +3,7 @@
 source $(dirname $0)/ordinaryTransfer.sh
 source $(dirname $0)/standingOrders.sh
 
-function KcalculateZus
+function kCalculateZus
 {
     local pusPercentage="0.3409"
     local puzPercentage="0.09"
@@ -23,7 +23,7 @@ function cAddZusToStandingOrders
     then
         local pus=2665
         local puz=3554
-        local amount=$(KcalculateZus $pus $puz)
+        local amount=$(kCalculateZus $pus $puz)
 
         cAddStandingOrder "Firm" "99999999999999999999999999" $amount "15" "ZUS" "0000000000"
     fi
@@ -45,7 +45,7 @@ function cTransferToZus
     fi
     
     local zusInfo=($zusInfoLine)
-    local amount=$(KcalculateZus 2665 3554)
+    local amount=$(kCalculateZus 2665 3554)
 
     cOrdinaryTransfer ${zusInfo[0]} ${zusInfo[1]} ${zusInfo[2]} ${zusInfo[3]} ${zusInfo[4]}
 }
