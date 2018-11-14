@@ -1,7 +1,7 @@
 #!/bin/bash
 source $(dirname $0)/cFunctionalities.sh # 1,3,4
 source $(dirname $0)/installments.sh # 5
-source $(dirname $0)/planned_payment.sh #2
+source $(dirname $0)/planned_payement.sh #2
 source $(dirname $0)/documents.sh # 6
 source $(dirname $0)/certificates.sh # 7
 source $(dirname $0)/top_up.sh # 8
@@ -10,7 +10,6 @@ source $(dirname $0)/currency_exchange.sh # 9
 function greetingServices()
 {	
     clear
-    sleep 1
     echo "                                              Services"
     echo "    ###########################################################################################"
     echo "       1) Recipients 2) Scheduled payments 3) Standing orders 4) Saving goals 5) Installments "
@@ -24,12 +23,11 @@ function menuServices()
     local choice
     read -rsn1 choice
 
-    if ! [[ "$choice" =~ $choiceFormat ]]
+    if ! [[ "$choice" =~ ^([1-9]|r)$ ]]
     then
-        until [[ "$choice" =~ $choiceFormat ]]
+        until [[ "$choice" =~ ^([1-9]|r)$ ]]
         do
-            echo "Wrong input data. Try again."
-            greetingU
+            greetingServices
             read -rsn1 choice
         done
     fi
@@ -47,5 +45,3 @@ function menuServices()
     "r") echo "";;
     esac
 }
-
-menuServices
