@@ -110,4 +110,3 @@ echo "back"
 ;;
 esac
 }
-which
