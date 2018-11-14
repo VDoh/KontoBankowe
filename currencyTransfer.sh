@@ -15,6 +15,8 @@ function cCurrencyManualTransfer
 
     if [ "$1" == "Person" ]
     then
+        echo "Personal transfer"
+
         local name=$(cGetName)
         if [ "$name" == "-1" ]; then cCurrencyManualTransfer "Person"; return; fi
     
@@ -22,6 +24,8 @@ function cCurrencyManualTransfer
         if [ "$surnameOrNip" == "-1" ]; then cCurrencyManualTransfer "Person"; return; fi
     elif [ "$1" == "Firm" ]
     then
+        echo "Firm transfer"
+
         local name=$(cGetName)
         if [ "$name" == "-1" ]; then cCurrencyManualTransfer "Firm"; return; fi
     

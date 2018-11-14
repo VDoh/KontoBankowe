@@ -14,6 +14,8 @@ function cExpressManualTransfer
 
     if [ "$1" == "Person" ]
     then
+        echo "Personal transfer"
+
         local name=$(cGetName)
         if [ "$name" == "-1" ]; then cExpressManualTransfer "Person"; return; fi
     
@@ -21,6 +23,8 @@ function cExpressManualTransfer
         if [ "$surnameOrNip" == "-1" ]; then cExpressManualTransfer "Person"; return; fi
     elif [ "$1" == "Firm" ]
     then
+        echo "Firm transfer"
+
         local name=$(cGetName)
         if [ "$name" == "-1" ]; then cExpressManualTransfer "Firm"; return; fi
     
