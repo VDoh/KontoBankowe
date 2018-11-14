@@ -27,5 +27,3 @@ function cStandingOrdersFunctionality
 {
     cDisplayStandingOrderGeneralMenu
 }
-
-cSavingsAccountFunctionality
