@@ -85,6 +85,7 @@ function cGetRecipients
 
 function cDisplayRecipientsMenu
 {
+    clear
     echo "Menu | Recipients"
     echo "1. Display recipients"
     echo "2. Add recipient"
