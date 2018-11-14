@@ -25,7 +25,7 @@ function savings()
         fi
     done
 
-    diffrenceDates=$(( (`date -d $localData +%s` - `date -d $savingsData +%s`) / 86400 ))
+    diffrenceDates=$(( (`date -d $localData +%s` - `date -d $savingsData +%s`) / 86400 ))   
     let savingsIncomePerDay=savingsAmount/diffrenceDates
 
     echo "Enter the amount of money you would like to save: "
@@ -52,4 +52,3 @@ function savings()
         echo "Days to reach the wanted savings: ""$daysToReach"
     fi
 }
-savings

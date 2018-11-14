@@ -1,7 +1,11 @@
+#!/bin/bash
+
 function loginscreen()
 {
-passwordFormat='^[0-9]+$'
-loginFormat='^[a-zA-Z]+$'
+local passwordFormat='^[0-9]+$'
+local loginFormat='^[a-zA-Z]+$'
+local loginInput
+local passwordInput
 
 clear
 echo "Type your login:"
@@ -22,6 +26,9 @@ then
             read passwordInput
     done
 fi
-}
 
-loginscreen
+a=100
+b=2137
+let c=b/a
+echo $c
+}
