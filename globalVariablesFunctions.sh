@@ -12,7 +12,7 @@ function cSetBalance
 function cSetSavings
 {
     savings=$1
-    sed -i "s/Savings: \(.*\)/Savings: $savings/" $(dirname $0)/globalVariables.txt
+    sed -i "s/Balance: \(.*\)/Balance: $savings/" $(dirname $0)/SavingsAccount/savingsAccount.txt
     cUpdateEntireBalance
 }
 
@@ -29,14 +29,20 @@ function cSetupGlobalVariables
 function cGetBalance
 {
     local fileBalance=$(awk '/Balance: /{print $2}' $(dirname $0)/globalVariables.txt)
-    balance=$fileBalance   
+    balance=$fileBalance
     cUpdateEntireBalance
 }
 
 function cGetSavings
 {
-    local fileSavings=$(awk '/Savings: /{print $2}' $(dirname $0)/globalVariables.txt)
-    savings=$fileSavings
+    if [ -d "$(dirname $0)/SavingsAccount/savingsAccount.txt" ]
+    then
+        local fileSavings=$(awk '/Balance: /{print $2}' $(dirname $0)/SavingsAccount/savingsAccount.txt)
+        savings=$fileSavings
+    else
+        savings=0
+    fi
+
     cUpdateEntireBalance
 }
 

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source $(dirname $0)/usefulFunctions.sh
+source $(dirnam $0)/globalVariablesFunctions.sh
 
 function cCreateSavingsAccount
 {
@@ -39,6 +40,7 @@ function cSetGoal
 function cMakeAutomaticTransfer
 {
     cCreateSavingsAccount
+    cSetBalance $(($balance-$1))
     local transferAmount=$1
     local transferFormat='^[1-9][0-9]+$'
 
