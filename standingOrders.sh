@@ -13,8 +13,9 @@ function cDisplayStandingOrderGeneralMenu
 {
     clear
     echo "Menu | Standing order"
-    echo "1. Add"
-    echo "2. Delete"
+    echo "1. Display standing orders"
+    echo "2. Add standing order"
+    echo "3. Delete standing order"
 
     local option
     echo -n "Press desired option number in order to continue or press R in order to return to the previous page. "
@@ -22,8 +23,11 @@ function cDisplayStandingOrderGeneralMenu
 
     if [ "$option" == 1 ]
     then
-        cDisplayStandingOrderSpecificMenu "Add"
+        cGetStandingOrders
     elif [ "$option" == 2 ]
+    then
+        cDisplayStandingOrderSpecificMenu "Add"
+    elif [ "$option" == 3 ]
     then
         cDisplayStandingOrderSpecificMenu "Delete"
     elif [ "$option" == "r" ] || [ "$option" == "R" ]
@@ -77,7 +81,7 @@ function cDisplayStandingOrderSpecificMenu
 }
 
 #Do not use that function unless you know what you are doing.
-#You probably want to use cDisplayStandingOrderSpecificMenu function instead.
+#You probably want to use cDisplayStandingOrderGeneralMenu function instead.
 function cDeleteStandingOrderManually
 {
     clear
@@ -96,7 +100,7 @@ function cDeleteStandingOrderManually
 }
 
 #Do not use that function unless you know what you are doing.
-#You probably want to use cDisplayStandingOrderSpecificMenu function instead.
+#You probably want to use cDisplayStandingOrderGeneralMenu function instead.
 function cAddStandingOrderManually
 {
     clear
@@ -278,6 +282,6 @@ function cGetStandingOrders
             echo ""
         done
     fi
-}
 
-cDisplayStandingOrderGeneralMenu
+    read -n 1 -s -r -p "Press any key to continue..."
+}

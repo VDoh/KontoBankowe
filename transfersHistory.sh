@@ -100,6 +100,8 @@ function cGetTransfersHistory
         echo ""
         cPrintTransfersData "${currencyTransfers[@]}"
     fi
+
+    read -n 1 -s -r -p "Press any key to continue..."
 }
 
 function cPrintTransfersData

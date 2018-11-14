@@ -14,16 +14,16 @@ function cAddRecipient
     cCreateRecipientsFile
 
     local name=$(cGetName)
-    if [ "$name" == "-1" ]; then cAddRecipient; return; fi
+    if [ "$name" == "-1" ]; then return; fi
     
     local surname=$(cGetSurname)
-    if [ "$surname" == "-1" ]; then cAddRecipient; return; fi
+    if [ "$surname" == "-1" ]; then return; fi
     
     local pesel=$(cGetPesel)
-    if [ "$pesel" == "-1" ]; then cAddRecipient; return; fi
+    if [ "$pesel" == "-1" ]; then return; fi
     
     local bankAccountNumber=$(cGetBankAccountNumber)
-    if [ "$bankAccountNumber" == "-1" ]; then cAddRecipient; return; fi
+    if [ "$bankAccountNumber" == "-1" ]; then return; fi
 
     printf "%s" "$name " >> $(dirname $0)/recipients.txt
     printf "%s" "$surname " >> $(dirname $0)/recipients.txt
@@ -36,7 +36,7 @@ function cDeleteRecipient
 {
     clear
     local pesel=$(cGetPesel)
-    if [ "$pesel" == "-1" ]; then cDeleteRecipient; return; fi
+    if [ "$pesel" == "-1" ]; then return; fi
 
     sed -i "/ $pesel /d" $(dirname $0)/recipients.txt
 }
@@ -79,4 +79,34 @@ function cGetRecipients
         echo "Bank account number:" ${recipientsBankAccountNumber[$i]}
         echo ""
     done
+    
+    read -n 1 -s -r -p "Press any key to continue..."
+}
+
+function cDisplayRecipientsMenu
+{
+    echo "Menu | Recipients"
+    echo "1. Display recipients"
+    echo "2. Add recipient"
+    echo "3. Delete recipient"
+    
+    local option
+    echo -n "Press desired option number in order to continue or press R in order to return to the previous page. "
+    read -rsn1 option
+
+    if [ "$option" == 1 ]
+    then
+        cGetRecipients
+    elif [ "$option" == 2 ]
+    then
+        cAddRecipient
+    elif [ "$option" == 3 ]
+    then
+        cDeleteRecipient
+    elif [ "$option" == "r" ] || [ "$option" == "R" ]
+    then
+        return
+    fi
+    
+    cDisplayRecipientsMenu
 }
