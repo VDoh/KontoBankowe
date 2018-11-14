@@ -13,7 +13,7 @@ function cTransfersGeneralMenu
     echo "3. Currency transfer."
     
     local option
-    echo "Press desired option number in order to continue or press R in order to return to the previous page. "
+    echo -n "Press desired option number in order to continue or press R in order to return to the previous page. "
     read -rsn1 option
 
     if [ "$option" == 1 ]
@@ -41,7 +41,7 @@ function cTransfersSpecificMenu
     echo "2. Firm transfer."
 
     local option
-    echo "Press desired option number in order to continue or press R in order to return to the previous page. "
+    echo -n "Press desired option number in order to continue or press R in order to return to the previous page. "
     read -rsn1 option
 
     if [ "$option" == 1 ]

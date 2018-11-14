@@ -18,19 +18,19 @@ function cCurrencyManualTransfer
         echo "Personal transfer"
 
         local name=$(cGetName)
-        if [ "$name" == "-1" ]; then cCurrencyManualTransfer "Person"; return; fi
+        if [ "$name" == "-1" ]; then return; fi
     
         local surnameOrNip=$(cGetSurname)
-        if [ "$surnameOrNip" == "-1" ]; then cCurrencyManualTransfer "Person"; return; fi
+        if [ "$surnameOrNip" == "-1" ]; then return; fi
     elif [ "$1" == "Firm" ]
     then
         echo "Firm transfer"
 
         local name=$(cGetName)
-        if [ "$name" == "-1" ]; then cCurrencyManualTransfer "Firm"; return; fi
+        if [ "$name" == "-1" ]; then return; fi
     
         local surnameOrNip=$(cGetNip)
-        if [ "$surnameOrNip" == "-1" ]; then cCurrencyManualTransfer "Firm"; return; fi
+        if [ "$surnameOrNip" == "-1" ]; then return; fi
     else
         echo "ERROR. Wrong argument for function cCurrencyManualTransfer (either Person or Firm)."
         sleep 3
@@ -38,13 +38,14 @@ function cCurrencyManualTransfer
     fi
     
     local bankAccountNumber=$(cGetBankAccountNumber)
-    if [ "$bankAccountNumber" == "-1" ]; then cCurrencyManualTransfer $1; return; fi
+    if [ "$bankAccountNumber" == "-1" ]; then return; fi
     
     cGetCurrency
     local currency=$?
+    if [ "$currency" == "r" ] || [ "$currency" == "R" ]; then return; fi
 
     local amountInOtherCurrency=$(cGetAmount "Type in amount of money to transfer: ")
-    if [ "$amountInOtherCurrency" == "-1" ]; then cCurrencyManualTransfer $1; return; fi
+    if [ "$amountInOtherCurrency" == "-1" ]; then return; fi
 
     cCurrencyTransfer $1 $name $surnameOrNip $bankAccountNumber $currency $amountInOtherCurrency
 }

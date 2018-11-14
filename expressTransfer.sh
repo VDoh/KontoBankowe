@@ -17,19 +17,19 @@ function cExpressManualTransfer
         echo "Personal transfer"
 
         local name=$(cGetName)
-        if [ "$name" == "-1" ]; then cExpressManualTransfer "Person"; return; fi
+        if [ "$name" == "-1" ]; then return; fi
     
         local surnameOrNip=$(cGetSurname)
-        if [ "$surnameOrNip" == "-1" ]; then cExpressManualTransfer "Person"; return; fi
+        if [ "$surnameOrNip" == "-1" ]; then return; fi
     elif [ "$1" == "Firm" ]
     then
         echo "Firm transfer"
 
         local name=$(cGetName)
-        if [ "$name" == "-1" ]; then cExpressManualTransfer "Firm"; return; fi
+        if [ "$name" == "-1" ]; then return; fi
     
         local surnameOrNip=$(cGetNip)
-        if [ "$surnameOrNip" == "-1" ]; then cExpressManualTransfer "Firm"; return; fi
+        if [ "$surnameOrNip" == "-1" ]; then return; fi
     else
         echo "ERROR. Wrong argument for function cExpressManualTransfer (either Person or Firm)."
         sleep 3
@@ -37,10 +37,10 @@ function cExpressManualTransfer
     fi
     
     local bankAccountNumber=$(cGetBankAccountNumber)
-    if [ "$bankAccountNumber" == "-1" ]; then cExpressManualTransfer $1; return; fi
+    if [ "$bankAccountNumber" == "-1" ]; then return; fi
     
     local amount=$(cGetAmount "Type in amount of money to transfer: ")
-    if [ "$amount" == "-1" ]; then cExpressManualTransfer $1; return; fi
+    if [ "$amount" == "-1" ]; then return; fi
 
     cExpressTransfer $1 $name $surnameOrNip $bankAccountNumber $amount
 }

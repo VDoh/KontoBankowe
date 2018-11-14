@@ -62,9 +62,9 @@ function cGetCurrency
     done
 
     local option
-    echo -n "Type in desired currency number in order to continue: "
+    echo -n "Type in desired currency number in order to continue or press R in order to return to the previous page: "
     read -rsn1 option
-    local optionFormat='^[1-9]$'
+    local optionFormat='^([1-9]|r|R)$'
 
     if [[ "$option" =~ $optionFormat ]]; 
     then 

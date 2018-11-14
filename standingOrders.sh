@@ -9,60 +9,94 @@ function cCreateStandingOrdersFile
 }
 
 #This is the function that you probably want to use if you want to add or delete a standing order
-#It takes "Add" or "Delete" as an argument
-function cDisplayStandingOrderMenu
+function cDisplayStandingOrderGeneralMenu
 {
     clear
-    cCreateStandingOrdersFile
+    echo "Menu | Standing order"
+    echo "1. Add"
+    echo "2. Delete"
 
     local option
-    echo "Standing order types:"
-    echo "1. Personal"
-    echo "2. Firm"
-    echo -n "Press desired option number in order to continue. "
+    echo -n "Press desired option number in order to continue or press R in order to return to the previous page. "
     read -rsn1 option
 
-    local optionFormat='^(1|2)$'
-    if ! [[ "$option" =~ $optionFormat ]]
+    if [ "$option" == 1 ]
     then
-        cDisplayStandingOrderMenu $1
+        cDisplayStandingOrderSpecificMenu "Add"
+    elif [ "$option" == 2 ]
+    then
+        cDisplayStandingOrderSpecificMenu "Delete"
+    elif [ "$option" == "r" ] || [ "$option" == "R" ]
+    then
+        return
     else
-        if [ $1 == "Delete" ]
-        then
-            cDeleteStandingOrderManually $option
-        elif [ $1 == "Add" ]
-        then
-             cAddStandingOrderManually $option
-        else
-            echo "ERROR: Either Add or Delete as an argument for cDisplayStandingOrderMenu function."
-            sleep 2
-            exit 1
-        fi
+        cDisplayStandingOrderGeneralMenu
     fi
 }
 
+#It takes "Add" or "Delete" as an argument
+function cDisplayStandingOrderSpecificMenu
+{
+    clear
+    echo "$1 menu | Standing order types"
+    echo "1. Personal"
+    echo "2. Firm"
+
+    local option
+    echo -n "Press desired option number in order to continue or press R in order to return to the previous page. "
+    read -rsn1 option
+
+    if [ $1 == "Add" ]
+    then
+        if [ "$option" == 1 ]
+        then
+            cAddStandingOrderManually 1
+        elif [ "$option" == 2 ]
+        then
+            cAddStandingOrderManually 2
+        elif [ "$option" == "r" ] || [ "$option" == "R" ]
+        then
+            cDisplayStandingOrderGeneralMenu
+            return
+        fi
+    else
+        if [ "$option" == 1 ]
+        then
+            cDeleteStandingOrderManually 1
+        elif [ "$option" == 2 ]
+        then
+            cDeleteStandingOrderManually 2
+        elif [ "$option" == "r" ] || [ "$option" == "R" ]
+        then
+            cDisplayStandingOrderGeneralMenu
+            return
+        fi
+    fi
+
+    cDisplayStandingOrderSpecificMenu $1
+}
+
 #Do not use that function unless you know what you are doing.
-#You probably want to use cDisplayStandingOrderMenu function instead.
+#You probably want to use cDisplayStandingOrderSpecificMenu function instead.
 function cDeleteStandingOrderManually
 {
     clear
-
     if [ $1 == "1" ]
     then
         local pesel=$(cGetPesel)
-        if [ "$pesel" == "-1" ]; then cDeleteStandingOrderManually 1; return; fi
+        if [ "$pesel" == "-1" ]; then return; fi
 
         cDeleteStandingOrder "Person" $pesel
     else
         local nip=$(cGetNip)
-        if [ "$nip" == "-1" ]; then cDeleteStandingOrderManually 2; return; fi
+        if [ "$nip" == "-1" ]; then return; fi
 
         cDeleteStandingOrder "Firm" $nip
     fi
 }
 
 #Do not use that function unless you know what you are doing.
-#You probably want to use cDisplayStandingOrderMenu function instead.
+#You probably want to use cDisplayStandingOrderSpecificMenu function instead.
 function cAddStandingOrderManually
 {
     clear
@@ -73,22 +107,22 @@ function cAddStandingOrderManually
         orderType="Person"
 
         local name=$(cGetName)
-        if [ "$name" == "-1" ]; then cAddStandingOrderManually 1; return; fi
+        if [ "$name" == "-1" ]; then return; fi
         
         local surname=$(cGetSurname)
-        if [ "$surname" == "-1" ]; then cAddStandingOrderManually 1; return; fi
+        if [ "$surname" == "-1" ]; then return; fi
         
         local pesel=$(cGetPesel)
-        if [ "$pesel" == "-1" ]; then cAddStandingOrderManually 1; return; fi
+        if [ "$pesel" == "-1" ]; then return; fi
     elif [ $1 == "2" ]
     then
         orderType="Firm"
 
         local firmName=$(cGetFirmsName)
-        if [ "$firmName" == "-1" ]; then cAddStandingOrderManually 2; return; fi
+        if [ "$firmName" == "-1" ]; then return; fi
         
         local nip=$(cGetNip)
-        if [ "$nip" == "-1" ]; then cAddStandingOrderManually 2; return; fi
+        if [ "$nip" == "-1" ]; then return; fi
     else
         echo "ERROR. Wrong argument for function cAddStandingOrderManually (either 1 or 2 are admissible)"
         sleep 3
@@ -96,13 +130,13 @@ function cAddStandingOrderManually
     fi
 
     local bankAccountNumber=$(cGetBankAccountNumber)
-    if [ "$bankAccountNumber" == "-1" ]; then cAddStandingOrderManually $1; return; fi
+    if [ "$bankAccountNumber" == "-1" ]; then return; fi
     
     local amount=$(cGetAmount "Type in the amount of money you will be sending: ")
-    if [ "$amount" == "-1" ]; then cAddStandingOrderManually $1; return; fi
+    if [ "$amount" == "-1" ]; then return; fi
     
     local day=$(cGetDayOfTheMonth "Type in the day of the month you will be sending the money: ")
-    if [ "$day" == "-1" ]; then cAddStandingOrderManually $1; return; fi
+    if [ "$day" == "-1" ]; then return; fi
 
     if [ $orderType == "Person" ]
     then
@@ -147,6 +181,8 @@ function cAddStandingOrder
 #It takes 2 arguments: order type ("Person" or "Firm") and depending on the type: PESEL (11 digits) or NIP (10 digits)
 function cDeleteStandingOrder
 {
+    cCreateStandingOrdersFile
+
     if [ "$1" == "Person" ]
     then
         local peselFormat='^[0-9]{11}$'
@@ -243,3 +279,5 @@ function cGetStandingOrders
         done
     fi
 }
+
+cDisplayStandingOrderGeneralMenu

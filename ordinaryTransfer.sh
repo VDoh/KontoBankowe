@@ -17,19 +17,19 @@ function cOrdinaryManualTransfer
         echo "Personal transfer"
 
         local name=$(cGetName)
-        if [ "$name" == "-1" ]; then cOrdinaryManualTransfer "Person"; return; fi
+        if [ "$name" == "-1" ]; then return; fi
     
         local surnameOrNip=$(cGetSurname)
-        if [ "$surnameOrNip" == "-1" ]; then cOrdinaryManualTransfer "Person"; return; fi
+        if [ "$surnameOrNip" == "-1" ]; then return; fi
     elif [ "$1" == "Firm" ]
     then
         echo "Firm transfer"
 
         local name=$(cGetName)
-        if [ "$name" == "-1" ]; then cOrdinaryManualTransfer "Firm"; return; fi
+        if [ "$name" == "-1" ]; then return; fi
     
         local surnameOrNip=$(cGetNip)
-        if [ "$surnameOrNip" == "-1" ]; then cOrdinaryManualTransfer "Firm"; return; fi
+        if [ "$surnameOrNip" == "-1" ]; then return; fi
     else
         echo "ERROR. Wrong argument for function cOrdinaryManualTransfer (either Person or Firm)."
         sleep 3
@@ -37,10 +37,10 @@ function cOrdinaryManualTransfer
     fi
     
     local bankAccountNumber=$(cGetBankAccountNumber)
-    if [ "$bankAccountNumber" == "-1" ]; then cOrdinaryManualTransfer $1; return; fi
+    if [ "$bankAccountNumber" == "-1" ]; then return; fi
     
     local amount=$(cGetAmount "Type in amount of money to transfer: ")
-    if [ "$amount" == "-1" ]; then cOrdinaryManualTransfer $1; return; fi
+    if [ "$amount" == "-1" ]; then return; fi
 
     cOrdinaryTransfer $1 $name $surnameOrNip $bankAccountNumber $amount
 }
