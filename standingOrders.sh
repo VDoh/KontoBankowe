@@ -33,9 +33,9 @@ function cDisplayStandingOrderGeneralMenu
     elif [ "$option" == "r" ] || [ "$option" == "R" ]
     then
         return
-    else
-        cDisplayStandingOrderGeneralMenu
     fi
+        
+    cDisplayStandingOrderGeneralMenu
 }
 
 #It takes "Add" or "Delete" as an argument
@@ -224,6 +224,8 @@ function cGetStandingOrders
     cCreateStandingOrdersFile
 
     local -a standingOrders=()
+    local -a standingFirmOrders=()
+    local -a standingPersonOrders=()
     local index=0
 
     while read -r line 
@@ -285,3 +287,5 @@ function cGetStandingOrders
 
     read -n 1 -s -r -p "Press any key to continue..."
 }
+
+cDisplayStandingOrderGeneralMenu
