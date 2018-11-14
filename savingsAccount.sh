@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source $(dirname $0)/usefulFunctions.sh
-source $(dirnam $0)/globalVariablesFunctions.sh
+source $(dirname $0)/globalVariablesFunctions.sh
 
 function cCreateSavingsAccount
 {
