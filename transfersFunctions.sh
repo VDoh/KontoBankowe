@@ -16,7 +16,7 @@ function cAuthentication
     
     local userInput
     read -p "Enter authentication code here (you can find it in a file called authenticationCode.txt in the same directory as the script): " userInput
-    if [ $userInput != $code ]
+    if [ "$userInput" != $code ]
     then
         echo "Please try again."
         sleep 3
