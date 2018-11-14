@@ -7,6 +7,7 @@ source $(dirname $0)/transfersFunctions.sh
 source $(dirname $0)/savingsAccount.sh
 source $(dirname $0)/transfersHistory.sh
 
+#Takes "Person"/"Firm" as an argument
 function cExpressManualTransfer
 {
     clear
@@ -40,6 +41,8 @@ function cExpressManualTransfer
     cExpressTransfer $1 $name $surnameOrNip $bankAccountNumber $amount
 }
 
+#Takes as arguments in that order: "Person"/"Firm", name, surname or NIP, bank account number and amount to transfer
+#Use carefully because there is no validation in that function (its not for user use) and you can damage database
 function cExpressTransfer
 {
     clear

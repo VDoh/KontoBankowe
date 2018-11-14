@@ -8,6 +8,7 @@ source $(dirname $0)/savingsAccount.sh
 source $(dirname $0)/transfersHistory.sh
 source $(dirname $0)/currency_exchange.sh
 
+#Takes "Person"/"Firm" as an argument
 function cCurrencyManualTransfer
 {
     clear
@@ -44,6 +45,9 @@ function cCurrencyManualTransfer
     cCurrencyTransfer $1 $name $surnameOrNip $bankAccountNumber $currency $amountInOtherCurrency
 }
 
+#Takes as arguments in that order: "Person"/"Firm", name, surname or NIP, bank account number, currency and 
+#amount in that currency to transfer.
+#Use carefully because there is no validation in that function (its not for user use) and you can damage database
 function cCurrencyTransfer
 {
     clear

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source $(dirname $0)/standingOrders.sh
+
 function cGenerateCode
 {
     local code=$(shuf -i100000-999999 -n1)  
@@ -25,7 +27,7 @@ function cAuthentication
 function cValidateTransfer
 {
     clear
-    echo "You sent" $1 "to" $2":" $3"," $4"." >&2
+    echo "You are transfering" $1 "to" $2":" $3"," $4"." >&2
     echo "Press U if you want to undo it or press C if you want to continue. " >&2
     
     local option

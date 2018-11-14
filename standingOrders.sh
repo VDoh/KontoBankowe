@@ -128,7 +128,7 @@ function cAddStandingOrder
         printf "%s" "$5 " >> $(dirname $0)/standingOrders.txt
         printf "%s" "$6 " >> $(dirname $0)/standingOrders.txt
         printf "%s" "$7 " >> $(dirname $0)/standingOrders.txt
-    elif [ $1== "Firm" ]
+    elif [ $1 == "Firm" ]
     then
         printf "%s" "$5 " >> $(dirname $0)/standingOrders.txt
         printf "%s" "$6 " >> $(dirname $0)/standingOrders.txt

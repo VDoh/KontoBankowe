@@ -207,5 +207,3 @@ function cSaveTransferSeparately
     printf '%s\n' "Bank account number: $4" >> $(dirname $0)/Account/SeparateTransfers/$3_$index.txt
     printf '%s\n' "Amount: $5" >> $(dirname $0)/Account/SeparateTransfers/$3_$index.txt
 }
-
-cGetTransfersHistory
