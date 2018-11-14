@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#Assumes that "balance" is the global variable for the account balance
- 
+source $(dirname $0)/globalVariablesFunctions.sh 
+source $(dirname $0)/globalVariables.sh
 source $(dirname $0)/usefulFunctions.sh
 source $(dirname $0)/transfersFunctions.sh
 source $(dirname $0)/savingsAccount.sh
@@ -64,7 +64,8 @@ function cCurrencyTransfer
     local amountInOtherCurrency=$6 
     local amount=$(KexchangeCalculation $amount $currency 10)
 
-    local transferPossibilityState=$(cCanYouTransfer $amount)
+    local totalAmount=$(($amount+30))
+    local transferPossibilityState=$(cCanYouTransfer $totalAmount)
     if [ $transferPossibilityState == 0 ] 
     then 
         echo "You don't have enough money to do this transfer."
@@ -75,7 +76,7 @@ function cCurrencyTransfer
     cGenerateCode
     cAuthentication
 
-    let balance-=$((amount+20))
+    cSetBalance $(($balance-$amount-20))
     cMakeAutomaticTransfer 10
 
     if [ $amount -gt 49 ]
@@ -84,7 +85,7 @@ function cCurrencyTransfer
         if [ $? == 0 ]
         then
             clear
-            let balance+=amount
+            cSetBalance $(($balance+$amount))
             echo "Transfer has been reverted."
             sleep 3
             return
