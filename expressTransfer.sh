@@ -7,17 +7,62 @@ source $(dirname $0)/transfersFunctions.sh
 source $(dirname $0)/savingsAccount.sh
 source $(dirname $0)/transfersHistory.sh
 
+#Takes "Person"/"Firm" as an argument
+function cExpressManualTransfer
+{
+    clear
+
+    if [ "$1" == "Person" ]
+    then
+        echo "Personal transfer"
+
+        local name=$(cGetName)
+        if [ "$name" == "-1" ]; then return; fi
+    
+        local surnameOrNip=$(cGetSurname)
+        if [ "$surnameOrNip" == "-1" ]; then return; fi
+    elif [ "$1" == "Firm" ]
+    then
+        echo "Firm transfer"
+
+        local name=$(cGetName)
+        if [ "$name" == "-1" ]; then return; fi
+    
+        local surnameOrNip=$(cGetNip)
+        if [ "$surnameOrNip" == "-1" ]; then return; fi
+    else
+        echo "ERROR. Wrong argument for function cExpressManualTransfer (either Person or Firm)."
+        sleep 3
+        exit 1
+    fi
+    
+    local bankAccountNumber=$(cGetBankAccountNumber)
+    if [ "$bankAccountNumber" == "-1" ]; then return; fi
+    
+    local amount=$(cGetAmount "Type in amount of money to transfer: ")
+    if [ "$amount" == "-1" ]; then return; fi
+
+    cExpressTransfer $1 $name $surnameOrNip $bankAccountNumber $amount
+}
+
+#Takes as arguments in that order: "Person"/"Firm", name, surname or NIP, bank account number and amount to transfer
+#Use carefully because there is no validation in that function (its not for user use) and you can damage database
 function cExpressTransfer
 {
     clear
-    local name=$(cGetName)
-    if [ "$name" == "-1" ]; then cExpressTransfer; return; fi
-    local surname=$(cGetSurname)
-    if [ "$surname" == "-1" ]; then cExpressTransfer; return; fi
-    local bankAccountNumber=$(cGetBankAccountNumber)
-    if [ "$bankAccountNumber" == "-1" ]; then cExpressTransfer; return; fi
-    local amount=$(cGetAmount "Type in amount of money to transfer: ")
-    if [ "$amount" == "-1" ]; then cExpressTransfer; return; fi
+    local type=$1
+    local name=$2
+    local surnameOrNip=$3 
+    local bankAccountNumber=$4 
+    local amount=$5
+
+    local transferPossibilityState=$(cCanYouTransfer $amount)
+    if [ $transferPossibilityState == 0 ] 
+    then 
+        echo "You don't have enough money to do this transfer."
+        sleep 3
+        return
+    fi
     
     cGenerateCode
     cAuthentication
@@ -27,7 +72,7 @@ function cExpressTransfer
 
     if [ $amount -gt 49 ]
     then
-        cValidateTransfer $amount $name $surname
+        cValidateTransfer $amount ${type,,} $name $surnameOrNip
         if [ $? == 0 ]
         then
             clear
@@ -41,10 +86,10 @@ function cExpressTransfer
     cChooseOneOfTwoOptions "Press S if you want to save transfer separately or press C if you want to continue with defualt history storage." "S" "C"
     if [ $? == 1 ] 
     then 
-        cSaveTransferSeparately "Express" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surname
+        cSaveTransferSeparately $type "Express" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surnameOrNip
     fi
 
-    cAddTransferToHistory "Express" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surname
+    cAddTransferToHistory $type "Express" $(date +'%Y-%m-%d') $bankAccountNumber $amount $name $surnameOrNip
 
     clear
     echo "Your account balance is now:" $balance

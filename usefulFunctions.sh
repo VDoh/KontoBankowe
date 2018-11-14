@@ -52,7 +52,7 @@ function cGetNumberWithGivenLength
 function cGetName
 {
     local name
-    read -p "Type in recipients name: " name
+    read -p "Type in name: " name
     local nameFormat='^[A-Z][a-z][a-z]+$'
     if ! [[ "$name" =~ $nameFormat ]]; 
     then 
@@ -67,7 +67,7 @@ function cGetName
 function cGetSurname
 {
     local surname
-    read -p "Type in recipients surname: " surname
+    read -p "Type in surname: " surname
     local surnameFormat='^[A-Z][a-z][a-z]+$'
     if ! [[ "$surname" =~ $surnameFormat ]]; 
     then 
@@ -97,7 +97,7 @@ function cGetFirmsName
 function cGetBankAccountNumber
 {
     local bankAccountNumber
-    read -p "Type in recipients bank account number: " bankAccountNumber
+    read -p "Type in bank account number: " bankAccountNumber
     local bankAccountNumberState=$(cGetNumberWithGivenLength $bankAccountNumber 26)
     if [ $bankAccountNumberState == 0 ]; 
     then 
@@ -112,7 +112,7 @@ function cGetBankAccountNumber
 function cGetPesel
 {
     local pesel
-    read -p "Type in recipients PESEL: " pesel
+    read -p "Type in PESEL: " pesel
     local peselState=$(cGetNumberWithGivenLength $pesel 11)
     if [ $peselState == 0 ]; 
     then 
