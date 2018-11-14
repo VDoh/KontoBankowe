@@ -1,7 +1,4 @@
 #!/bin/bash
-declare  balance=0
-declare entire_balance=0
-declare savings=0
 
 source $(dirname $0)/finanse_credits.sh
 source $(dirname $0)/Credit_cards.sh
