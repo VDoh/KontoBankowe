@@ -18,7 +18,7 @@ function cTransfersGeneralMenu
     echo -n "Press desired option number in order to continue or press R in order to return to the previous page. "
     read -rsn1 option
 
-    if [ "$option" == 2 ]
+    if [ "$option" == 1 ]
     then
         cGetTransfersHistory
     elif [ "$option" == 2 ]
@@ -33,9 +33,9 @@ function cTransfersGeneralMenu
     elif [ "$option" == "r" ] || [ "$option" == "R" ]
     then
         return
-    else
-        cTransfersGeneralMenu
     fi
+
+    cTransfersGeneralMenu
 }
 
 function cTransfersSpecificMenu
@@ -63,3 +63,5 @@ function cTransfersSpecificMenu
     
     cTransfersSpecificMenu $1
 }
+
+cTransfersGeneralMenu
