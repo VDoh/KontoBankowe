@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $(dirname $0)/finanse.sh
+
 
 function greeting()
 {
