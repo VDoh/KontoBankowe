@@ -14,11 +14,10 @@ cSetupGlobalVariables
 clear
 echo "                   HELLO WELCOME IN OUR SMKM-INTERNATIONALBANK"
 echo "    ########################################################################"
-echo "              1) FINANCES  2) SERVICES  3)OFFER  4)MAKE TRANSACTIONS   "
+echo "              1) FINANCES  2) SERVICES  3) OFFER  4) MAKE TRANSACTIONS   "
 echo " BALANCE:" $balance "PLN "
 echo " SAVINGS: $savings PLN"
 echo " ENTIRE BALANCE: $entire_balance PLN"
-
 }
 
 function changing()
