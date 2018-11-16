@@ -22,8 +22,7 @@ function MenuOffersDisplay()
     echo "7. Settlement with ZUS"
     echo "8. Leasing"
     echo "9. Terminals in area" 
-    echo "10. Add ZUS to standing orders"
-    echo "11. Back"
+    echo "10. Back"
     echo -n "Type in desired option number in order to continue: "
 }
 
@@ -68,10 +67,7 @@ function MenuOffer()
     9)
         mShowTerminalsInTheArea
         ;;
-    10)
-        cAddZusToStandingOrders
-        ;;
-    11) 
+    10) 
         return
         ;;
   esac
