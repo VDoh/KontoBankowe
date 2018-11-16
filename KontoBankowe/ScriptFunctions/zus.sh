@@ -11,10 +11,10 @@ function kCalculateZus
     local puz=$(awk -v a="$2" -v b="$puzPercentage" 'BEGIN {print a*b}')
     local zusValue=$(awk -v a="$pus" -v b="$puz" 'BEGIN {print a+b}')
     
-    printf "%.0f" $zusValue
+    zusValue=${zusValue/.*}
+    echo $zusValue
 }
 
-#It will read PUS and PUZ from file
 function cAddZusToStandingOrders
 {
     clear
