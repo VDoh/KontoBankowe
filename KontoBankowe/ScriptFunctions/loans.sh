@@ -68,7 +68,7 @@ function Loans()
             
             
             #balance declared global 
-		    cSetBalance $moneyLoan
+		    cSetBalance $(($balance+$moneyLoan))
             let counter=counter+1
 
             ;;
