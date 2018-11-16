@@ -55,6 +55,13 @@ function cGetRecipients
         let index++
     done < $(dirname $0)/recipients.txt
 
+    if [ ${#recipients[@]} == 0 ] 
+    then 
+        echo "No set recipients." 
+        sleep 3
+        return 
+    fi
+
     local -a recipientsName=()
     local -a recipientsSurname=()
     local -a recipientsPESEL=()
