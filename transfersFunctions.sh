@@ -68,7 +68,9 @@ function cGetCurrency
 
     if [[ "$option" =~ $optionFormat ]]; 
     then 
-        return $option 
+        if [ "$option" == "r" ] || [ "$option" == "R" ]; then return 0; fi
+        echo ""
+        return $option
     else
         cGetCurrency
     fi

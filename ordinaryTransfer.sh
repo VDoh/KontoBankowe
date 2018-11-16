@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#Assumes that "balance" is the global variable for the account balance
-
+source $(dirname $0)/globalVariablesFunctions.sh
+source $(dirname $0)/globalVariables.sh
 source $(dirname $0)/usefulFunctions.sh
 source $(dirname $0)/transfersFunctions.sh
 source $(dirname $0)/savingsAccount.sh
@@ -56,7 +56,8 @@ function cOrdinaryTransfer
     local bankAccountNumber=$4
     local amount=$5
     
-    local transferPossibilityState=$(cCanYouTransfer $amount)
+    local totalAmount=$(($amount+3))
+    local transferPossibilityState=$(cCanYouTransfer $totalAmount)
     if [ $transferPossibilityState == 0 ] 
     then 
         echo "You don't have enough money to do this transfer."
@@ -67,7 +68,7 @@ function cOrdinaryTransfer
     cGenerateCode
     cAuthentication
 
-    let balance-=amount
+    cSetBalance $(($balance-$amount))
     cMakeAutomaticTransfer 3
 
     if [ $amount -gt 49 ]
@@ -76,7 +77,7 @@ function cOrdinaryTransfer
         if [ $? == 0 ]
         then
             clear
-            let balance+=amount
+            cSetBalance $(($balance+$amount))
             echo "Transfer has been reverted."
             sleep 3
             return
