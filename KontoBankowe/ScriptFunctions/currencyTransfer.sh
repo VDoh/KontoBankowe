@@ -42,7 +42,7 @@ function cCurrencyManualTransfer
     
     cGetCurrency
     local currency=$?
-    if [ "$currency" == "r" ] || [ "$currency" == "R" ]; then return; fi
+    if [ "$currency" == 0 ]; then return; fi
 
     local amountInOtherCurrency=$(cGetAmount "Type in amount of money to transfer: ")
     if [ "$amountInOtherCurrency" == "-1" ]; then return; fi
@@ -62,7 +62,7 @@ function cCurrencyTransfer
     local bankAccountNumber=$4  
     local currency=$5
     local amountInOtherCurrency=$6 
-    local amount=$(KexchangeCalculation $amount $currency 10)
+    local amount=$(KexchangeCalculation $amountInOtherCurrency $currency 10)
 
     local totalAmount=$(($amount+30))
     local transferPossibilityState=$(cCanYouTransfer $totalAmount)

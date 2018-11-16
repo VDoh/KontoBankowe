@@ -42,11 +42,11 @@ function cMakeAutomaticTransfer
     cCreateSavingsAccount
     cSetBalance $(($balance-$1))
     local transferAmount=$1
-    local transferFormat='^[1-9][0-9]+$'
+    local transferFormat='^[0-9]+$'
 
-    if [[ "$transferAmount" =~ $transferFormat ]]
+    if ! [[ "$transferAmount" =~ $transferFormat ]]
     then
-        echo "ERROR. cMakeAutomaticTransfer in savingsGoals.sh takes number bigger than 0 as an argument."
+        echo "ERROR. cMakeAutomaticTransfer in savingsAccount.sh takes number bigger than 0 as an argument."
         sleep 3
         exit 1
     fi

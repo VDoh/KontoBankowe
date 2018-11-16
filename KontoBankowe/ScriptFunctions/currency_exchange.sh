@@ -59,10 +59,9 @@ function Kexchange()
                 balanceAfter=$(KexchangeCalculation $1 $actualCurrency $wantedCurrency) 
                 echo "$balanceAfter"" $currencyName"
                 actualCurrency=$wantedCurrency
-		read -rsn1 useless
-                fi  
+		        read -rsn1 useless
+            fi  
         fi
-
     done
 }
 
@@ -96,5 +95,6 @@ function KexchangeCalculation()
     done
 
     result=$(awk -v a="$1" -v b="$exchange2" -v c="$exchange3" 'BEGIN {print a*b/c}')
-    echo "$result"
+    result=${result/.*}
+    echo $result
 }
