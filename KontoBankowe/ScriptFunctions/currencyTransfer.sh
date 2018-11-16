@@ -26,7 +26,7 @@ function cCurrencyManualTransfer
     then
         echo "Firm transfer"
 
-        local name=$(cGetName)
+        local name=$(cGetFirmsName)
         if [ "$name" == "-1" ]; then return; fi
     
         local surnameOrNip=$(cGetNip)
