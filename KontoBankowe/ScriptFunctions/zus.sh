@@ -1,37 +1,6 @@
 #!/bin/bash
 
 source $(dirname $0)/ordinaryTransfer.sh
-source $(dirname $0)/standingOrders.sh
-
-function kCalculateZus
-{
-    local pusPercentage="0.3409"
-    local puzPercentage="0.09"
-    local pus=$(awk -v a="$1" -v b="$pusPercentage" 'BEGIN {print a*b}')
-    local puz=$(awk -v a="$2" -v b="$puzPercentage" 'BEGIN {print a*b}')
-    local zusValue=$(awk -v a="$pus" -v b="$puz" 'BEGIN {print a+b}')
-    
-    zusValue=${zusValue/.*}
-    echo $zusValue
-}
-
-function cAddZusToStandingOrders
-{
-    clear
-    local zusInfo=$(grep ZUS "$(dirname $0)/standingOrders.txt")
-
-    if ! [ "$zusInfo" ]
-    then
-        local pus=2665
-        local puz=3554
-        local amount=$(kCalculateZus $pus $puz)
-
-        cAddStandingOrder "Firm" "99999999999999999999999999" $amount "15" "ZUS" "0000000000"
-
-        echo "Added ZUS to standing orders."
-        sleep 3
-    fi
-}
 
 function cTransferToZus
 {

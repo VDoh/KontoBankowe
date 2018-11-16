@@ -14,8 +14,9 @@ function cDisplayStandingOrderGeneralMenu
     clear
     echo "Menu | Standing order"
     echo "1. Display standing orders"
-    echo "2. Add standing order"
-    echo "3. Delete standing order"
+    echo "2. Add ZUS to standing orders"
+    echo "3. Add standing order"
+    echo "4. Delete standing order"
 
     local option
     echo -n "Press desired option number in order to continue or press R in order to return to the previous page. "
@@ -26,8 +27,11 @@ function cDisplayStandingOrderGeneralMenu
         cGetStandingOrders
     elif [ "$option" == 2 ]
     then
-        cDisplayStandingOrderSpecificMenu "Add"
+        cAddZusToStandingOrders
     elif [ "$option" == 3 ]
+    then
+        cDisplayStandingOrderSpecificMenu "Add"
+    elif [ "$option" == 4 ]
     then
         cDisplayStandingOrderSpecificMenu "Delete"
     elif [ "$option" == "r" ] || [ "$option" == "R" ]
@@ -218,6 +222,30 @@ function cDeleteStandingOrder
     fi
 }
 
+function cAddZusToStandingOrders
+{
+    clear
+    local zusInfo=$(grep ZUS "$(dirname $0)/standingOrders.txt")
+
+    if ! [ "$zusInfo" ]
+    then
+        local pusPercentage="0.3409"
+        local puzPercentage="0.09"
+        local pus=$(awk -v a="2665" -v b="$pusPercentage" 'BEGIN {print a*b}')
+        local puz=$(awk -v a="3554" -v b="$puzPercentage" 'BEGIN {print a*b}')
+        local zusValue=$(awk -v a="$pus" -v b="$puz" 'BEGIN {print a+b}')
+        zusValue=${zusValue/.*}
+
+        cAddStandingOrder "Firm" "99999999999999999999999999" $zusValue "15" "ZUS" "0000000000"
+
+        echo "Added ZUS to standing orders."
+        sleep 3
+    else
+        echo "You already have ZUS in your standing orders."
+        sleep 3
+    fi
+}
+
 function cGetStandingOrders
 {
     clear
@@ -233,6 +261,13 @@ function cGetStandingOrders
         standingOrders[$index]="$line"
         let index++
     done < "$(dirname $0)/standingOrders.txt"
+
+    if [ ${#standingOrders[@]} == 0 ]
+    then
+        echo "You don't have any standing orders yet."
+        read -n 1 -s -r -p "Press any key to continue..."
+        return
+    fi
 
     for (( i=0; i<$index; i++ ))
     do
