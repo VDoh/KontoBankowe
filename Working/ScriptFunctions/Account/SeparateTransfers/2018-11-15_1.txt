@@ -1,6 +1,0 @@
-
-Name: Wojciech
-Surname: Leśniak
-Date: 2018-11-15
-Bank account number: 98789798798798798798798787
-Amount: 100
